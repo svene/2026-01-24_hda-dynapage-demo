@@ -104,7 +104,8 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("country"),
 				rs.getString("mailbox"),
 				rs.getString("phonenumber"),
-				rs.getString("cellphone")
+				rs.getString("cellphone"),
+				"/person/%d/detailsback".formatted(rs.getInt("id"))
 			)
 		).single();
 		return result;

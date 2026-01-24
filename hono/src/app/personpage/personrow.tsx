@@ -1,5 +1,4 @@
 import {PersonTableRowModel} from "./person-page-model-vm";
-import {SpringUrls} from "./spring-urls";
 
 export const PersonRow = (props: {vm: PersonTableRowModel}) => (
 	<tr

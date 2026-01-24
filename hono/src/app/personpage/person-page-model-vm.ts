@@ -26,6 +26,7 @@ export type PersonDetailModel = {
 	mailBox: string,
 	phoneNumber: string,
 	cellPhone: string,
+	_backLink: string,
 }
 
 export type PersonEditModel = {
