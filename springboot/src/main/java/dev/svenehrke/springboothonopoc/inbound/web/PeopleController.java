@@ -19,8 +19,9 @@ import java.util.List;
 @Controller
 public class PeopleController {
 
-	public static final String URL_DEMO_OOB_PAGE = "/demo/oob/page";
-	public static final String PERSON_TABLE_URL = "/persontable";
+	private static final String URL_DEMO_OOB_BASE = "/demo/oob";
+	public static final String URL_DEMO_OOB_PAGE = URL_DEMO_OOB_BASE + "/page";
+	public static final String PERSON_TABLE_URL = URL_DEMO_OOB_BASE + "/persontable";
 
 	private final PeopleService peopleService;
 	private final HonoOOBPersonApi honoOOBPersonApi;
