@@ -77,7 +77,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("firstname"),
 				rs.getString("lastname"),
 				rs.getString("streetname"),
-				PeopleController.URLS.detailsBackUrl(rs.getInt("id"))
+				PeopleController.URLS.DETAILS_BACK.url(rs.getInt("id"))
 			)).single();
 		return result;
 	}
@@ -106,7 +106,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("mailbox"),
 				rs.getString("phonenumber"),
 				rs.getString("cellphone"),
-				PeopleController.URLS.detailsBackUrl(rs.getInt("id"))
+				PeopleController.URLS.DETAILS_BACK.url(rs.getInt("id"))
 			)
 		).single();
 		return result;

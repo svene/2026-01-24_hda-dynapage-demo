@@ -7,7 +7,11 @@ import dev.svenehrke.springboothonopoc.outbound.hono.HonoOOBPersonApi;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
@@ -24,10 +28,14 @@ public class PeopleController {
 		String DEMO_OOB_PAGE = DEMO_OOB_BASE + "/page";
 		String PERSON_TABLE = DEMO_OOB_BASE + "/persontable";
 
-		String DETAILS_BACK = "/person/{id}/detailsback";
-		UriComponentsBuilder detailsBackUrlBuilder = UriComponentsBuilder.fromPath(DETAILS_BACK);
-		static String detailsBackUrl(int id) {
-			return detailsBackUrlBuilder.buildAndExpand(id).toUriString();
+		interface DETAILS_BACK {
+			String URL = "/person/{id}/detailsback";
+			static String url(int id) {
+				return UriComponentsBuilder
+					.fromPath(URL)
+					.buildAndExpand(id)
+					.toUriString();
+			};
 		}
 	}
 
@@ -73,7 +81,7 @@ public class PeopleController {
 		return honoOOBPersonApi.personRow(peopleService.personTableRowModel(id));
 	}
 
-	@GetMapping(URLS.DETAILS_BACK)
+	@GetMapping(URLS.DETAILS_BACK.URL)
 	public ResponseEntity<String> detailsback(@PathVariable int id) {
 		return honoOOBPersonApi.personDetailsBack(peopleService.personTableRowModel(id));
 	}
