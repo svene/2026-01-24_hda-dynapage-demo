@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -22,6 +23,12 @@ public class PeopleController {
 		String DEMO_OOB_BASE = "/demo/oob";
 		String DEMO_OOB_PAGE = DEMO_OOB_BASE + "/page";
 		String PERSON_TABLE = DEMO_OOB_BASE + "/persontable";
+
+		String DETAILS_BACK = "/person/{id}/detailsback";
+		UriComponentsBuilder detailsBackUrlBuilder = UriComponentsBuilder.fromPath(DETAILS_BACK);
+		static String detailsBackUrl(int id) {
+			return detailsBackUrlBuilder.buildAndExpand(id).toUriString();
+		}
 	}
 
 	private final PeopleService peopleService;
@@ -66,7 +73,7 @@ public class PeopleController {
 		return honoOOBPersonApi.personRow(peopleService.personTableRowModel(id));
 	}
 
-	@GetMapping("/person/{id}/detailsback")
+	@GetMapping(URLS.DETAILS_BACK)
 	public ResponseEntity<String> detailsback(@PathVariable int id) {
 		return honoOOBPersonApi.personDetailsBack(peopleService.personTableRowModel(id));
 	}

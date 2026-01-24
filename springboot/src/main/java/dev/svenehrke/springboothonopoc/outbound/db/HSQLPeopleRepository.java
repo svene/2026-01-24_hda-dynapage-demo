@@ -1,6 +1,7 @@
 package dev.svenehrke.springboothonopoc.outbound.db;
 
 import dev.svenehrke.springboothonopoc.core.*;
+import dev.svenehrke.springboothonopoc.inbound.web.PeopleController;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Service;
@@ -76,7 +77,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("firstname"),
 				rs.getString("lastname"),
 				rs.getString("streetname"),
-				"/person/%d/details".formatted(rs.getInt("id"))
+				PeopleController.URLS.detailsBackUrl(rs.getInt("id"))
 			)).single();
 		return result;
 	}
@@ -105,7 +106,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("mailbox"),
 				rs.getString("phonenumber"),
 				rs.getString("cellphone"),
-				"/person/%d/detailsback".formatted(rs.getInt("id"))
+				PeopleController.URLS.detailsBackUrl(rs.getInt("id"))
 			)
 		).single();
 		return result;
