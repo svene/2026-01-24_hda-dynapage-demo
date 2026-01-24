@@ -8,7 +8,7 @@ export const PersonRow = (props: {vm: PersonTableRowModel}) => (
 		hx-trigger="click"
 		hx-target="this"
 		hx-swap="outerHTML"
-		hx-get={SpringUrls.Person.details(props.vm.id)}
+		hx-get={props.vm._detailsLink}
 	>
 		<td hx-trigger="click consume">
 			<input type="checkbox" name="selection" value={props.vm.id} form="bulkDeleteForm"></input>

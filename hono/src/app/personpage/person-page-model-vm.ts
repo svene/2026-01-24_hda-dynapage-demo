@@ -3,6 +3,7 @@ export type PersonTableRowModel = {
 	firstName: string,
 	lastName: string,
 	streetName: string,
+	_detailsLink: string,
 }
 
 export type PersonTableModel = {
