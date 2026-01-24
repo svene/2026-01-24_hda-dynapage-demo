@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -23,21 +22,6 @@ import java.util.List;
  */
 @Controller
 public class PeopleController {
-	public interface URLS {
-		String DEMO_OOB_BASE = "/demo/oob";
-		String DEMO_OOB_PAGE = DEMO_OOB_BASE + "/page";
-		String PERSON_TABLE = DEMO_OOB_BASE + "/persontable";
-
-		interface DETAILS_BACK {
-			String URL = "/person/{id}/detailsback";
-			static String url(int id) {
-				return UriComponentsBuilder
-					.fromPath(URL)
-					.buildAndExpand(id)
-					.toUriString();
-			};
-		}
-	}
 
 	private final PeopleService peopleService;
 	private final HonoOOBPersonApi honoOOBPersonApi;
@@ -50,13 +34,13 @@ public class PeopleController {
 		this.honoOOBPersonApi = honoOOBPersonApi;
 	}
 
-	@GetMapping(URLS.DEMO_OOB_PAGE)
+	@GetMapping(RoutingUrls.DEMO_OOB_PAGE)
 	public ResponseEntity<String> peoplePage() {
 		var vm = new PersonPageModel(peopleService.personTableModel());
 		return honoOOBPersonApi.peoplePage(vm);
 	}
 
-	@GetMapping(URLS.PERSON_TABLE)
+	@GetMapping(RoutingUrls.PERSON_TABLE)
 	public ResponseEntity<String> peopleUrl(@RequestParam() String search) {
 		return honoOOBPersonApi.peopleUrl(peopleService.peopleForSearch(search));
 	}
@@ -81,7 +65,7 @@ public class PeopleController {
 		return honoOOBPersonApi.personRow(peopleService.personTableRowModel(id));
 	}
 
-	@GetMapping(URLS.DETAILS_BACK.URL)
+	@GetMapping(RoutingUrls.DETAILS_BACK.URL)
 	public ResponseEntity<String> detailsback(@PathVariable int id) {
 		return honoOOBPersonApi.personDetailsBack(peopleService.personTableRowModel(id));
 	}
@@ -89,13 +73,13 @@ public class PeopleController {
 	@DeleteMapping("/person/delete")
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
-		response.setHeader("HX-Redirect", URLS.DEMO_OOB_PAGE);
+		response.setHeader("HX-Redirect", RoutingUrls.DEMO_OOB_PAGE);
 		return peoplePage();
 	}
 
 	@PutMapping("/person/{id}")
 	public ResponseEntity<String> updatePerson(@PathVariable int id, PersonEditModel personEditModel, HttpServletResponse response) {
-		response.setHeader("HX-Redirect", URLS.DEMO_OOB_PAGE);
+		response.setHeader("HX-Redirect", RoutingUrls.DEMO_OOB_PAGE);
 		peopleService.updatePerson(id, personEditModel);
 		return peoplePage();
 	}
