@@ -1,16 +1,11 @@
 package dev.svenehrke.springboothonopoc.inbound.web;
 
 import dev.svenehrke.springboothonopoc.core.PeopleService;
-import dev.svenehrke.springboothonopoc.core.PersonEditModel;
 import dev.svenehrke.springboothonopoc.core.PersonPageModel;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoEventPersonApi;
-import dev.svenehrke.springboothonopoc.outbound.hono.HonoOOBPersonApi;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * General Forwarding Pattern (Spring -> Hono):
@@ -20,7 +15,7 @@ import java.util.List;
 @Controller
 public class EvtPeopleController {
 
-	public static final String EVT_PERSON_PAGE_URL = "/page/eventpeople";
+	public static final String URL_DEMO_EVENT_PAGE = "/demo/event/page";
 
 	private final PeopleService peopleService;
 	private final HonoEventPersonApi honoApi;
@@ -33,7 +28,7 @@ public class EvtPeopleController {
 		this.honoApi = honoApi;
 	}
 
-	@GetMapping(EVT_PERSON_PAGE_URL)
+	@GetMapping(URL_DEMO_EVENT_PAGE)
 	public ResponseEntity<String> peoplePage() {
 		var vm = new PersonPageModel(peopleService.personTableModel());
 		return honoApi.peoplePage(vm);

@@ -19,7 +19,7 @@ import java.util.List;
 @Controller
 public class PeopleController {
 
-	public static final String PAGE_PEOPLE_URL = "/page/people";
+	public static final String URL_DEMO_OOB_PAGE = "/demo/oob/page";
 	public static final String PERSON_TABLE_URL = "/persontable";
 
 	private final PeopleService peopleService;
@@ -33,7 +33,7 @@ public class PeopleController {
 		this.honoOOBPersonApi = honoOOBPersonApi;
 	}
 
-	@GetMapping(PAGE_PEOPLE_URL)
+	@GetMapping(URL_DEMO_OOB_PAGE)
 	public ResponseEntity<String> peoplePage() {
 		var vm = new PersonPageModel(peopleService.personTableModel());
 		return honoOOBPersonApi.peoplePage(vm);
@@ -72,13 +72,13 @@ public class PeopleController {
 	@DeleteMapping("/person/delete")
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
-		response.setHeader("HX-Redirect", PAGE_PEOPLE_URL);
+		response.setHeader("HX-Redirect", URL_DEMO_OOB_PAGE);
 		return peoplePage();
 	}
 
 	@PutMapping("/person/{id}")
 	public ResponseEntity<String> updatePerson(@PathVariable int id, PersonEditModel personEditModel, HttpServletResponse response) {
-		response.setHeader("HX-Redirect", PAGE_PEOPLE_URL);
+		response.setHeader("HX-Redirect", URL_DEMO_OOB_PAGE);
 		peopleService.updatePerson(id, personEditModel);
 		return peoplePage();
 	}
