@@ -15,7 +15,7 @@ export const EvtPersonPage = (props: { vm: PersonPageModel }) => (
 						name="search"
 						placeholder="Search for firstname or lastname"
 						hx-trigger="input changed delay:500ms"
-						hx-get={SpringUrls.Person.table()}
+						hx-get={props.vm._tableLink}
 						hx-target="#result-table"
 					/>
 				</div>

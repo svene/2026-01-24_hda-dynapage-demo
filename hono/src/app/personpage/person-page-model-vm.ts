@@ -12,6 +12,7 @@ export type PersonTableModel = {
 }
 export type PersonPageModel = {
 	table: PersonTableModel,
+	_tableLink: string,
 }
 
 export type PersonDetailModel = {

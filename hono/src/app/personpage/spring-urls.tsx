@@ -3,16 +3,7 @@
 const URL_DEMO_OOB_BASE = '/demo/oob';
 const URL_DEMO_EVENT_BASE = '/demo/event';
 export const SpringUrls = {
-	OOB_demo: {
-		PAGE: `${URL_DEMO_OOB_BASE}/page`,
-	},
-	Event_demo: {
-		PAGE: `${URL_DEMO_EVENT_BASE}/page`,
-	},
-	Info: {
-		PAGE: '/info',
-	},
-	Person: {
-		table: () => `${URL_DEMO_OOB_BASE}/persontable`,
-	},
+	OOB_DEMO_PAGE: `${URL_DEMO_OOB_BASE}/page`,
+	EVENT_DEMO_PAGE: `${URL_DEMO_EVENT_BASE}/page`,
+	INFO_PAGE: '/info',
 };

@@ -7,6 +7,8 @@ public interface RoutingUrls {
 	String PERSON_TABLE = DEMO_OOB_BASE + "/persontable";
 	String DEMO_OOB_PAGE = DEMO_OOB_BASE + "/page";
 
+	String DELETE = "/person/delete";
+
 	interface DETAILS_BACK {
 		String URL = "/person/{id}/detailsback";
 		static String url(int id) {
@@ -33,5 +35,14 @@ public interface RoutingUrls {
 				.buildAndExpand(id)
 				.toUriString();
 		};
+	}
+	interface DETAILS {
+		String URL = "/person/{id}/details";
+	}
+	interface ROW {
+		String URL = "/person/{id}/row";
+	}
+	interface PERSON {
+		String URL = "/person/{id}";
 	}
 }

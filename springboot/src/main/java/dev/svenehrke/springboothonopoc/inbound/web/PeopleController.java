@@ -36,7 +36,7 @@ public class PeopleController {
 
 	@GetMapping(RoutingUrls.DEMO_OOB_PAGE)
 	public ResponseEntity<String> peoplePage() {
-		var vm = new PersonPageModel(peopleService.personTableModel());
+		var vm = new PersonPageModel(peopleService.personTableModel(), RoutingUrls.PERSON_TABLE);
 		return honoOOBPersonApi.peoplePage(vm);
 	}
 
@@ -56,12 +56,12 @@ public class PeopleController {
 	}
 
 
-	@GetMapping("/person/{id}/details")
+	@GetMapping(RoutingUrls.DETAILS.URL)
 	public ResponseEntity<String> details(@PathVariable int id) {
 		return honoOOBPersonApi.personDetails(peopleService.personDetailModel(id));
 	}
 
-	@GetMapping("/person/{id}/row")
+	@GetMapping(RoutingUrls.ROW.URL)
 	public ResponseEntity<String> row(@PathVariable int id) {
 		return honoOOBPersonApi.personRow(peopleService.personTableRowModel(id));
 	}
@@ -71,14 +71,14 @@ public class PeopleController {
 		return honoOOBPersonApi.personDetailsBack(peopleService.personTableRowModel(id));
 	}
 
-	@DeleteMapping("/person/delete")
+	@DeleteMapping(RoutingUrls.DELETE)
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
 		response.setHeader("HX-Redirect", RoutingUrls.DEMO_OOB_PAGE);
 		return peoplePage();
 	}
 
-	@PutMapping("/person/{id}")
+	@PutMapping(RoutingUrls.PERSON.URL)
 	public ResponseEntity<String> updatePerson(@PathVariable int id, PersonEditModel personEditModel, HttpServletResponse response) {
 		response.setHeader("HX-Redirect", RoutingUrls.DEMO_OOB_PAGE);
 		peopleService.updatePerson(id, personEditModel);

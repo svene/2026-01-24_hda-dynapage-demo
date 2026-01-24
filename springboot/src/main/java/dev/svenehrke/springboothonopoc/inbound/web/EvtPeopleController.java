@@ -30,7 +30,7 @@ public class EvtPeopleController {
 
 	@GetMapping(URL_DEMO_EVENT_PAGE)
 	public ResponseEntity<String> peoplePage() {
-		var vm = new PersonPageModel(peopleService.personTableModel());
+		var vm = new PersonPageModel(peopleService.personTableModel(), RoutingUrls.PERSON_TABLE);
 		return honoApi.peoplePage(vm);
 	}
 
