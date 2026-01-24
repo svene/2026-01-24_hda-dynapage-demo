@@ -9,7 +9,7 @@ export const PersondetailsCard = (props: { vm: PersonDetailModel }) => (
 				hx-trigger="click"
 				hx-target="this"
 				hx-swap="outerHTML"
-				hx-get={SpringUrls.Person.edit(props.vm.id)}
+				hx-get={props.vm._editLink}
 			>
 				<td colSpan={4} style="padding-left: 30px">
 

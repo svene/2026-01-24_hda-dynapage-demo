@@ -16,4 +16,13 @@ public interface RoutingUrls {
 				.toUriString();
 		};
 	}
+	interface EDIT {
+		String URL = "/person/{id}/edit";
+		static String url(int id) {
+			return UriComponentsBuilder
+				.fromPath(URL)
+				.buildAndExpand(id)
+				.toUriString();
+		};
+	}
 }

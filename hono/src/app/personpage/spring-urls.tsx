@@ -13,7 +13,6 @@ export const SpringUrls = {
 		PAGE: '/info',
 	},
 	Person: {
-		edit: (id: number) => `/person/${id}/edit`,
 		editBack: (id: number) => `/person/${id}/editback`,
 		table: () => `${URL_DEMO_OOB_BASE}/persontable`,
 	},
