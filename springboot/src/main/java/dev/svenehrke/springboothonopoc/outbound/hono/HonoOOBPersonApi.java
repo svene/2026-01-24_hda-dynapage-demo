@@ -1,9 +1,6 @@
 package dev.svenehrke.springboothonopoc.outbound.hono;
 
-import dev.svenehrke.springboothonopoc.core.PersonDetailModel;
-import dev.svenehrke.springboothonopoc.core.PersonPageModel;
-import dev.svenehrke.springboothonopoc.core.PersonTableModel;
-import dev.svenehrke.springboothonopoc.core.PersonTableRowModel;
+import dev.svenehrke.springboothonopoc.core.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +26,7 @@ public class HonoOOBPersonApi {
 	public ResponseEntity<String> peopleUrl(PersonTableModel vm) {
 		return honoAppClient.post(PERSON_TABLE_URL, vm);
 	}
-	public ResponseEntity<String> personEdit(PersonTableRowModel vm) {
+	public ResponseEntity<String> personEdit(PersonEditModel vm) {
 		return honoAppClient.post(PERSON_EDIT_URL, vm);
 	}
 	public ResponseEntity<String> personEditBack(PersonDetailModel vm) {

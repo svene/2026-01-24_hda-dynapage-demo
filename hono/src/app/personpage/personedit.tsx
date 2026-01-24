@@ -40,7 +40,7 @@ export const PersonEditor = (props: { vm: PersonEditModel }) => (
 							hx-trigger="click consume"
 							hx-target="closest tr"
 							hx-swap="outerHTML"
-							hx-get={SpringUrls.Person.editBack(props.vm.id)}
+							hx-get={props.vm._editBackLink}
 						>&lt; Back
 						</button>
 						<button

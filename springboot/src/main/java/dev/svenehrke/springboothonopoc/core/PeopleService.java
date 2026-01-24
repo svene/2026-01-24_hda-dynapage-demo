@@ -30,9 +30,12 @@ public class PeopleService {
 	public PersonTableRowModel personTableRowModel(int id) {
 		return peopleRepository.personTableRowModel(id);
 	}
+	public PersonEditModel personEditModel(int id) {
+		return peopleRepository.personEditModel(id);
+	}
 
-	public PersonDetailModel personTableDetailModel(int id) {
-		return peopleRepository.personTableDetailModel(id);
+	public PersonDetailModel personDetailModel(int id) {
+		return peopleRepository.personDetailModel(id);
 	}
 
 	@Transactional

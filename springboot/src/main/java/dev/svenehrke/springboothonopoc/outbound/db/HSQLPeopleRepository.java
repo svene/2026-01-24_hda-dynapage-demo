@@ -83,7 +83,22 @@ public class HSQLPeopleRepository implements PeopleRepository {
 	}
 
 	@Override
-	public PersonDetailModel personTableDetailModel(int id) {
+	public PersonEditModel personEditModel(int id) {
+		var sql = "select id, firstname, lastname, streetname from Person where id = ?";
+		return jdbcClient.sql(sql)
+			.param(id)
+			.query(
+				(rs, rowNum) -> new PersonEditModel(
+					rs.getInt("id"),
+					rs.getString("firstname"),
+					rs.getString("lastname"),
+					rs.getString("streetname"),
+					RoutingUrls.EDIT_BACK.url(rs.getInt("id"))
+				)).single();
+	}
+
+	@Override
+	public PersonDetailModel personDetailModel(int id) {
 		var sql = """
 			select
 				id, firstname, lastname, streetname, streetno, zipcode, city,

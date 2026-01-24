@@ -35,5 +35,6 @@ export type PersonEditModel = {
 	firstName: string,
 	lastName: string,
 	streetName: string,
+	_editBackLink: string,
 }
 

@@ -45,19 +45,20 @@ public class PeopleController {
 		return honoOOBPersonApi.peopleUrl(peopleService.peopleForSearch(search));
 	}
 
-	@GetMapping("/person/{id}/edit")
+	@GetMapping(RoutingUrls.EDIT.URL)
 	public ResponseEntity<String> edit(@PathVariable int id) {
-		return honoOOBPersonApi.personEdit(peopleService.personTableRowModel(id));
+		return honoOOBPersonApi.personEdit(peopleService.personEditModel(id));
 	}
-	@GetMapping("/person/{id}/editback")
+
+	@GetMapping(RoutingUrls.EDIT_BACK.URL)
 	public ResponseEntity<String> editback(@PathVariable int id) {
-		return honoOOBPersonApi.personEditBack(peopleService.personTableDetailModel(id));
+		return honoOOBPersonApi.personEditBack(peopleService.personDetailModel(id));
 	}
 
 
 	@GetMapping("/person/{id}/details")
 	public ResponseEntity<String> details(@PathVariable int id) {
-		return honoOOBPersonApi.personDetails(peopleService.personTableDetailModel(id));
+		return honoOOBPersonApi.personDetails(peopleService.personDetailModel(id));
 	}
 
 	@GetMapping("/person/{id}/row")

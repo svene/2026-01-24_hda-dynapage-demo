@@ -25,4 +25,13 @@ public interface RoutingUrls {
 				.toUriString();
 		};
 	}
+	interface EDIT_BACK {
+		String URL = "/person/{id}/editback";
+		static String url(int id) {
+			return UriComponentsBuilder
+				.fromPath(URL)
+				.buildAndExpand(id)
+				.toUriString();
+		};
+	}
 }
