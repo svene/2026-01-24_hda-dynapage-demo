@@ -18,10 +18,11 @@ import java.util.List;
  */
 @Controller
 public class PeopleController {
-
-	private static final String URL_DEMO_OOB_BASE = "/demo/oob";
-	public static final String URL_DEMO_OOB_PAGE = URL_DEMO_OOB_BASE + "/page";
-	public static final String PERSON_TABLE_URL = URL_DEMO_OOB_BASE + "/persontable";
+	public interface URLS {
+		String DEMO_OOB_BASE = "/demo/oob";
+		String DEMO_OOB_PAGE = DEMO_OOB_BASE + "/page";
+		String PERSON_TABLE = DEMO_OOB_BASE + "/persontable";
+	}
 
 	private final PeopleService peopleService;
 	private final HonoOOBPersonApi honoOOBPersonApi;
@@ -34,13 +35,13 @@ public class PeopleController {
 		this.honoOOBPersonApi = honoOOBPersonApi;
 	}
 
-	@GetMapping(URL_DEMO_OOB_PAGE)
+	@GetMapping(URLS.DEMO_OOB_PAGE)
 	public ResponseEntity<String> peoplePage() {
 		var vm = new PersonPageModel(peopleService.personTableModel());
 		return honoOOBPersonApi.peoplePage(vm);
 	}
 
-	@GetMapping(PERSON_TABLE_URL)
+	@GetMapping(URLS.PERSON_TABLE)
 	public ResponseEntity<String> peopleUrl(@RequestParam() String search) {
 		return honoOOBPersonApi.peopleUrl(peopleService.peopleForSearch(search));
 	}
@@ -73,13 +74,13 @@ public class PeopleController {
 	@DeleteMapping("/person/delete")
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
-		response.setHeader("HX-Redirect", URL_DEMO_OOB_PAGE);
+		response.setHeader("HX-Redirect", URLS.DEMO_OOB_PAGE);
 		return peoplePage();
 	}
 
 	@PutMapping("/person/{id}")
 	public ResponseEntity<String> updatePerson(@PathVariable int id, PersonEditModel personEditModel, HttpServletResponse response) {
-		response.setHeader("HX-Redirect", URL_DEMO_OOB_PAGE);
+		response.setHeader("HX-Redirect", URLS.DEMO_OOB_PAGE);
 		peopleService.updatePerson(id, personEditModel);
 		return peoplePage();
 	}
