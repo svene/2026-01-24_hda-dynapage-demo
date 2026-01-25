@@ -3,7 +3,7 @@ import {
 	PersonPageModel,
 } from "../person-page-model-vm";
 import {EvtPersonPage} from "./evt-personpage";
-import {HonoEventUrls} from "../hono-urls-shared-consts";
+import {HonoEventUrls} from "../hono-shared-consts";
 
 function init(hono: Hono) {
 	hono.post(HonoEventUrls.PAGE, async (c) => {

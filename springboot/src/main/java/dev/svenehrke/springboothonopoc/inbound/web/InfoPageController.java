@@ -1,6 +1,6 @@
 package dev.svenehrke.springboothonopoc.inbound.web;
 
-import dev.svenehrke.springboothonopoc.core.SpringUrlsSharedConsts;
+import dev.svenehrke.springboothonopoc.core.SpringHonoSharedConsts;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoAppClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,9 +24,9 @@ public class InfoPageController {
 		this.honoAppClient = honoAppClient;
 	}
 
-	@GetMapping(SpringUrlsSharedConsts.INFO_PAGE)
+	@GetMapping(SpringHonoSharedConsts.INFO_PAGE)
 	public ResponseEntity<String> people() {
-		return honoAppClient.get(SpringUrlsSharedConsts.INFO_PAGE, Collections.emptyMap());
+		return honoAppClient.get(SpringHonoSharedConsts.INFO_PAGE, Collections.emptyMap());
 	}
 
 }

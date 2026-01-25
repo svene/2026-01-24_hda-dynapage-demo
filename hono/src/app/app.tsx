@@ -4,7 +4,7 @@ import {greeting} from "./misc/greeting";
 import {personPageRouting} from "./personpage/personpagerouting";
 import {miscRouting} from "./misc/misc-routing";
 import {eventPersonPageRouting} from "./personpage/eventvariant/eventpersonpagerouting";
-import {HonoOOBUrls} from "./personpage/hono-urls-shared-consts";
+import {HonoOOBUrls} from "./personpage/hono-shared-consts";
 
 function init(hono: Hono) {
 	hono.use('/static/*', serveStatic({ root: './' }))

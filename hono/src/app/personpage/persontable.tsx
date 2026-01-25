@@ -1,6 +1,6 @@
 import {PersonTableModel} from "./person-page-model-vm";
 import {PersonRow} from "./personrow";
-import {SpringOOBUrls} from "./spring-urls-shared-consts";
+import {SpringOOB} from "./spring-shared-consts";
 
 export const PersonTable = (props: { vm: PersonTableModel }) => (
 	<div id="result-table">
@@ -8,7 +8,7 @@ export const PersonTable = (props: { vm: PersonTableModel }) => (
 			<thead>
 			<tr>
 				<td colSpan={5}>
-					<form id="bulkDeleteForm" hx-delete={SpringOOBUrls.DELETE}>
+					<form id="bulkDeleteForm" hx-delete={SpringOOB.DELETE}>
 						<button type="submit" className="button">
 							<span className="icon"><i className="material-icons">delete</i></span>
 							<span>Delete</span>

@@ -3,7 +3,7 @@ package dev.svenehrke.springboothonopoc.inbound.web;
 import dev.svenehrke.springboothonopoc.core.PersonEditModel;
 import dev.svenehrke.springboothonopoc.core.PersonPageModel;
 import dev.svenehrke.springboothonopoc.core.PeopleService;
-import dev.svenehrke.springboothonopoc.core.SpringUrlsSharedConsts.SpringOOBUrls;
+import dev.svenehrke.springboothonopoc.core.SpringSharedConsts.SpringOOB;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoOOBPersonApi;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
@@ -31,13 +31,13 @@ public class PeopleController {
 		this.honoOOBPersonApi = honoOOBPersonApi;
 	}
 
-	@GetMapping(SpringOOBUrls.PAGE)
+	@GetMapping(SpringOOB.PAGE)
 	public ResponseEntity<String> peoplePage() {
-		var vm = new PersonPageModel(peopleService.personTableModel(), SpringOOBUrls.PERSON_TABLE);
+		var vm = new PersonPageModel(peopleService.personTableModel(), SpringOOB.PERSON_TABLE);
 		return honoOOBPersonApi.peoplePage(vm);
 	}
 
-	@GetMapping(SpringOOBUrls.PERSON_TABLE)
+	@GetMapping(SpringOOB.PERSON_TABLE)
 	public ResponseEntity<String> peopleUrl(@RequestParam() String search) {
 		return honoOOBPersonApi.peopleUrl(peopleService.peopleForSearch(search));
 	}
@@ -68,16 +68,16 @@ public class PeopleController {
 		return honoOOBPersonApi.personDetailsBack(peopleService.personTableRowModel(id));
 	}
 
-	@DeleteMapping(SpringOOBUrls.DELETE)
+	@DeleteMapping(SpringOOB.DELETE)
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
-		response.setHeader("HX-Redirect", SpringOOBUrls.PAGE);
+		response.setHeader("HX-Redirect", SpringOOB.PAGE);
 		return peoplePage();
 	}
 
 	@PutMapping(RoutingUrls.PERSON.URL)
 	public ResponseEntity<String> updatePerson(@PathVariable int id, PersonEditModel personEditModel, HttpServletResponse response) {
-		response.setHeader("HX-Redirect", SpringOOBUrls.PAGE);
+		response.setHeader("HX-Redirect", SpringOOB.PAGE);
 		peopleService.updatePerson(id, personEditModel);
 		return peoplePage();
 	}

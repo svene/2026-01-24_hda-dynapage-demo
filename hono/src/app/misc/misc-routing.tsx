@@ -1,6 +1,6 @@
 import {Hono} from "hono";
 import {InfoPage} from "./infopage";
-import {INFO_PAGE} from "../personpage/springhono-urls-shared-consts";
+import {INFO_PAGE} from "../personpage/spring-hono-shared-consts";
 
 function init(hono: Hono) {
 	hono.get(INFO_PAGE, async (c) => {

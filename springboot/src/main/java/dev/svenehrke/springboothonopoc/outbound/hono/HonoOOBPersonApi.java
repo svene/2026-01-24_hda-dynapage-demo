@@ -1,6 +1,6 @@
 package dev.svenehrke.springboothonopoc.outbound.hono;
 
-import dev.svenehrke.springboothonopoc.core.HonoUrlsSharedConsts.HonoOOBUrls;
+import dev.svenehrke.springboothonopoc.core.HonoSharedConsts.HonoOOBUrls;
 import dev.svenehrke.springboothonopoc.core.PersonDetailModel;
 import dev.svenehrke.springboothonopoc.core.PersonEditModel;
 import dev.svenehrke.springboothonopoc.core.PersonPageModel;

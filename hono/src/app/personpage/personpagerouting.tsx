@@ -7,7 +7,7 @@ import {PersonPage} from "./personpage";
 import {PersonDetailModel, PersonEditModel, PersonPageModel, PersonTableModel, PersonTableRowModel} from "./person-page-model-vm";
 import {PersonRow} from "./personrow";
 import {PersonEditBack} from "./personeditback";
-import {HonoOOBUrls} from "./hono-urls-shared-consts";
+import {HonoOOBUrls} from "./hono-shared-consts";
 
 function init(hono: Hono) {
 	hono.post(HonoOOBUrls.OOB_DEMO_PAGE, async (c) => {
