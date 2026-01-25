@@ -24,7 +24,7 @@ function map(type: Type): string {
 function genJavaRecordsFromHonoSourceFiles(sources: SourceFile[], javaPackage: string, outPath: string) {
 	fs.mkdirSync(outPath, { recursive: true });
 
-	console.log('-----------')
+	console.log('----------- <Types> -----------')
 	for (const source of sources) {
 		for (const alias of source.getTypeAliases()) {
 			const name = alias.getName();
@@ -47,7 +47,7 @@ ${fields.join(",\n")}
 			fs.writeFileSync(`${outPath}/${name}.java`, java + "\n");
 		}
 	}
-	console.log('-----------')
+	console.log('----------- </Types> -----------')
 }
 
 export function genJavaRecordsFromHonoTypes(options: SharedConstGeneratorOptions) {

@@ -1,11 +1,17 @@
-import { Project, Node, SyntaxKind, TemplateExpression, SourceFile } from "ts-morph";
+import {
+	Project,
+	Node,
+	SyntaxKind,
+	TemplateExpression,
+	SourceFile,
+} from "ts-morph";
 import * as path from "path";
 import * as fs from "fs";
 import {SharedConstGeneratorOptions} from "./generator-options";
 
-/* =======================
+/* ======================================================
    Public API
-   ======================= */
+   ====================================================== */
 
 export function generateSharedConsts(options: SharedConstGeneratorOptions): void {
 	const {
@@ -22,20 +28,23 @@ export function generateSharedConsts(options: SharedConstGeneratorOptions): void
 	const sourceFiles = project.addSourceFilesAtPaths(inputGlob);
 
 	if (sourceFiles.length === 0) {
-		console.warn("No shared const files found.");
+		console.warn(`No shared-const TypeScript files matching '${inputGlob}' found.`);
 		return;
 	}
 
 	fs.mkdirSync(outputDir, { recursive: true });
 
-	for (const sf of sourceFiles) {
-		generateJavaForFile(sf, outputDir, javaPackage);
+	console.log('----------- <Constants> -----------')
+	for (const sourceFile of sourceFiles) {
+		console.log(`${sourceFile.getBaseName().toString()}`)
+		generateJavaForFile(sourceFile, outputDir, javaPackage);
 	}
+	console.log('----------- </Constants> -----------')
 }
 
-/* =======================
+/* ======================================================
    Core generation
-   ======================= */
+   ====================================================== */
 
 function generateJavaForFile(
 	sourceFile: SourceFile,
@@ -43,43 +52,50 @@ function generateJavaForFile(
 	javaPackage: string
 ): void {
 	const tsFileName = path.basename(sourceFile.getFilePath());
-  const javaTypeName = toJavaTypeName(tsFileName);
-  const javaFilePath = path.join(outputDir, `${javaTypeName}.java`);
+	const javaTypeName = toJavaTypeName(tsFileName);
+	const javaFilePath = path.join(outputDir, `${javaTypeName}.java`);
 
-  // 1️⃣ collect string constants
-	const stringConsts = collectStringConsts(sourceFile);
-
-  // 2️⃣ build Java source
 	const lines: string[] = [];
 
 	lines.push(`package ${javaPackage};`, "");
-  lines.push(`public interface ${javaTypeName} {`, "");
+	lines.push(`public interface ${javaTypeName} {`, "");
 
-  // 3️⃣ top-level constants
-	for (const [name, value] of stringConsts) {
-		lines.push(
-      ...indent([`String ${name} = "${value}";`])
-		);
-	}
+	// ─────────────────────────────────────────────
+	// Top-level string constants
+	// ─────────────────────────────────────────────
 
-	if (stringConsts.size > 0) {
+	sourceFile.getVariableDeclarations().forEach(decl => {
+		const init = decl.getInitializer();
+		if (!init) return;
+
+		if (Node.isStringLiteral(init)) {
+			lines.push(
+				...indent([
+					`String ${decl.getName()} = "${init.getLiteralText()}";`,
+				])
+			);
+		}
+	});
+
+	if (lines[lines.length - 1] !== "") {
 		lines.push("");
 	}
 
-  // 4️⃣ exported objects → nested interfaces
+	// ─────────────────────────────────────────────
+	// Exported object literals → nested interfaces
+	// ─────────────────────────────────────────────
+
 	sourceFile.getVariableStatements().forEach(stmt => {
 		if (!stmt.isExported()) return;
 
 		stmt.getDeclarations().forEach(decl => {
-			const obj = decl.getInitializerIfKind(SyntaxKind.ObjectLiteralExpression);
+			const obj = decl.getInitializerIfKind(
+				SyntaxKind.ObjectLiteralExpression
+			);
 			if (!obj) return;
 
 			lines.push(
-        ...emitNestedInterface(
-					decl.getName(),
-					obj,
-					stringConsts
-				),
+				...emitNestedInterface(decl.getName(), obj),
 				""
 			);
 		});
@@ -90,50 +106,29 @@ function generateJavaForFile(
 	fs.writeFileSync(javaFilePath, lines.join("\n"), "utf8");
 }
 
-/* =======================
-   Helpers
-   ======================= */
-
-function collectStringConsts(sourceFile: SourceFile): Map<string, string> {
-	const map = new Map<string, string>();
-
-	sourceFile.getVariableDeclarations().forEach(decl => {
-		const init = decl.getInitializer();
-		if (Node.isStringLiteral(init)) {
-			map.set(decl.getName(), init.getLiteralText());
-		}
-	});
-
-	return map;
-}
+/* ======================================================
+   Nested interface emission
+   ====================================================== */
 
 function emitNestedInterface(
-  interfaceName: string,
-	objectLiteral,
-	stringConsts: Map<string, string>
+	interfaceName: string,
+	objectLiteral: any
 ): string[] {
 	const lines: string[] = [];
 
-  lines.push(`interface ${interfaceName} {`, "");
+	lines.push(`interface ${interfaceName} {`, "");
 
-	objectLiteral.getProperties().forEach(prop => {
+	objectLiteral.getProperties().forEach((prop: any) => {
 		if (!Node.isPropertyAssignment(prop)) return;
 
 		const key = prop.getName();
 		const init = prop.getInitializer();
+		if (!init) return;
 
-		let value: string;
-
-		if (Node.isStringLiteral(init)) {
-			value = init.getLiteralText();
-		} else if (Node.isTemplateExpression(init)) {
-			value = resolveTemplate(init, stringConsts);
-		} else {
-			throw new Error(`Unsupported initializer for ${key}`);
-		}
+		const javaExpr = emitJavaExpression(init);
 
 		lines.push(
-      ...indent([`String ${key} = "${value}";`])
+			...indent([`String ${key} = ${javaExpr};`])
 		);
 	});
 
@@ -142,25 +137,50 @@ function emitNestedInterface(
 	return indent(lines);
 }
 
-function resolveTemplate(
-	expr: TemplateExpression,
-	stringConsts: Map<string, string>
-): string {
-	let result = expr.getHead().getText().replace(/`/g, "");
+/* ======================================================
+   Java expression emission
+   ====================================================== */
 
-	expr.getTemplateSpans().forEach(span => {
-		const refName = span.getExpression().getText();
-		const refValue = stringConsts.get(refName);
+function emitJavaExpression(initializer: any): string {
+	if (Node.isStringLiteral(initializer)) {
+		return `"${initializer.getLiteralText()}"`;
+	}
 
-		if (!refValue) {
-			throw new Error(`Unknown const referenced in template: ${refName}`);
-		}
+	if (Node.isTemplateExpression(initializer)) {
+		return emitTemplateExpression(initializer);
+	}
 
-		result += refValue + span.getLiteral().getText();
-	});
-
-	return result;
+	throw new Error(
+		`Unsupported initializer: ${initializer.getKindName()}`
+	);
 }
+
+function emitTemplateExpression(expr: TemplateExpression): string {
+	const parts: string[] = [];
+
+	// head literal
+	const headText = expr.getHead().getLiteralText();
+	if (headText.length > 0) {
+		parts.push(`"${headText}"`);
+	}
+
+	for (const span of expr.getTemplateSpans()) {
+		// ${EXPR}
+		parts.push(span.getExpression().getText());
+
+		// trailing literal
+		const literalText = span.getLiteral().getLiteralText();
+		if (literalText.length > 0) {
+			parts.push(`"${literalText}"`);
+		}
+	}
+
+	return parts.join(" + ");
+}
+
+/* ======================================================
+   Utilities
+   ====================================================== */
 
 function toJavaTypeName(tsFileName: string): string {
 	return tsFileName

@@ -10,7 +10,7 @@ genJavaRecordsFromHonoTypes({
 	outputDir: outPath,
 	javaPackage: javaPackage,
 });
-
+// console.log('')
 generateSharedConsts({
 	tsConfigPath: 'tsconfig.json',
 	inputGlob: 'src/app/**/*shared-consts.ts',
