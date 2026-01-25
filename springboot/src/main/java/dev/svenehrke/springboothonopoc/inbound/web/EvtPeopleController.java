@@ -2,6 +2,7 @@ package dev.svenehrke.springboothonopoc.inbound.web;
 
 import dev.svenehrke.springboothonopoc.core.PeopleService;
 import dev.svenehrke.springboothonopoc.core.PersonPageModel;
+import dev.svenehrke.springboothonopoc.core.SpringUrlsSharedConsts.SpringEventBUrls;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoEventPersonApi;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,8 +17,6 @@ import dev.svenehrke.springboothonopoc.core.SpringUrlsSharedConsts.SpringOOBUrls
 @Controller
 public class EvtPeopleController {
 
-	public static final String URL_DEMO_EVENT_PAGE = "/demo/event/page";
-
 	private final PeopleService peopleService;
 	private final HonoEventPersonApi honoApi;
 
@@ -29,7 +28,7 @@ public class EvtPeopleController {
 		this.honoApi = honoApi;
 	}
 
-	@GetMapping(URL_DEMO_EVENT_PAGE)
+	@GetMapping(SpringEventBUrls.EVENT_DEMO_PAGE)
 	public ResponseEntity<String> peoplePage() {
 		var vm = new PersonPageModel(peopleService.personTableModel(), SpringOOBUrls.OOB_PERSON_TABLE);
 		return honoApi.peoplePage(vm);
