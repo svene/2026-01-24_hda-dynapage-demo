@@ -1,7 +1,6 @@
 const OOB_BASE = '/demo/oob';
 const EVENT_BASE = '/demo/event';
 
-export const INFO_PAGE = '/info';
 export const HonoOOBUrls = {
 	OOB_DEMO_PAGE: `${OOB_BASE}/page`,
 	PERSON_TABLE: '/persontable',

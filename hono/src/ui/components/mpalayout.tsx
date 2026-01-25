@@ -1,6 +1,6 @@
 import type { ComponentChildren } from 'hono/jsx'
-import {HonoOOBUrls} from "../../app/personpage/hono-urls-shared-consts";
-import {INFO_PAGE, SpringEventUrls, SpringOOBUrls} from "../../app/personpage/spring-urls-shared-consts";
+import {SpringEventUrls, SpringOOBUrls} from "../../app/personpage/spring-urls-shared-consts";
+import {INFO_PAGE} from "../../app/personpage/springhono-urls-shared-consts";
 
 export const MpaLayout = (props: {selectedMenu: string, children: ComponentChildren }) => (
 	<html lang="en" x-data="$store.darkMode" x-bind:data-theme="theme">
