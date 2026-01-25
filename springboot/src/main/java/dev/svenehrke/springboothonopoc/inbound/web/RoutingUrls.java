@@ -38,6 +38,12 @@ public interface RoutingUrls {
 	}
 	interface DETAILS {
 		String URL = "/person/{id}/details";
+		static String url(int id) {
+			return UriComponentsBuilder
+				.fromPath(URL)
+				.buildAndExpand(id)
+				.toUriString();
+		};
 	}
 	interface ROW {
 		String URL = "/person/{id}/row";

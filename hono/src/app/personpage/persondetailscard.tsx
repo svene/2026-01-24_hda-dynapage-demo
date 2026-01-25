@@ -11,7 +11,7 @@ export const PersondetailsCard = (props: { vm: PersonDetailModel }) => (
 				hx-swap="outerHTML"
 				hx-get={props.vm._editLink}
 			>
-				<td colSpan={4} style="padding-left: 30px">
+				<td colSpan={5} style="padding-left: 30px">
 
 						<div class="card p-5 my-2 mx-0">
 							<div class="mb-1"><strong>Street:</strong> {props.vm.streetName} {props.vm.streetNo}</div>
