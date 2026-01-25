@@ -43,29 +43,22 @@ function generateJavaForFile(
 	javaPackage: string
 ): void {
 	const tsFileName = path.basename(sourceFile.getFilePath());
-	const javaClassName = toJavaClassName(tsFileName);
-	const javaFilePath = path.join(outputDir, `${javaClassName}.java`);
-	console.log(`sourceFile: ${sourceFile.getFilePath().toString()}`);
-	console.log(`javaFilePath: ${javaFilePath}`);
+  const javaTypeName = toJavaTypeName(tsFileName);
+  const javaFilePath = path.join(outputDir, `${javaTypeName}.java`);
 
-	// 1️⃣ Collect top-level string constants
+  // 1️⃣ collect string constants
 	const stringConsts = collectStringConsts(sourceFile);
 
-	// 2️⃣ Build Java source
+  // 2️⃣ build Java source
 	const lines: string[] = [];
 
 	lines.push(`package ${javaPackage};`, "");
-	lines.push(`public final class ${javaClassName} {`, "");
+  lines.push(`public interface ${javaTypeName} {`, "");
 
-	lines.push(...indent([
-		`private ${javaClassName}() {}`,
-		""
-	]));
-
-	// 3️⃣ Emit top-level constants
+  // 3️⃣ top-level constants
 	for (const [name, value] of stringConsts) {
 		lines.push(
-			...indent([`public static final String ${name} = "${value}";`])
+      ...indent([`String ${name} = "${value}";`])
 		);
 	}
 
@@ -73,7 +66,7 @@ function generateJavaForFile(
 		lines.push("");
 	}
 
-	// 4️⃣ Exported object literals → nested classes
+  // 4️⃣ exported objects → nested interfaces
 	sourceFile.getVariableStatements().forEach(stmt => {
 		if (!stmt.isExported()) return;
 
@@ -82,7 +75,7 @@ function generateJavaForFile(
 			if (!obj) return;
 
 			lines.push(
-				...emitNestedClass(
+        ...emitNestedInterface(
 					decl.getName(),
 					obj,
 					stringConsts
@@ -114,15 +107,14 @@ function collectStringConsts(sourceFile: SourceFile): Map<string, string> {
 	return map;
 }
 
-function emitNestedClass(
-	className: string,
+function emitNestedInterface(
+  interfaceName: string,
 	objectLiteral,
 	stringConsts: Map<string, string>
 ): string[] {
 	const lines: string[] = [];
 
-	lines.push(`public static final class ${className} {`, "");
-	lines.push(...indent([`private ${className}() {}`, ""]));
+  lines.push(`interface ${interfaceName} {`, "");
 
 	objectLiteral.getProperties().forEach(prop => {
 		if (!Node.isPropertyAssignment(prop)) return;
@@ -141,7 +133,7 @@ function emitNestedClass(
 		}
 
 		lines.push(
-			...indent([`public static final String ${key} = "${value}";`])
+      ...indent([`String ${key} = "${value}";`])
 		);
 	});
 
@@ -170,7 +162,7 @@ function resolveTemplate(
 	return result;
 }
 
-function toJavaClassName(tsFileName: string): string {
+function toJavaTypeName(tsFileName: string): string {
 	return tsFileName
 		.replace(/\.ts$/, "")
 		.split("-")
