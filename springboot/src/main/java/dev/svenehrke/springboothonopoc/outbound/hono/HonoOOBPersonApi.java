@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class HonoOOBPersonApi {
-	private static final String PAGE_PEOPLE_URL = "/page/people";
+	private static final String DEMO_OOB_BASE = "/demo/oob";
+	private static final String PAGE_PEOPLE_URL = DEMO_OOB_BASE + "/page";
 	private static final String PERSON_TABLE_URL = "/persontable";
 	private static final String PERSON_EDIT_URL = "/person/edit";
 	private static final String PERSON_EDIT_BACK_URL = "/person/editback";

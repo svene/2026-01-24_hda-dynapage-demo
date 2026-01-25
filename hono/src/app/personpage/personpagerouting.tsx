@@ -14,7 +14,8 @@ import {
 import {PersonRow} from "./personrow";
 import {PersonEditBack} from "./personeditback";
 
-export const PERSON_PAGE_URL = '/page/people';
+const DEMO_OOB_BASE = '/demo/oob';
+export const DEMO_OOB_PAGE = `${DEMO_OOB_BASE}/page`;
 const PERSON_TABLE_URL = '/persontable';
 const PERSON_DETAILS_URL = '/person/details';
 const PERSON_EDIT_URL = '/person/edit';
@@ -22,10 +23,8 @@ const PERSON_ROW_URL = '/person/row';
 const PERSON_DETAILS_BACK_URL = '/person/detailsback';
 const PERSON_EDIT_BACK_URL = '/person/editback';
 
-export const EVT_PERSON_PAGE_URL = '/page/eventpeople';
-
 function init(hono: Hono) {
-	hono.post(PERSON_PAGE_URL, async (c) => {
+	hono.post(DEMO_OOB_PAGE, async (c) => {
 		const vm = await c.req.json() as PersonPageModel;
 		return c.render(<PersonPage vm={vm}></PersonPage>);
 	});

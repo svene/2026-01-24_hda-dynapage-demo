@@ -1,7 +1,4 @@
 import type { ComponentChildren } from 'hono/jsx'
-import {PERSON_PAGE_URL} from "../../app/personpage/personpagerouting";
-import {INFO_PAGE_URL} from "../../app/misc/misc-routing";
-import {EVT_PERSON_PAGE_URL} from "../../app/personpage/eventvariant/eventpersonpagerouting";
 import {SpringUrls} from "../../app/personpage/spring-urls";
 
 export const MpaLayout = (props: {selectedMenu: string, children: ComponentChildren }) => (
