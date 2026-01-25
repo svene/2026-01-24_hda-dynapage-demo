@@ -3,8 +3,6 @@ package dev.svenehrke.springboothonopoc.inbound.web;
 import org.springframework.web.util.UriComponentsBuilder;
 
 public interface RoutingUrls {
-	String DELETE = "/person/delete";
-
 	interface DETAILS_BACK {
 		String URL = "/person/{id}/detailsback";
 		static String url(int id) {

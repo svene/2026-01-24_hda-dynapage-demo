@@ -3,7 +3,7 @@ import {MpaLayout} from "../../ui/components/mpalayout";
 import {PersonTable} from "./persontable";
 
 export const PersonPage = (props: { vm: PersonPageModel }) => (
-	<MpaLayout selectedMenu="people">
+	<MpaLayout selectedMenu="people-oob">
 		<>
 			<div class="field">
 				<label class="label">Search</label>

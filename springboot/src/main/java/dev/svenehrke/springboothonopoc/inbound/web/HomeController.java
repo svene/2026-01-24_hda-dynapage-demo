@@ -11,7 +11,7 @@ public class HomeController {
 
 	@GetMapping("/")
 	public RedirectView index() {
-		return new RedirectView(SpringOOBUrls.OOB_DEMO_PAGE);
+		return new RedirectView(SpringOOBUrls.PAGE);
 	}
 
 }

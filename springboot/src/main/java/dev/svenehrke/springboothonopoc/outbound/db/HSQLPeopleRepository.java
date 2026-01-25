@@ -28,7 +28,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("firstname"),
 				rs.getString("lastname"),
 				rs.getString("streetname"),
-				"/person/%d/details".formatted(rs.getInt("id"))
+				RoutingUrls.DETAILS.url(rs.getInt("id"))
 		)).list();
 		return new PersonTableModel(result, total());
 	}
@@ -52,7 +52,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("firstname"),
 				rs.getString("lastname"),
 				rs.getString("streetname"),
-				"/person/%d/details".formatted(rs.getInt("id"))
+				RoutingUrls.DETAILS.url(rs.getInt("id"))
 			)).list();
 		return new PersonTableModel(result, total());
 	}

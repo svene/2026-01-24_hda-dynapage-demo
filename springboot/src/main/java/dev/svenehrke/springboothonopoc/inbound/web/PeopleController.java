@@ -31,13 +31,13 @@ public class PeopleController {
 		this.honoOOBPersonApi = honoOOBPersonApi;
 	}
 
-	@GetMapping(SpringOOBUrls.OOB_DEMO_PAGE)
+	@GetMapping(SpringOOBUrls.PAGE)
 	public ResponseEntity<String> peoplePage() {
-		var vm = new PersonPageModel(peopleService.personTableModel(), SpringOOBUrls.OOB_PERSON_TABLE);
+		var vm = new PersonPageModel(peopleService.personTableModel(), SpringOOBUrls.PERSON_TABLE);
 		return honoOOBPersonApi.peoplePage(vm);
 	}
 
-	@GetMapping(SpringOOBUrls.OOB_PERSON_TABLE)
+	@GetMapping(SpringOOBUrls.PERSON_TABLE)
 	public ResponseEntity<String> peopleUrl(@RequestParam() String search) {
 		return honoOOBPersonApi.peopleUrl(peopleService.peopleForSearch(search));
 	}
@@ -68,16 +68,16 @@ public class PeopleController {
 		return honoOOBPersonApi.personDetailsBack(peopleService.personTableRowModel(id));
 	}
 
-	@DeleteMapping(RoutingUrls.DELETE)
+	@DeleteMapping(SpringOOBUrls.DELETE)
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
-		response.setHeader("HX-Redirect", SpringOOBUrls.OOB_DEMO_PAGE);
+		response.setHeader("HX-Redirect", SpringOOBUrls.PAGE);
 		return peoplePage();
 	}
 
 	@PutMapping(RoutingUrls.PERSON.URL)
 	public ResponseEntity<String> updatePerson(@PathVariable int id, PersonEditModel personEditModel, HttpServletResponse response) {
-		response.setHeader("HX-Redirect", SpringOOBUrls.OOB_DEMO_PAGE);
+		response.setHeader("HX-Redirect", SpringOOBUrls.PAGE);
 		peopleService.updatePerson(id, personEditModel);
 		return peoplePage();
 	}

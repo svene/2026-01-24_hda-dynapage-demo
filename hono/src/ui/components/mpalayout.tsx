@@ -35,8 +35,8 @@ export const MpaLayout = (props: {selectedMenu: string, children: ComponentChild
 		<nav class="navbar" role="navigation" aria-label="main navigation">
 			<div class="navbar-menu">
 				<div class="navbar-start">
-					<a class={`navbar-item ${props.selectedMenu === 'people' ? 'is-selected' : ''}`} href={SpringOOBUrls.OOB_DEMO_PAGE}>OOB Variant</a>
-					<a class={`navbar-item ${props.selectedMenu === 'people-evt' ? 'is-selected' : ''}`} href={SpringEventUrls.EVENT_DEMO_PAGE}>Events Variant</a>
+					<a class={`navbar-item ${props.selectedMenu === 'people-oob' ? 'is-selected' : ''}`} href={SpringOOBUrls.PAGE}>OOB Variant</a>
+					<a class={`navbar-item ${props.selectedMenu === 'people-evt' ? 'is-selected' : ''}`} href={SpringEventUrls.PAGE}>Events Variant</a>
 					<a class={`navbar-item ${props.selectedMenu === 'info' ? 'is-selected' : ''}`} href={INFO_PAGE}>Info</a>
 				</div>
 			</div>

@@ -1,10 +1,9 @@
 import {Hono} from "hono";
 import {InfoPage} from "./infopage";
-
-export const INFO_PAGE_URL = '/info';
+import {INFO_PAGE} from "../personpage/hono-urls-shared-consts";
 
 function init(hono: Hono) {
-	hono.get(INFO_PAGE_URL, async (c) => {
+	hono.get(INFO_PAGE, async (c) => {
 		return c.render(<InfoPage></InfoPage>);
 	});
 }
