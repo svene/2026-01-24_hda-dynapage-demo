@@ -1,5 +1,4 @@
 import {PersonEditModel} from "./person-page-model-vm";
-import {SpringUrls} from "./spring-urls";
 
 export const PersonEditor = (props: { vm: PersonEditModel }) => (
 	<tr id={`row-${props.vm.id}-edit`}>

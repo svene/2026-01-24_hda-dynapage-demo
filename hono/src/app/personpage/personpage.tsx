@@ -1,7 +1,6 @@
 import {PersonPageModel} from "./person-page-model-vm";
 import {MpaLayout} from "../../ui/components/mpalayout";
 import {PersonTable} from "./persontable";
-import {SpringUrls} from "./spring-urls";
 
 export const PersonPage = (props: { vm: PersonPageModel }) => (
 	<MpaLayout selectedMenu="people">

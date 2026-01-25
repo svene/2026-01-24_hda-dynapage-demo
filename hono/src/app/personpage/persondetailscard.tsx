@@ -1,5 +1,4 @@
 import {PersonDetailModel} from "./person-page-model-vm";
-import {SpringUrls} from "./spring-urls";
 
 export const PersondetailsCard = (props: { vm: PersonDetailModel }) => (
 		<>

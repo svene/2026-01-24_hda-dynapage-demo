@@ -3,6 +3,7 @@ package dev.svenehrke.springboothonopoc.inbound.web;
 import dev.svenehrke.springboothonopoc.core.PersonEditModel;
 import dev.svenehrke.springboothonopoc.core.PersonPageModel;
 import dev.svenehrke.springboothonopoc.core.PeopleService;
+import dev.svenehrke.springboothonopoc.core.SpringUrlsSharedConsts.SpringUrls;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoOOBPersonApi;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +31,13 @@ public class PeopleController {
 		this.honoOOBPersonApi = honoOOBPersonApi;
 	}
 
-	@GetMapping(RoutingUrls.DEMO_OOB_PAGE)
+	@GetMapping(SpringUrls.OOB_DEMO_PAGE)
 	public ResponseEntity<String> peoplePage() {
-		var vm = new PersonPageModel(peopleService.personTableModel(), RoutingUrls.PERSON_TABLE);
+		var vm = new PersonPageModel(peopleService.personTableModel(), SpringUrls.OOB_PERSON_TABLE);
 		return honoOOBPersonApi.peoplePage(vm);
 	}
 
-	@GetMapping(RoutingUrls.PERSON_TABLE)
+	@GetMapping(SpringUrls.OOB_PERSON_TABLE)
 	public ResponseEntity<String> peopleUrl(@RequestParam() String search) {
 		return honoOOBPersonApi.peopleUrl(peopleService.peopleForSearch(search));
 	}
@@ -70,13 +71,13 @@ public class PeopleController {
 	@DeleteMapping(RoutingUrls.DELETE)
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
-		response.setHeader("HX-Redirect", RoutingUrls.DEMO_OOB_PAGE);
+		response.setHeader("HX-Redirect", SpringUrls.OOB_DEMO_PAGE);
 		return peoplePage();
 	}
 
 	@PutMapping(RoutingUrls.PERSON.URL)
 	public ResponseEntity<String> updatePerson(@PathVariable int id, PersonEditModel personEditModel, HttpServletResponse response) {
-		response.setHeader("HX-Redirect", RoutingUrls.DEMO_OOB_PAGE);
+		response.setHeader("HX-Redirect", SpringUrls.OOB_DEMO_PAGE);
 		peopleService.updatePerson(id, personEditModel);
 		return peoplePage();
 	}

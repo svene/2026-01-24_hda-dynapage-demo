@@ -1,13 +1,12 @@
 package dev.svenehrke.springboothonopoc.outbound.hono;
 
 import dev.svenehrke.springboothonopoc.core.*;
+import dev.svenehrke.springboothonopoc.core.SpringUrlsSharedConsts.SpringUrls;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
 public class HonoOOBPersonApi {
-	private static final String DEMO_OOB_BASE = "/demo/oob";
-	private static final String PAGE_PEOPLE_URL = DEMO_OOB_BASE + "/page";
 	private static final String PERSON_TABLE_URL = "/persontable";
 	private static final String PERSON_EDIT_URL = "/person/edit";
 	private static final String PERSON_EDIT_BACK_URL = "/person/editback";
@@ -22,7 +21,7 @@ public class HonoOOBPersonApi {
 	}
 
 	public ResponseEntity<String> peoplePage(PersonPageModel vm) {
-		return honoAppClient.post(PAGE_PEOPLE_URL, vm);
+		return honoAppClient.post(SpringUrls.OOB_DEMO_PAGE, vm);
 	}
 	public ResponseEntity<String> peopleUrl(PersonTableModel vm) {
 		return honoAppClient.post(PERSON_TABLE_URL, vm);
