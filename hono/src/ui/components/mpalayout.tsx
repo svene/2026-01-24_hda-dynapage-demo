@@ -1,6 +1,7 @@
 import type { ComponentChildren } from 'hono/jsx'
 import {SpringEvent, SpringOOB} from "../../app/personpage/spring-shared-consts";
-import {INFO_PAGE} from "../../app/personpage/spring-hono-shared-consts";
+import {HonoInfo} from "../../app/personpage/spring-hono-shared-consts";
+import {HonoEvent, HonoOOB} from "../../app/personpage/hono-shared-consts";
 
 export const MpaLayout = (props: {selectedMenu: string, children: ComponentChildren }) => (
 	<html lang="en" x-data="$store.darkMode" x-bind:data-theme="theme">
@@ -36,16 +37,16 @@ export const MpaLayout = (props: {selectedMenu: string, children: ComponentChild
 			<div class="navbar-menu">
 				<div class="navbar-start">
 					<a
-						class={`navbar-item ${props.selectedMenu === 'people-oob' ? 'is-selected' : ''}`}
+						class={`navbar-item ${props.selectedMenu === HonoOOB.PAGE_MENU_ID ? 'is-selected' : ''}`}
 						href={SpringOOB.PAGE}
 					>OOB Variant</a>
 					<a
-						class={`navbar-item ${props.selectedMenu === 'people-evt' ? 'is-selected' : ''}`}
+						class={`navbar-item ${props.selectedMenu === HonoEvent.PAGE_MENU_ID ? 'is-selected' : ''}`}
 						href={SpringEvent.PAGE}
 					>Events Variant</a>
 					<a
-						class={`navbar-item ${props.selectedMenu === 'info' ? 'is-selected' : ''}`}
-						href={INFO_PAGE}
+						class={`navbar-item ${props.selectedMenu === HonoInfo.PAGE_MENU_ID ? 'is-selected' : ''}`}
+						href={HonoInfo.PAGE}
 					>Info</a>
 				</div>
 			</div>

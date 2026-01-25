@@ -3,10 +3,10 @@ import {
 	PersonPageModel,
 } from "../person-page-model-vm";
 import {EvtPersonPage} from "./evt-personpage";
-import {HonoEventUrls} from "../hono-shared-consts";
+import {HonoEvent} from "../hono-shared-consts";
 
 function init(hono: Hono) {
-	hono.post(HonoEventUrls.PAGE, async (c) => {
+	hono.post(HonoEvent.PAGE, async (c) => {
 		const vm = await c.req.json() as PersonPageModel;
 		return c.render(<EvtPersonPage vm={vm}></EvtPersonPage>);
 	});

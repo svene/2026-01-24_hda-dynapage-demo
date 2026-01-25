@@ -1,6 +1,6 @@
 package dev.svenehrke.springboothonopoc.outbound.hono;
 
-import dev.svenehrke.springboothonopoc.core.HonoSharedConsts.HonoOOBUrls;
+import dev.svenehrke.springboothonopoc.core.HonoSharedConsts.HonoOOB;
 import dev.svenehrke.springboothonopoc.core.PersonDetailModel;
 import dev.svenehrke.springboothonopoc.core.PersonEditModel;
 import dev.svenehrke.springboothonopoc.core.PersonPageModel;
@@ -18,24 +18,24 @@ public class HonoOOBPersonApi {
 	}
 
 	public ResponseEntity<String> peoplePage(PersonPageModel vm) {
-		return honoAppClient.post(HonoOOBUrls.OOB_DEMO_PAGE, vm);
+		return honoAppClient.post(HonoOOB.PAGE, vm);
 	}
 	public ResponseEntity<String> peopleUrl(PersonTableModel vm) {
-		return honoAppClient.post(HonoOOBUrls.PERSON_TABLE, vm);
+		return honoAppClient.post(HonoOOB.PERSON_TABLE, vm);
 	}
 	public ResponseEntity<String> personEdit(PersonEditModel vm) {
-		return honoAppClient.post(HonoOOBUrls.PERSON_EDIT, vm);
+		return honoAppClient.post(HonoOOB.PERSON_EDIT, vm);
 	}
 	public ResponseEntity<String> personEditBack(PersonDetailModel vm) {
-		return honoAppClient.post(HonoOOBUrls.PERSON_EDIT_BACK, vm);
+		return honoAppClient.post(HonoOOB.PERSON_EDIT_BACK, vm);
 	}
 	public ResponseEntity<String> personDetails(PersonDetailModel vm) {
-		return honoAppClient.post(HonoOOBUrls.PERSON_DETAILS, vm);
+		return honoAppClient.post(HonoOOB.PERSON_DETAILS, vm);
 	}
 	public ResponseEntity<String> personRow(PersonTableRowModel vm) {
-		return honoAppClient.post(HonoOOBUrls.PERSON_ROW, vm);
+		return honoAppClient.post(HonoOOB.PERSON_ROW, vm);
 	}
 	public ResponseEntity<String> personDetailsBack(PersonTableRowModel vm) {
-		return honoAppClient.post(HonoOOBUrls.PERSON_DETAILS_BACK, vm);
+		return honoAppClient.post(HonoOOB.PERSON_DETAILS_BACK, vm);
 	}
 }

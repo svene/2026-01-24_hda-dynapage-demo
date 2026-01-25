@@ -1,9 +1,10 @@
 import {PersonPageModel} from "./person-page-model-vm";
 import {MpaLayout} from "../../ui/components/mpalayout";
 import {PersonTable} from "./persontable";
+import {HonoOOB} from "./hono-shared-consts";
 
 export const PersonPage = (props: { vm: PersonPageModel }) => (
-	<MpaLayout selectedMenu="people-oob">
+	<MpaLayout selectedMenu={HonoOOB.PAGE_MENU_ID}>
 		<>
 			<div class="field">
 				<label class="label">Search</label>

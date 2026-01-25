@@ -13,6 +13,6 @@ public class HonoEventPersonApi {
 	}
 
 	public ResponseEntity<String> peoplePage(PersonPageModel vm) {
-		return honoAppClient.post(HonoSharedConsts.HonoEventUrls.PAGE, vm);
+		return honoAppClient.post(HonoSharedConsts.HonoEvent.PAGE, vm);
 	}
 }

@@ -1,8 +1,9 @@
 const OOB_BASE = '/demo/oob';
 const EVENT_BASE = '/demo/event';
 
-export const HonoOOBUrls = {
-	OOB_DEMO_PAGE: `${OOB_BASE}/page`,
+export const HonoOOB = {
+	PAGE: `${OOB_BASE}/page`,
+	PAGE_MENU_ID: 'oob',
 	PERSON_TABLE: '/persontable',
 	PERSON_DETAILS: '/person/details',
 	PERSON_EDIT: '/person/edit',
@@ -10,6 +11,7 @@ export const HonoOOBUrls = {
 	PERSON_DETAILS_BACK: '/person/detailsback',
 	PERSON_EDIT_BACK: '/person/editback',
 };
-export const HonoEventUrls = {
+export const HonoEvent = {
 	PAGE: `${EVENT_BASE}/page`,
+	PAGE_MENU_ID: 'event',
 };
