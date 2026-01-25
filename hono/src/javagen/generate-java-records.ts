@@ -1,13 +1,6 @@
-import { Project, Type } from "ts-morph";
+import {Project, SourceFile, Type} from "ts-morph";
 import * as fs from "fs";
-
-const project = new Project();
-const sources = project.addSourceFilesAtPaths("src/app/**/*-vm.ts");
-
-const javaPackage = "dev.svenehrke.springboothonopoc.core"
-const outPath = `build/generated-sources/java-dtos/src/main/java/${javaPackage.split(".").join("/")}`;
-
-fs.mkdirSync(outPath, { recursive: true });
+import {SharedConstGeneratorOptions} from "./generator-options";
 
 function map(type: Type): string {
 	if (type.isString()) return "String";
@@ -27,19 +20,23 @@ function map(type: Type): string {
 
 	throw new Error(`Unsupported DTO type: ${type.getText()}`);
 }
-console.log('-----------')
-for (const source of sources) {
-	for (const alias of source.getTypeAliases()) {
-		const name = alias.getName();
-		console.log(name);
-		const fields = alias.getType().getProperties().map(p => {
-			const t = p.getValueDeclarationOrThrow().getType();
-			return `    ${map(t)} ${p.getName()}`;
-		});
 
-		const needsList = fields.some(f => f.includes("List<"));
+function genJavaRecordsFromHonoSourceFiles(sources: SourceFile[], javaPackage: string, outPath: string) {
+	fs.mkdirSync(outPath, { recursive: true });
 
-		const java = `
+	console.log('-----------')
+	for (const source of sources) {
+		for (const alias of source.getTypeAliases()) {
+			const name = alias.getName();
+			console.log(name);
+			const fields = alias.getType().getProperties().map(p => {
+				const t = p.getValueDeclarationOrThrow().getType();
+				return `    ${map(t)} ${p.getName()}`;
+			});
+
+			const needsList = fields.some(f => f.includes("List<"));
+
+			const java = `
 package ${javaPackage};
 ${needsList ? "import java.util.List;\n" : "\n"}
 public record ${name}(
@@ -47,7 +44,24 @@ ${fields.join(",\n")}
 ) {}
 `.trim();
 
-		fs.writeFileSync(`${outPath}/${name}.java`, java + "\n");
+			fs.writeFileSync(`${outPath}/${name}.java`, java + "\n");
+		}
 	}
+	console.log('-----------')
 }
-console.log('-----------')
+
+export function genJavaRecordsFromHonoTypes(options: SharedConstGeneratorOptions) {
+	const {
+		tsConfigPath,
+		inputGlob,
+		javaPackage,
+		outputDir,
+	} = options;
+
+	const project = new Project({
+		tsConfigFilePath: tsConfigPath,
+	});
+	const sources: SourceFile[] = project.addSourceFilesAtPaths(inputGlob);
+	genJavaRecordsFromHonoSourceFiles(sources, javaPackage, outputDir);
+}
+
