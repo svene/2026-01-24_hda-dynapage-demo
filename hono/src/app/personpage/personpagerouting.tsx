@@ -13,10 +13,10 @@ import {
 } from "./person-page-model-vm";
 import {PersonRow} from "./personrow";
 import {PersonEditBack} from "./personeditback";
+import {HonoOOBUrls} from "./hono-urls-shared-consts";
 
 const DEMO_OOB_BASE = '/demo/oob';
 export const DEMO_OOB_PAGE = `${DEMO_OOB_BASE}/page`;
-const PERSON_TABLE_URL = '/persontable';
 const PERSON_DETAILS_URL = '/person/details';
 const PERSON_EDIT_URL = '/person/edit';
 const PERSON_ROW_URL = '/person/row';
@@ -47,7 +47,7 @@ function init(hono: Hono) {
 		return c.render(<PersonDetailsBack vm={vm}></PersonDetailsBack>);
 	});
 
-	hono.post(PERSON_TABLE_URL, async (c) => {
+	hono.post(HonoOOBUrls.PERSON_TABLE_URL, async (c) => {
 		const vm = await c.req.json() as PersonTableModel;
 		return c.render(<PersonTable vm={vm}></PersonTable>);
 	});

@@ -6,7 +6,7 @@ import dev.svenehrke.springboothonopoc.outbound.hono.HonoEventPersonApi;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import dev.svenehrke.springboothonopoc.core.SpringUrlsSharedConsts.SpringUrls;
+import dev.svenehrke.springboothonopoc.core.SpringUrlsSharedConsts.SpringOOBUrls;
 
 /**
  * General Forwarding Pattern (Spring -> Hono):
@@ -31,7 +31,7 @@ public class EvtPeopleController {
 
 	@GetMapping(URL_DEMO_EVENT_PAGE)
 	public ResponseEntity<String> peoplePage() {
-		var vm = new PersonPageModel(peopleService.personTableModel(), SpringUrls.OOB_PERSON_TABLE);
+		var vm = new PersonPageModel(peopleService.personTableModel(), SpringOOBUrls.OOB_PERSON_TABLE);
 		return honoApi.peoplePage(vm);
 	}
 
