@@ -3,16 +3,16 @@ import { serveStatic } from 'hono/bun';
 import {greeting} from "./misc/greeting";
 import {miscRouting} from "./misc/misc-routing";
 import {personPageRouting} from "./p01oobpage/personpagerouting";
-import {HonoOOB} from "./p01oobpage/hono-shared-consts";
-import {eventPersonPageRouting} from "./p02evtpage/eventpersonpagerouting";
+import {evtPersonpagerouting} from "./p02evtpage/evt-personpagerouting";
+import {OOBConsts} from "./p01oobpage/oob-consts";
 
 function init(hono: Hono) {
 	hono.use('/static/*', serveStatic({ root: './' }))
 	hono.get('/', (c) => {
-		return c.redirect(HonoOOB.PAGE);
+		return c.redirect(OOBConsts.PAGE);
 	});
 	personPageRouting.init(hono);
-	eventPersonPageRouting.init(hono);
+	evtPersonpagerouting.init(hono);
 	miscRouting.init(hono);
 	greeting.init(hono);
 }

@@ -1,11 +1,11 @@
 import {PersonPageModel} from "../p01oobpage/person-page-model-vm";
 import {MpaLayout} from "../../ui/components/mpalayout";
-import {HonoEvent} from "../p01oobpage/hono-shared-consts";
 import {PersonTable} from "../p01oobpage/persontable";
+import {EvtConsts} from "./evt-consts";
 
 export const EvtPersonPage = (props: { vm: PersonPageModel }) => {
 	return (
-		<MpaLayout selectedMenu={HonoEvent.PAGE_MENU_ID}>
+		<MpaLayout selectedMenu={EvtConsts.PAGE_MENU_ID}>
 			<>
 				<div class="field">
 					<label class="label">Search</label>
