@@ -1,5 +1,5 @@
 import {MpaLayout} from "../../ui/components/mpalayout";
-import {HonoInfo} from "../personpage/spring-hono-shared-consts";
+import {HonoInfo} from "../p01oobpage/spring-hono-shared-consts";
 
 export const InfoPage = () => (
 	<MpaLayout selectedMenu={HonoInfo.PAGE_MENU_ID}>

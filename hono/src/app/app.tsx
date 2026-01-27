@@ -1,10 +1,10 @@
 import {Hono} from "hono";
 import { serveStatic } from 'hono/bun';
 import {greeting} from "./misc/greeting";
-import {personPageRouting} from "./personpage/personpagerouting";
 import {miscRouting} from "./misc/misc-routing";
-import {eventPersonPageRouting} from "./personpage/eventvariant/eventpersonpagerouting";
-import {HonoOOB} from "./personpage/hono-shared-consts";
+import {personPageRouting} from "./p01oobpage/personpagerouting";
+import {HonoOOB} from "./p01oobpage/hono-shared-consts";
+import {eventPersonPageRouting} from "./p02evtpage/eventpersonpagerouting";
 
 function init(hono: Hono) {
 	hono.use('/static/*', serveStatic({ root: './' }))
