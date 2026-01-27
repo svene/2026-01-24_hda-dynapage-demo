@@ -1,12 +1,8 @@
 
-const OOB_BASE = '/demo/oob';
-const EVENT_BASE = '/demo/event';
+const BASE = '/demo/oob';
 
-export const SpringOOB = {
-	PAGE: `${OOB_BASE}/page`,
-	PERSON_TABLE: `${OOB_BASE}/persontable`,
-	DELETE: `${OOB_BASE}/delete`,
-};
-export const SpringEvent = {
-	PAGE: `${EVENT_BASE}/page`,
+export const OOBSpringConsts = {
+	PAGE: `${BASE}/page`,
+	PERSON_TABLE: `${BASE}/persontable`,
+	DELETE: `${BASE}/delete`,
 };

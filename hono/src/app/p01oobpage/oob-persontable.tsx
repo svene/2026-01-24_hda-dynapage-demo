@@ -1,6 +1,6 @@
 import {OOBPersonTableModel} from "./oob-person-page-model-vm";
 import {OOBPersonRow} from "./oob-personrow";
-import {SpringOOB} from "./oob-spring-shared-consts";
+import {OOBSpringConsts} from "./oob-spring-shared-consts";
 
 export const OOBPersonTable = (props: { vm: OOBPersonTableModel }) => (
 	<div id="result-table">
@@ -8,7 +8,7 @@ export const OOBPersonTable = (props: { vm: OOBPersonTableModel }) => (
 			<thead>
 			<tr>
 				<td colSpan={5}>
-					<form id="bulkDeleteForm" hx-delete={SpringOOB.DELETE}>
+					<form id="bulkDeleteForm" hx-delete={OOBSpringConsts.DELETE}>
 						<button type="submit" className="button">
 							<span className="icon"><i className="material-icons">delete</i></span>
 							<span>Delete</span>
