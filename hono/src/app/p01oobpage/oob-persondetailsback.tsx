@@ -1,7 +1,7 @@
 import {OOBPersonTableRowModel} from "./oob-person-page-model-vm";
-import {PersonRow} from "./personrow";
+import {OOBPersonRow} from "./oob-personrow";
 
-export const PersonDetailsBack = (props: { vm: OOBPersonTableRowModel }) => (
+export const OOBPersonDetailsBack = (props: { vm: OOBPersonTableRowModel }) => (
 		<>
 {/*
 			<hx-partial hx-target="closest tr" hx-swap="outerHTML">
@@ -11,7 +11,7 @@ export const PersonDetailsBack = (props: { vm: OOBPersonTableRowModel }) => (
 			<hx-partial hx-target="next tr" hx-swap="outerHTML">
 			</hx-partial>
 */}
-			<PersonRow vm={props.vm}/>
+			<OOBPersonRow vm={props.vm}/>
 			<div id={`row-${props.vm.id}-details`} hx-swap-oob="outerHTML">
 			</div>
 

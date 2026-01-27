@@ -1,6 +1,6 @@
 import {OOBPersonPageModel} from "../p01oobpage/oob-person-page-model-vm";
 import {MpaLayout} from "../../ui/components/mpalayout";
-import {PersonTable} from "../p01oobpage/persontable";
+import {OOBPersonTable} from "../p01oobpage/oob-persontable";
 import {EvtConsts} from "./evt-consts";
 
 export const EvtPersonPage = (props: { vm: OOBPersonPageModel }) => {
@@ -21,7 +21,7 @@ export const EvtPersonPage = (props: { vm: OOBPersonPageModel }) => {
 						/>
 					</div>
 				</div>
-				<PersonTable vm={props.vm.table}></PersonTable>
+				<OOBPersonTable vm={props.vm.table}></OOBPersonTable>
 			</>
 		</MpaLayout>
 	);

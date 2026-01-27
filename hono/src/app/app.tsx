@@ -1,20 +1,18 @@
 import {Hono} from "hono";
 import { serveStatic } from 'hono/bun';
-import {greeting} from "./misc/greeting";
-import {miscRouting} from "./misc/misc-routing";
-import {personPageRouting} from "./p01oobpage/personpagerouting";
-import {evtPersonpagerouting} from "./p02evtpage/evt-personpagerouting";
+import {infoRouting} from "./p09info/info-routing";
+import {evtPersonPageRouting} from "./p02evtpage/evt-personpagerouting";
 import {OOBConsts} from "./p01oobpage/oob-consts";
+import {oobPersonPageRouting} from "./p01oobpage/oob-personpagerouting";
 
 function init(hono: Hono) {
 	hono.use('/static/*', serveStatic({ root: './' }))
 	hono.get('/', (c) => {
 		return c.redirect(OOBConsts.PAGE);
 	});
-	personPageRouting.init(hono);
-	evtPersonpagerouting.init(hono);
-	miscRouting.init(hono);
-	greeting.init(hono);
+	oobPersonPageRouting.init(hono);
+	evtPersonPageRouting.init(hono);
+	infoRouting.init(hono);
 }
 
 export const app = {

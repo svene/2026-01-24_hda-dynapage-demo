@@ -10,6 +10,6 @@ function init(hono: Hono) {
 	});
 }
 
-export const evtPersonpagerouting = {
+export const evtPersonPageRouting = {
 	init,
 }

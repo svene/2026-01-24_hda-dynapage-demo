@@ -1,9 +1,9 @@
 import {OOBPersonPageModel} from "./oob-person-page-model-vm";
 import {MpaLayout} from "../../ui/components/mpalayout";
-import {PersonTable} from "./persontable";
+import {OOBPersonTable} from "./oob-persontable";
 import {OOBConsts} from "./oob-consts";
 
-export const PersonPage = (props: { vm: OOBPersonPageModel }) => (
+export const OOBPersonPage = (props: { vm: OOBPersonPageModel }) => (
 	<MpaLayout selectedMenu={OOBConsts.PAGE_MENU_ID}>
 		<>
 			<div class="field">
@@ -20,7 +20,7 @@ export const PersonPage = (props: { vm: OOBPersonPageModel }) => (
 					/>
 				</div>
 			</div>
-			<PersonTable vm={props.vm.table}></PersonTable>
+			<OOBPersonTable vm={props.vm.table}></OOBPersonTable>
 		</>
 	</MpaLayout>
 );

@@ -1,6 +1,6 @@
 import {OOBPersonEditModel} from "./oob-person-page-model-vm";
 
-export const PersonEditor = (props: { vm: OOBPersonEditModel }) => (
+export const OOBPersonEditor = (props: { vm: OOBPersonEditModel }) => (
 	<tr id={`row-${props.vm.id}-edit`}>
 		<td colSpan={4} style="padding: 0px">
 			<div class="card p-5 my-2">

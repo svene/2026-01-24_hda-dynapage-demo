@@ -1,8 +1,8 @@
 import {OOBPersonTableModel} from "./oob-person-page-model-vm";
-import {PersonRow} from "./personrow";
-import {SpringOOB} from "./spring-shared-consts";
+import {OOBPersonRow} from "./oob-personrow";
+import {SpringOOB} from "./oob-spring-shared-consts";
 
-export const PersonTable = (props: { vm: OOBPersonTableModel }) => (
+export const OOBPersonTable = (props: { vm: OOBPersonTableModel }) => (
 	<div id="result-table">
 		<table className="table">
 			<thead>
@@ -25,7 +25,7 @@ export const PersonTable = (props: { vm: OOBPersonTableModel }) => (
 			</tr>
 			</thead>
 			<tbody>
-			{props.vm.people.map((it) => (<PersonRow vm={it}/>))}
+			{props.vm.people.map((it) => (<OOBPersonRow vm={it}/>))}
 			</tbody>
 		</table>
 		<div>{props.vm.people.length} of total {props.vm.total}</div>
