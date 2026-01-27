@@ -1,6 +1,6 @@
-import {PersonDetailModel} from "./person-page-model-vm";
+import {OOBPersonDetailModel} from "./oob-person-page-model-vm";
 
-export const PersondetailsRow = (props: { vm: PersonDetailModel }) => (
+export const PersondetailsRow = (props: { vm: OOBPersonDetailModel }) => (
 		<>
 			<tr
 				id={`row-${props.vm.id}`}

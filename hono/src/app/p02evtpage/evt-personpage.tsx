@@ -1,9 +1,9 @@
-import {PersonPageModel} from "../p01oobpage/person-page-model-vm";
+import {OOBPersonPageModel} from "../p01oobpage/oob-person-page-model-vm";
 import {MpaLayout} from "../../ui/components/mpalayout";
 import {PersonTable} from "../p01oobpage/persontable";
 import {EvtConsts} from "./evt-consts";
 
-export const EvtPersonPage = (props: { vm: PersonPageModel }) => {
+export const EvtPersonPage = (props: { vm: OOBPersonPageModel }) => {
 	return (
 		<MpaLayout selectedMenu={EvtConsts.PAGE_MENU_ID}>
 			<>

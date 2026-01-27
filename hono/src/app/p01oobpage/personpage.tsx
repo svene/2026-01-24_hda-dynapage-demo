@@ -1,9 +1,9 @@
-import {PersonPageModel} from "./person-page-model-vm";
+import {OOBPersonPageModel} from "./oob-person-page-model-vm";
 import {MpaLayout} from "../../ui/components/mpalayout";
 import {PersonTable} from "./persontable";
 import {OOBConsts} from "./oob-consts";
 
-export const PersonPage = (props: { vm: PersonPageModel }) => (
+export const PersonPage = (props: { vm: OOBPersonPageModel }) => (
 	<MpaLayout selectedMenu={OOBConsts.PAGE_MENU_ID}>
 		<>
 			<div class="field">

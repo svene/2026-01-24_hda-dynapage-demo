@@ -1,4 +1,4 @@
-export type PersonTableRowModel = {
+export type OOBPersonTableRowModel = {
 	id: number,
 	firstName: string,
 	lastName: string,
@@ -6,16 +6,16 @@ export type PersonTableRowModel = {
 	_detailsLink: string,
 }
 
-export type PersonTableModel = {
-	people: PersonTableRowModel[],
+export type OOBPersonTableModel = {
+	people: OOBPersonTableRowModel[],
 	total: number,
 }
-export type PersonPageModel = {
-	table: PersonTableModel,
+export type OOBPersonPageModel = {
+	table: OOBPersonTableModel,
 	_tableLink: string,
 }
 
-export type PersonDetailModel = {
+export type OOBPersonDetailModel = {
 	id: number,
 	firstName: string,
 	lastName: string,
@@ -31,7 +31,7 @@ export type PersonDetailModel = {
 	_editLink: string,
 }
 
-export type PersonEditModel = {
+export type OOBPersonEditModel = {
 	id: number,
 	firstName: string,
 	lastName: string,

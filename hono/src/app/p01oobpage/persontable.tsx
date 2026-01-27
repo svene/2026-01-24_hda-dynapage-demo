@@ -1,8 +1,8 @@
-import {PersonTableModel} from "./person-page-model-vm";
+import {OOBPersonTableModel} from "./oob-person-page-model-vm";
 import {PersonRow} from "./personrow";
 import {SpringOOB} from "./spring-shared-consts";
 
-export const PersonTable = (props: { vm: PersonTableModel }) => (
+export const PersonTable = (props: { vm: OOBPersonTableModel }) => (
 	<div id="result-table">
 		<table className="table">
 			<thead>

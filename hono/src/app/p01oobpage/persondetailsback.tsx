@@ -1,7 +1,7 @@
-import {PersonTableRowModel} from "./person-page-model-vm";
+import {OOBPersonTableRowModel} from "./oob-person-page-model-vm";
 import {PersonRow} from "./personrow";
 
-export const PersonDetailsBack = (props: { vm: PersonTableRowModel }) => (
+export const PersonDetailsBack = (props: { vm: OOBPersonTableRowModel }) => (
 		<>
 {/*
 			<hx-partial hx-target="closest tr" hx-swap="outerHTML">
