@@ -1,4 +1,4 @@
-import {MpaLayout} from "../../ui/components/mpalayout";
+import {MpaLayout} from "../../app/mpalayout";
 import {HonoInfo} from "./spring-hono-shared-consts";
 
 export const InfoPage = () => (

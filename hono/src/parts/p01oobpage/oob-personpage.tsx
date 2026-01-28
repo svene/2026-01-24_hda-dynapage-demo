@@ -1,5 +1,5 @@
 import {OOBPersonPageModel} from "./oob-person-page-model-vm";
-import {MpaLayout} from "../../ui/components/mpalayout";
+import {MpaLayout} from "../../app/mpalayout";
 import {OOBPersonTable} from "./oob-persontable";
 import {OOBConsts} from "./oob-consts";
 

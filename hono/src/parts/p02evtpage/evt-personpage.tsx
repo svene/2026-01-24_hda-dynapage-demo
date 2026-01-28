@@ -1,4 +1,4 @@
-import {MpaLayout} from "../../ui/components/mpalayout";
+import {MpaLayout} from "../../app/mpalayout";
 import {OOBPersonTable} from "../p01oobpage/oob-persontable";
 import {EvtConsts} from "./evt-consts";
 import {EvtPersonPageModel} from "./evt-person-page-model-vm";

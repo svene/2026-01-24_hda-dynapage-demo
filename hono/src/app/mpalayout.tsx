@@ -1,9 +1,9 @@
 import type { ComponentChildren } from 'hono/jsx'
-import {OOBSpringConsts} from "../../app/p01oobpage/oob-spring-shared-consts";
-import {OOBConsts} from "../../app/p01oobpage/oob-consts";
-import {EvtConsts} from "../../app/p02evtpage/evt-consts";
-import {HonoInfo} from "../../app/p09info/spring-hono-shared-consts";
-import {EvtSpringConsts} from "../../app/p02evtpage/evt-spring-shared-consts";
+import {OOBSpringConsts} from "../parts/p01oobpage/oob-spring-shared-consts";
+import {OOBConsts} from "../parts/p01oobpage/oob-consts";
+import {EvtConsts} from "../parts/p02evtpage/evt-consts";
+import {HonoInfo} from "../parts/p09info/spring-hono-shared-consts";
+import {EvtSpringConsts} from "../parts/p02evtpage/evt-spring-shared-consts";
 
 export const MpaLayout = (props: {selectedMenu: string, children: ComponentChildren }) => (
 	<html lang="en" x-data="$store.darkMode" x-bind:data-theme="theme">
