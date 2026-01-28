@@ -3,12 +3,12 @@ package dev.svenehrke.springboothonopoc.core;
 import java.util.List;
 
 public interface PeopleRepository {
-    PersonTableModel people();
-    PersonTableModel peopleForSearch(String search);
+    OOBPersonTableModel people();
+    OOBPersonTableModel peopleForSearch(String search);
     int total();
-    PersonTableRowModel personTableRowModel(int id);
-    PersonEditModel personEditModel(int id);
-    PersonDetailModel personDetailModel(int id);
+    OOBPersonTableRowModel personTableRowModel(int id);
+    OOBPersonEditModel personEditModel(int id);
+    OOBPersonDetailModel personDetailModel(int id);
     int deleteByIds(List<Integer> ids);
-    int updatePerson(int id, PersonEditModel personEditModel);
+    int updatePerson(int id, OOBPersonEditModel personEditModel);
 }

@@ -1,9 +1,9 @@
 package dev.svenehrke.springboothonopoc.inbound.web;
 
-import dev.svenehrke.springboothonopoc.core.PersonEditModel;
-import dev.svenehrke.springboothonopoc.core.PersonPageModel;
+import dev.svenehrke.springboothonopoc.core.OOBPersonEditModel;
+import dev.svenehrke.springboothonopoc.core.OOBPersonPageModel;
 import dev.svenehrke.springboothonopoc.core.PeopleService;
-import dev.svenehrke.springboothonopoc.core.SpringSharedConsts.SpringOOB;
+import dev.svenehrke.springboothonopoc.core.OobHonoWebApiSharedConsts.OOBHonoWebApiConsts;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoOOBPersonApi;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
@@ -31,13 +31,13 @@ public class PeopleController {
 		this.honoOOBPersonApi = honoOOBPersonApi;
 	}
 
-	@GetMapping(SpringOOB.PAGE)
+	@GetMapping(OOBHonoWebApiConsts.PAGE)
 	public ResponseEntity<String> peoplePage() {
-		var vm = new PersonPageModel(peopleService.personTableModel(), SpringOOB.PERSON_TABLE);
+		var vm = new OOBPersonPageModel(peopleService.personTableModel(), OOBHonoWebApiConsts.PERSON_TABLE);
 		return honoOOBPersonApi.peoplePage(vm);
 	}
 
-	@GetMapping(SpringOOB.PERSON_TABLE)
+	@GetMapping(OOBHonoWebApiConsts.PERSON_TABLE)
 	public ResponseEntity<String> peopleUrl(@RequestParam() String search) {
 		return honoOOBPersonApi.peopleUrl(peopleService.peopleForSearch(search));
 	}
@@ -68,16 +68,16 @@ public class PeopleController {
 		return honoOOBPersonApi.personDetailsBack(peopleService.personTableRowModel(id));
 	}
 
-	@DeleteMapping(SpringOOB.DELETE)
+	@DeleteMapping(OOBHonoWebApiConsts.DELETE)
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
-		response.setHeader("HX-Redirect", SpringOOB.PAGE);
+		response.setHeader("HX-Redirect", OOBHonoWebApiConsts.PAGE);
 		return peoplePage();
 	}
 
 	@PutMapping(RoutingUrls.PERSON.URL)
-	public ResponseEntity<String> updatePerson(@PathVariable int id, PersonEditModel personEditModel, HttpServletResponse response) {
-		response.setHeader("HX-Redirect", SpringOOB.PAGE);
+	public ResponseEntity<String> updatePerson(@PathVariable int id, OOBPersonEditModel personEditModel, HttpServletResponse response) {
+		response.setHeader("HX-Redirect", OOBHonoWebApiConsts.PAGE);
 		peopleService.updatePerson(id, personEditModel);
 		return peoplePage();
 	}

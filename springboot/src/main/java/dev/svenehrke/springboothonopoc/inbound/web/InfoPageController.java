@@ -1,6 +1,6 @@
 package dev.svenehrke.springboothonopoc.inbound.web;
 
-import dev.svenehrke.springboothonopoc.core.SpringHonoSharedConsts.HonoInfo;
+import dev.svenehrke.springboothonopoc.core.InfoHonoWebApiSharedConsts.HonoInfo;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoAppClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

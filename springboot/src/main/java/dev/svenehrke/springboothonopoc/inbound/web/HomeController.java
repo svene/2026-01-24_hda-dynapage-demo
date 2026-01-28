@@ -1,17 +1,16 @@
 package dev.svenehrke.springboothonopoc.inbound.web;
 
+import dev.svenehrke.springboothonopoc.core.OobHonoWebApiSharedConsts.OOBHonoWebApiConsts;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.view.RedirectView;
-
-import static dev.svenehrke.springboothonopoc.core.SpringSharedConsts.*;
 
 @Controller
 public class HomeController {
 
 	@GetMapping("/")
 	public RedirectView index() {
-		return new RedirectView(SpringOOB.PAGE);
+		return new RedirectView(OOBHonoWebApiConsts.PAGE);
 	}
 
 }

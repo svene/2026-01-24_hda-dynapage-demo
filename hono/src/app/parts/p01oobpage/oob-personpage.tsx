@@ -1,10 +1,10 @@
 import {OOBPersonPageModel} from "./oob-person-page-model-vm";
-import {MpaLayout} from "../../app/mpalayout";
 import {OOBPersonTable} from "./oob-persontable";
-import {OOBConsts} from "./oob-consts";
+import {MpaLayout} from "../../root/mpalayout";
+import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
 
 export const OOBPersonPage = (props: { vm: OOBPersonPageModel }) => (
-	<MpaLayout selectedMenu={OOBConsts.PAGE_MENU_ID}>
+	<MpaLayout selectedMenu={OOBHonoWebApiConsts.PAGE_MENU_ID}>
 		<>
 			<div class="field">
 				<label class="label">Search</label>

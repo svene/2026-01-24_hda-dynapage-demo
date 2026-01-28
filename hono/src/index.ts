@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import {app} from "./app/app";
+import {app} from "./app/root/app";
 
 const hono = new Hono()
 

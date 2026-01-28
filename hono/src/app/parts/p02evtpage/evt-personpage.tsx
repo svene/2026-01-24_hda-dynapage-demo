@@ -1,7 +1,7 @@
-import {MpaLayout} from "../../app/mpalayout";
-import {OOBPersonTable} from "../p01oobpage/oob-persontable";
 import {EvtConsts} from "./evt-consts";
 import {EvtPersonPageModel} from "./evt-person-page-model-vm";
+import {EvtPersonTable} from "./evt-persontable";
+import {MpaLayout} from "../../root/mpalayout";
 
 export const EvtPersonPage = (props: { vm: EvtPersonPageModel }) => {
 	return (
@@ -21,7 +21,7 @@ export const EvtPersonPage = (props: { vm: EvtPersonPageModel }) => {
 						/>
 					</div>
 				</div>
-				<OOBPersonTable vm={props.vm.table}></OOBPersonTable>
+				<EvtPersonTable vm={props.vm.table}></EvtPersonTable>
 			</>
 		</MpaLayout>
 	);

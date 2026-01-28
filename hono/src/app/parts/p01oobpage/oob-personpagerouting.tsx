@@ -7,38 +7,38 @@ import {OOBPersonPage} from "./oob-personpage";
 import {OOBPersonDetailModel, OOBPersonEditModel, OOBPersonPageModel, OOBPersonTableModel, OOBPersonTableRowModel} from "./oob-person-page-model-vm";
 import {OOBPersonRow} from "./oob-personrow";
 import {OOBPersonEditBack} from "./oob-personeditback";
-import {OOBConsts} from "./oob-consts";
+import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
 
 function init(hono: Hono) {
-	hono.post(OOBConsts.PAGE, async (c) => {
+	hono.post(OOBHonoWebApiConsts.PAGE, async (c) => {
 		const vm = await c.req.json() as OOBPersonPageModel;
 		return c.render(<OOBPersonPage vm={vm}></OOBPersonPage>);
 	});
-	hono.post(OOBConsts.PERSON_DETAILS, async (c) => {
+	hono.post(OOBHonoWebApiConsts.PERSON_DETAILS, async (c) => {
 		const vm = await c.req.json() as OOBPersonDetailModel;
 		return c.render(<OOBPersonDetails vm={vm}></OOBPersonDetails>);
 	});
-	hono.post(OOBConsts.PERSON_EDIT, async (c) => {
+	hono.post(OOBHonoWebApiConsts.PERSON_EDIT, async (c) => {
 		const vm = await c.req.json() as OOBPersonEditModel;
 		return c.render(<OOBPersonEditor vm={vm}></OOBPersonEditor>);
 	});
 
-	hono.post(OOBConsts.PERSON_ROW, async (c) => {
+	hono.post(OOBHonoWebApiConsts.PERSON_ROW, async (c) => {
 		const vm = await c.req.json() as OOBPersonTableRowModel;
 		return c.render(<OOBPersonRow vm={vm}></OOBPersonRow>);
 	});
 
-	hono.post(OOBConsts.PERSON_DETAILS_BACK, async (c) => {
+	hono.post(OOBHonoWebApiConsts.PERSON_DETAILS_BACK, async (c) => {
 		const vm = await c.req.json() as OOBPersonTableRowModel;
 		return c.render(<OOBPersonDetailsBack vm={vm}></OOBPersonDetailsBack>);
 	});
 
-	hono.post(OOBConsts.PERSON_TABLE, async (c) => {
+	hono.post(OOBHonoWebApiConsts.PERSON_TABLE, async (c) => {
 		const vm = await c.req.json() as OOBPersonTableModel;
 		return c.render(<OOBPersonTable vm={vm}></OOBPersonTable>);
 	});
 
-	hono.post(OOBConsts.PERSON_EDIT_BACK, async (c) => {
+	hono.post(OOBHonoWebApiConsts.PERSON_EDIT_BACK, async (c) => {
 		const vm = await c.req.json() as OOBPersonDetailModel;
 		return c.render(<OOBPersonEditBack vm={vm}></OOBPersonEditBack>);
 	});

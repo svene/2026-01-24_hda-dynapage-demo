@@ -20,21 +20,21 @@ public class HSQLPeopleRepository implements PeopleRepository {
 	}
 
 	@Override
-	public PersonTableModel people() {
+	public OOBPersonTableModel people() {
 		var sql = "select id, firstname, lastname, streetname from Person limit 20";
-		List<PersonTableRowModel> result = jdbcClient.sql(sql).query(
-			(rs, rowNum) -> new PersonTableRowModel(
+		List<OOBPersonTableRowModel> result = jdbcClient.sql(sql).query(
+			(rs, rowNum) -> new OOBPersonTableRowModel(
 				rs.getInt("id"),
 				rs.getString("firstname"),
 				rs.getString("lastname"),
 				rs.getString("streetname"),
 				RoutingUrls.DETAILS.url(rs.getInt("id"))
 		)).list();
-		return new PersonTableModel(result, total());
+		return new OOBPersonTableModel(result, total());
 	}
 
 	@Override
-	public PersonTableModel peopleForSearch(String search) {
+	public OOBPersonTableModel peopleForSearch(String search) {
 		var sql = """
 			select id, firstname, lastname, streetname
 			from Person
@@ -44,17 +44,17 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				or streetname like (:search)
 			limit 20
 			""";
-		List<PersonTableRowModel> result = jdbcClient.sql(sql)
+		List<OOBPersonTableRowModel> result = jdbcClient.sql(sql)
 			.param("search", "%" + search + "%")
 			.query(
-			(rs, rowNum) -> new PersonTableRowModel(
+			(rs, rowNum) -> new OOBPersonTableRowModel(
 				rs.getInt("id"),
 				rs.getString("firstname"),
 				rs.getString("lastname"),
 				rs.getString("streetname"),
 				RoutingUrls.DETAILS.url(rs.getInt("id"))
 			)).list();
-		return new PersonTableModel(result, total());
+		return new OOBPersonTableModel(result, total());
 	}
 
 	@Override
@@ -67,12 +67,12 @@ public class HSQLPeopleRepository implements PeopleRepository {
 	}
 
 	@Override
-	public PersonTableRowModel personTableRowModel(int id) {
+	public OOBPersonTableRowModel personTableRowModel(int id) {
 		var sql = "select id, firstname, lastname, streetname from Person where id = ?";
-		PersonTableRowModel result = jdbcClient.sql(sql)
+		OOBPersonTableRowModel result = jdbcClient.sql(sql)
 			.param(id)
 			.query(
-			(rs, rowNum) -> new PersonTableRowModel(
+			(rs, rowNum) -> new OOBPersonTableRowModel(
 				rs.getInt("id"),
 				rs.getString("firstname"),
 				rs.getString("lastname"),
@@ -83,12 +83,12 @@ public class HSQLPeopleRepository implements PeopleRepository {
 	}
 
 	@Override
-	public PersonEditModel personEditModel(int id) {
+	public OOBPersonEditModel personEditModel(int id) {
 		var sql = "select id, firstname, lastname, streetname from Person where id = ?";
 		return jdbcClient.sql(sql)
 			.param(id)
 			.query(
-				(rs, rowNum) -> new PersonEditModel(
+				(rs, rowNum) -> new OOBPersonEditModel(
 					rs.getInt("id"),
 					rs.getString("firstname"),
 					rs.getString("lastname"),
@@ -98,7 +98,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 	}
 
 	@Override
-	public PersonDetailModel personDetailModel(int id) {
+	public OOBPersonDetailModel personDetailModel(int id) {
 		var sql = """
 			select
 				id, firstname, lastname, streetname, streetno, zipcode, city,
@@ -106,10 +106,10 @@ public class HSQLPeopleRepository implements PeopleRepository {
 			from Person
 			where id = ?
 			""";
-		PersonDetailModel result = jdbcClient.sql(sql)
+		OOBPersonDetailModel result = jdbcClient.sql(sql)
 			.param(id)
 			.query(
-			(rs, rowNum) -> new PersonDetailModel(
+			(rs, rowNum) -> new OOBPersonDetailModel(
 				rs.getInt("id"),
 				rs.getString("firstname"),
 				rs.getString("lastname"),
@@ -135,7 +135,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 	}
 
 	@Override
-	public int updatePerson(int id, PersonEditModel personEditModel) {
+	public int updatePerson(int id, OOBPersonEditModel personEditModel) {
 		var sql = "update Person set firstname = (:firstname), lastname = (:lastname), streetname = (:streetname) where id = (:id)";
 		return jdbcClient.sql(sql)
 			.param("firstname", personEditModel.firstName())

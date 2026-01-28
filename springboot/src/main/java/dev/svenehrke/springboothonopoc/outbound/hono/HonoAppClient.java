@@ -1,5 +1,7 @@
 package dev.svenehrke.springboothonopoc.outbound.hono;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import java.util.Map;
 public class HonoAppClient {
 	private static final String HONO_URL = "http://localhost:3000/";
 	final RestClient restClient;
+	private static final Logger logger = LoggerFactory.getLogger(HonoAppClient.class);
 
 	public HonoAppClient() {
 		restClient = RestClient.builder()
@@ -46,6 +49,7 @@ public class HonoAppClient {
 	}
 
 	public <T> ResponseEntity<String> post(String uri, T vm) {
+		logger.info(String.format("POST %s", uri));
 		return restClient
 			.post()
 			.uri(uri)
