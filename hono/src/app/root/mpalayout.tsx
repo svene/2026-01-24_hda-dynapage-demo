@@ -1,8 +1,7 @@
 import type { ComponentChildren } from 'hono/jsx'
-import {EvtConsts} from "../parts/p02evtpage/evt-consts";
-import {EvtSpringConsts} from "../parts/p02evtpage/evt-spring-shared-consts";
+import {EvtHonoWebApiConsts} from "../parts/p02evtpage/evt-hono-web-api-shared-consts";
 import {OOBHonoWebApiConsts} from "../parts/p01oobpage/oob-hono-web-api-shared-consts";
-import {HonoInfo} from "../parts/p09info/info-hono-web-api-shared-consts";
+import {InfoHonoWebApiConsts} from "../parts/p09info/info-hono-web-api-shared-consts";
 
 export const MpaLayout = (props: {selectedMenu: string, children: ComponentChildren }) => (
 	<html lang="en" x-data="$store.darkMode" x-bind:data-theme="theme">
@@ -42,12 +41,12 @@ export const MpaLayout = (props: {selectedMenu: string, children: ComponentChild
 						href={OOBHonoWebApiConsts.PAGE}
 					>OOB Variant</a>
 					<a
-						class={`navbar-item ${props.selectedMenu === EvtConsts.PAGE_MENU_ID ? 'is-selected' : ''}`}
-						href={EvtSpringConsts.PAGE}
+						class={`navbar-item ${props.selectedMenu === EvtHonoWebApiConsts.PAGE_MENU_ID ? 'is-selected' : ''}`}
+						href={EvtHonoWebApiConsts.PAGE}
 					>Events Variant</a>
 					<a
-						class={`navbar-item ${props.selectedMenu === HonoInfo.PAGE_MENU_ID ? 'is-selected' : ''}`}
-						href={HonoInfo.PAGE}
+						class={`navbar-item ${props.selectedMenu === InfoHonoWebApiConsts.PAGE_MENU_ID ? 'is-selected' : ''}`}
+						href={InfoHonoWebApiConsts.PAGE}
 					>Info</a>
 				</div>
 			</div>

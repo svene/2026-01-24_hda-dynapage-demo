@@ -1,6 +1,6 @@
 import {EvtPersonRow} from "./evt-personrow";
-import {EvtSpringConsts} from "./evt-spring-shared-consts";
 import {EvtPersonTableModel} from "./evt-person-page-model-vm";
+import {EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
 
 export const EvtPersonTable = (props: { vm: EvtPersonTableModel }) => (
 	<div id="result-table">
@@ -8,7 +8,7 @@ export const EvtPersonTable = (props: { vm: EvtPersonTableModel }) => (
 			<thead>
 			<tr>
 				<td colSpan={5}>
-					<form id="bulkDeleteForm" hx-delete={EvtSpringConsts.DELETE}>
+					<form id="bulkDeleteForm" hx-delete={EvtHonoWebApiConsts.DELETE}>
 						<button type="submit" className="button">
 							<span className="icon"><i className="material-icons">delete</i></span>
 							<span>Delete</span>

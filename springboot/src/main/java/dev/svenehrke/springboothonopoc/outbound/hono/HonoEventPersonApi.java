@@ -1,7 +1,7 @@
 package dev.svenehrke.springboothonopoc.outbound.hono;
 
 import dev.svenehrke.springboothonopoc.core.*;
-import dev.svenehrke.springboothonopoc.core.EvtSpringSharedConsts.EvtSpringConsts;
+import dev.svenehrke.springboothonopoc.core.EvtHonoWebApiSharedConsts.EvtHonoWebApiConsts;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +14,6 @@ public class HonoEventPersonApi {
 	}
 
 	public ResponseEntity<String> peoplePage(OOBPersonPageModel vm) {
-		return honoAppClient.post(EvtSpringConsts.PAGE, vm);
+		return honoAppClient.post(EvtHonoWebApiConsts.PAGE, vm);
 	}
 }

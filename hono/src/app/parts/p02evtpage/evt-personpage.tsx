@@ -1,11 +1,11 @@
-import {EvtConsts} from "./evt-consts";
+import {EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
 import {EvtPersonPageModel} from "./evt-person-page-model-vm";
 import {EvtPersonTable} from "./evt-persontable";
 import {MpaLayout} from "../../root/mpalayout";
 
 export const EvtPersonPage = (props: { vm: EvtPersonPageModel }) => {
 	return (
-		<MpaLayout selectedMenu={EvtConsts.PAGE_MENU_ID}>
+		<MpaLayout selectedMenu={EvtHonoWebApiConsts.PAGE_MENU_ID}>
 			<>
 				<div class="field">
 					<label class="label">Search</label>

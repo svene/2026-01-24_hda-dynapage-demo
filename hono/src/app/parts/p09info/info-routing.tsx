@@ -1,9 +1,9 @@
 import {Hono} from "hono";
 import {InfoPage} from "./infopage";
-import {HonoInfo} from "./info-hono-web-api-shared-consts";
+import {InfoHonoWebApiConsts} from "./info-hono-web-api-shared-consts";
 
 function init(hono: Hono) {
-	hono.get(HonoInfo.PAGE, async (c) => {
+	hono.get(InfoHonoWebApiConsts.PAGE, async (c) => {
 		return c.render(<InfoPage></InfoPage>);
 	});
 }

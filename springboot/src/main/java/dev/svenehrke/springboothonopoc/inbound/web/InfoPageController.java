@@ -1,6 +1,6 @@
 package dev.svenehrke.springboothonopoc.inbound.web;
 
-import dev.svenehrke.springboothonopoc.core.InfoHonoWebApiSharedConsts.HonoInfo;
+import dev.svenehrke.springboothonopoc.core.InfoHonoWebApiSharedConsts.InfoHonoWebApiConsts;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoAppClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,9 +24,9 @@ public class InfoPageController {
 		this.honoAppClient = honoAppClient;
 	}
 
-	@GetMapping(HonoInfo.PAGE)
+	@GetMapping(InfoHonoWebApiConsts.PAGE)
 	public ResponseEntity<String> people() {
-		return honoAppClient.get(HonoInfo.PAGE, Collections.emptyMap());
+		return honoAppClient.get(InfoHonoWebApiConsts.PAGE, Collections.emptyMap());
 	}
 
 }

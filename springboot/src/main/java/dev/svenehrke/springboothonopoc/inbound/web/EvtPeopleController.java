@@ -1,6 +1,6 @@
 package dev.svenehrke.springboothonopoc.inbound.web;
 
-import dev.svenehrke.springboothonopoc.core.EvtSpringSharedConsts.EvtSpringConsts;
+import dev.svenehrke.springboothonopoc.core.EvtHonoWebApiSharedConsts.EvtHonoWebApiConsts;
 import dev.svenehrke.springboothonopoc.core.OOBPersonPageModel;
 import dev.svenehrke.springboothonopoc.core.PeopleService;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoEventPersonApi;
@@ -27,9 +27,9 @@ public class EvtPeopleController {
 		this.honoApi = honoApi;
 	}
 
-	@GetMapping(EvtSpringConsts.PAGE)
+	@GetMapping(EvtHonoWebApiConsts.PAGE)
 	public ResponseEntity<String> peoplePage() {
-		var vm = new OOBPersonPageModel(peopleService.personTableModel(), EvtSpringConsts.PERSON_TABLE);
+		var vm = new OOBPersonPageModel(peopleService.personTableModel(), EvtHonoWebApiConsts.PERSON_TABLE);
 		return honoApi.peoplePage(vm);
 	}
 
