@@ -1,5 +1,6 @@
 package dev.svenehrke.springboothonopoc.inbound.web;
 
+import dev.svenehrke.springboothonopoc.app.Oob;
 import dev.svenehrke.springboothonopoc.core.OOBPersonEditModel;
 import dev.svenehrke.springboothonopoc.core.OOBPersonPageModel;
 import dev.svenehrke.springboothonopoc.core.PeopleService;
@@ -24,7 +25,7 @@ public class PeopleController {
 	private final HonoOOBPersonApi honoOOBPersonApi;
 
 	public PeopleController(
-		PeopleService peopleService,
+		@Oob PeopleService peopleService,
 		HonoOOBPersonApi honoOOBPersonApi
 	) {
 		this.peopleService = peopleService;

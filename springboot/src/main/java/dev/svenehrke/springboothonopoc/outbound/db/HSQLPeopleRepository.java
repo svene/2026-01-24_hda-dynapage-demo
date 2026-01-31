@@ -4,19 +4,23 @@ import dev.svenehrke.springboothonopoc.core.*;
 import dev.svenehrke.springboothonopoc.inbound.web.RoutingUrls;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.JdbcClient;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public class HSQLPeopleRepository implements PeopleRepository {
 
 	private final JdbcClient jdbcClient;
 	private final JdbcTemplate jdbcTemplate;
+	private final RouteBuilder routeBuilder;
 
-	public HSQLPeopleRepository(JdbcClient jdbcClient, JdbcTemplate jdbcTemplate) {
+	public HSQLPeopleRepository(
+		JdbcClient jdbcClient,
+		JdbcTemplate jdbcTemplate,
+		RouteBuilder routeBuilder
+	) {
 		this.jdbcClient = jdbcClient;
 		this.jdbcTemplate = jdbcTemplate;
+		this.routeBuilder = routeBuilder;
 	}
 
 	@Override
@@ -28,7 +32,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("firstname"),
 				rs.getString("lastname"),
 				rs.getString("streetname"),
-				RoutingUrls.DETAILS.url(rs.getInt("id"))
+				routeBuilder.detailsUrl(rs.getInt("id"))
 		)).list();
 		return new OOBPersonTableModel(result, total());
 	}

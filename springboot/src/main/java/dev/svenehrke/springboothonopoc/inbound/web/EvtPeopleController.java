@@ -1,5 +1,6 @@
 package dev.svenehrke.springboothonopoc.inbound.web;
 
+import dev.svenehrke.springboothonopoc.app.Evt;
 import dev.svenehrke.springboothonopoc.core.EvtHonoWebApiSharedConsts.EvtHonoWebApiConsts;
 import dev.svenehrke.springboothonopoc.core.OOBPersonPageModel;
 import dev.svenehrke.springboothonopoc.core.PeopleService;
@@ -20,7 +21,7 @@ public class EvtPeopleController {
 	private final HonoEventPersonApi honoApi;
 
 	public EvtPeopleController(
-		PeopleService peopleService,
+		@Evt PeopleService peopleService,
 		HonoEventPersonApi honoApi
 	) {
 		this.peopleService = peopleService;
