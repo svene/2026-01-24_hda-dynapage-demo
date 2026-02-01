@@ -1,6 +1,7 @@
 package dev.svenehrke.springboothonopoc.inbound.web;
 
 import dev.svenehrke.springboothonopoc.app.Evt;
+import dev.svenehrke.springboothonopoc.core.EvtRouteBuilder;
 import dev.svenehrke.springboothonopoc.core.OOBPersonPageModel;
 import dev.svenehrke.springboothonopoc.core.PeopleService;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoEventPersonApi;
@@ -14,13 +15,11 @@ import org.springframework.web.bind.annotation.*;
  * - Step 2: Forward HTTP request to HONO
  */
 @Controller
-@RequestMapping(EvtPeopleController.BASE)
+@RequestMapping(EvtRouteBuilder.BASE)
 public class EvtPeopleController {
 
 	private final PeopleService peopleService;
 	private final HonoEventPersonApi honoApi;
-
-	public static final String BASE = "/demo/event";
 
 	public EvtPeopleController(
 		@Evt PeopleService peopleService,
@@ -39,6 +38,10 @@ public class EvtPeopleController {
 	@GetMapping(RoutingUrls.DETAILS.URL)
 	public ResponseEntity<String> details(@PathVariable int id) {
 		return honoApi.personDetails(peopleService.personDetailModel(id));
+	}
+	@GetMapping(RoutingUrls.DETAILS_BACK.URL)
+	public ResponseEntity<String> detailsBack(@PathVariable int id) {
+		return honoApi.personDetailsBack(peopleService.personTableRowModel(id));
 	}
 
 

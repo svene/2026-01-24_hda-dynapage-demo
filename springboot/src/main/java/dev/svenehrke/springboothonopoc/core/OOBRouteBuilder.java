@@ -17,4 +17,11 @@ public class OOBRouteBuilder implements RouteBuilder {
 			.buildAndExpand(id)
 			.toUriString();
 	}
+	@Override
+	public String detailsBackUrl(int id) {
+		return UriComponentsBuilder
+			.fromPath(BASE + RoutingUrls.DETAILS_BACK.URL)
+			.buildAndExpand(id)
+			.toUriString();
+	}
 }

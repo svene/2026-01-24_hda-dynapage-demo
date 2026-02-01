@@ -19,4 +19,7 @@ public class HonoEventPersonApi {
 	public ResponseEntity<String> personDetails(OOBPersonDetailModel vm) {
 		return honoAppClient.post(EvtHonoWebApiConsts.PERSON_DETAILS, vm);
 	}
+	public ResponseEntity<String> personDetailsBack(OOBPersonTableRowModel vm) {
+		return honoAppClient.post(EvtHonoWebApiConsts.PERSON_DETAILS_BACK, vm);
+	}
 }
