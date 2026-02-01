@@ -33,7 +33,7 @@ public class EvtConfig {
 	@Bean
 	@Evt
 	public RouteBuilder evtRouteBuilder() {
-		return new ConfigurableRouteBuilder("/demo/evt");
+		return new ConfigurableRouteBuilder(EVT_BASE_URL);
 	}
 
 }

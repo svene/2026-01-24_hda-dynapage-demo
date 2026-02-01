@@ -22,5 +22,8 @@ public interface RouteBuilder {
 	default String idUrl(String url, int id) {
 		return UriComponentsBuilder.fromPath(url).buildAndExpand(id).toUriString();
 	}
+	default String url(String url) {
+		return url;
+	}
 
 }

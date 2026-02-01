@@ -27,24 +27,28 @@ public class PeopleController {
 
 	private final PeopleService peopleService;
 	private final HonoOOBPersonApi honoApi;
+	private final RouteBuilder routeBuilder;
 
 	public PeopleController(
 		@Oob PeopleService peopleService,
-		HonoOOBPersonApi honoApi
+		HonoOOBPersonApi honoApi,
+		@Oob RouteBuilder routeBuilder
+
 	) {
 		this.peopleService = peopleService;
 		this.honoApi = honoApi;
+		this.routeBuilder = routeBuilder;
 	}
 
 	@GetMapping(PAGE_URL)
 	public ResponseEntity<String> peoplePage() {
-		var vm = new OOBPersonPageModel(peopleService.personTableModel(), RouteBuilder.PERSON_TABLE_URL);
+		var vm = new OOBPersonPageModel(peopleService.personTableModel(), routeBuilder.url(RouteBuilder.PERSON_TABLE_URL));
 		return honoApi.peoplePage(vm);
 	}
 
 	@GetMapping(RouteBuilder.PERSON_TABLE_URL)
 	public ResponseEntity<String> peopleUrl(@RequestParam() String search) {
-		return honoApi.peopleUrl(peopleService.peopleForSearch(search));
+		return honoApi.personTable(peopleService.peopleForSearch(search));
 	}
 
 	@GetMapping(RouteBuilder.EDIT_URL)

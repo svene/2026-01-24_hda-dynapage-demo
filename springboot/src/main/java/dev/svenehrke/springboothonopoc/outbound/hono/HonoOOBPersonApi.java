@@ -20,7 +20,7 @@ public class HonoOOBPersonApi {
 	public ResponseEntity<String> peoplePage(OOBPersonPageModel vm) {
 		return honoAppClient.post(OOBHonoWebApiConsts.PAGE, vm);
 	}
-	public ResponseEntity<String> peopleUrl(OOBPersonTableModel vm) {
+	public ResponseEntity<String> personTable(OOBPersonTableModel vm) {
 		return honoAppClient.post(OOBHonoWebApiConsts.PERSON_TABLE, vm);
 	}
 	public ResponseEntity<String> personEdit(OOBPersonEditModel vm) {

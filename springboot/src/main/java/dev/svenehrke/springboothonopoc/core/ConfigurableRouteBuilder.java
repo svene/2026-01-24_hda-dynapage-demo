@@ -8,6 +8,11 @@ public class ConfigurableRouteBuilder implements RouteBuilder {
 	}
 
 	@Override
+	public String url(String url) {
+		return base + url;
+	}
+
+	@Override
 	public String detailsUrl(int id) {
 		return idUrl(base + RouteBuilder.DETAILS_URL, id);
 	}

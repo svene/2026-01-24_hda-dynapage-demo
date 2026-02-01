@@ -14,6 +14,11 @@ bun run dev
 
 open http://localhost:3000
 
+== TODO
+
+- rename: people -> person
+
+
 == Notes
 
 === 10.01.2026
