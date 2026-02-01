@@ -1,5 +1,6 @@
 package dev.svenehrke.springboothonopoc.app;
 
+import dev.svenehrke.springboothonopoc.core.ConfigurableRouteBuilder;
 import dev.svenehrke.springboothonopoc.core.PeopleRepository;
 import dev.svenehrke.springboothonopoc.core.PeopleService;
 import dev.svenehrke.springboothonopoc.core.RouteBuilder;
@@ -11,6 +12,8 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 
 @Configuration
 public class OobConfig {
+	public static final String OOB_BASE_URL = "/demo/oob";
+
 	@Bean
 	@Oob
 	public PeopleRepository oobPeopleRepository(
@@ -25,5 +28,11 @@ public class OobConfig {
 	@Oob
 	public PeopleService oobPeopleService(@Oob PeopleRepository repo) {
 		return new PeopleService(repo);
+	}
+
+	@Bean
+	@Oob
+	public RouteBuilder oobRouteBuilder() {
+		return new ConfigurableRouteBuilder("/demo/oob");
 	}
 }

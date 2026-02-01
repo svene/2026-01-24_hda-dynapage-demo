@@ -1,9 +1,9 @@
 package dev.svenehrke.springboothonopoc.inbound.web;
 
 import dev.svenehrke.springboothonopoc.app.Oob;
+import dev.svenehrke.springboothonopoc.app.OobConfig;
 import dev.svenehrke.springboothonopoc.core.OOBPersonEditModel;
 import dev.svenehrke.springboothonopoc.core.OOBPersonPageModel;
-import dev.svenehrke.springboothonopoc.core.OOBRouteBuilder;
 import dev.svenehrke.springboothonopoc.core.PeopleService;
 import dev.svenehrke.springboothonopoc.core.RouteBuilder;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoOOBPersonApi;
@@ -22,7 +22,7 @@ import static dev.svenehrke.springboothonopoc.core.RouteBuilder.PAGE_URL;
  * - Step 2: Forward HTTP request to HONO
  */
 @Controller
-@RequestMapping(OOBRouteBuilder.BASE)
+@RequestMapping(OobConfig.OOB_BASE_URL)
 public class PeopleController {
 
 	private final PeopleService peopleService;
@@ -83,7 +83,7 @@ public class PeopleController {
 
 	@PutMapping(RouteBuilder.PERSON_URL)
 	public ResponseEntity<String> updatePerson(@PathVariable int id, OOBPersonEditModel personEditModel, HttpServletResponse response) {
-		response.setHeader("HX-Redirect", OOBRouteBuilder.BASE + PAGE_URL);
+		response.setHeader("HX-Redirect", OobConfig.OOB_BASE_URL + PAGE_URL);
 		peopleService.updatePerson(id, personEditModel);
 		return peoplePage();
 	}

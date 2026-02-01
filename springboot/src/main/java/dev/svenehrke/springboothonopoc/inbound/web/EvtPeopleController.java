@@ -1,7 +1,7 @@
 package dev.svenehrke.springboothonopoc.inbound.web;
 
 import dev.svenehrke.springboothonopoc.app.Evt;
-import dev.svenehrke.springboothonopoc.core.EvtRouteBuilder;
+import dev.svenehrke.springboothonopoc.app.EvtConfig;
 import dev.svenehrke.springboothonopoc.core.OOBPersonPageModel;
 import dev.svenehrke.springboothonopoc.core.PeopleService;
 import dev.svenehrke.springboothonopoc.core.RouteBuilder;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * - Step 2: Forward HTTP request to HONO
  */
 @Controller
-@RequestMapping(EvtRouteBuilder.BASE)
+@RequestMapping(EvtConfig.EVT_BASE_URL)
 public class EvtPeopleController {
 
 	private final PeopleService peopleService;
