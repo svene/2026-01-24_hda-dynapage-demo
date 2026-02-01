@@ -23,17 +23,17 @@ public class HonoOOBPersonApi {
 	public ResponseEntity<String> personTable(OOBPersonTableModel vm) {
 		return honoAppClient.post(OOBHonoWebApiConsts.PERSON_TABLE, vm);
 	}
-	public ResponseEntity<String> personEdit(OOBPersonEditModel vm) {
-		return honoAppClient.post(OOBHonoWebApiConsts.PERSON_EDIT, vm);
-	}
-	public ResponseEntity<String> personEditBack(OOBPersonDetailModel vm) {
-		return honoAppClient.post(OOBHonoWebApiConsts.PERSON_EDIT_BACK, vm);
-	}
 	public ResponseEntity<String> personDetails(OOBPersonDetailModel vm) {
 		return honoAppClient.post(OOBHonoWebApiConsts.PERSON_DETAILS, vm);
 	}
 	public ResponseEntity<String> personDetailsBack(OOBPersonTableRowModel vm) {
 		return honoAppClient.post(OOBHonoWebApiConsts.PERSON_DETAILS_BACK, vm);
+	}
+	public ResponseEntity<String> personEdit(OOBPersonEditModel vm) {
+		return honoAppClient.post(OOBHonoWebApiConsts.PERSON_EDIT, vm);
+	}
+	public ResponseEntity<String> personEditBack(OOBPersonDetailModel vm) {
+		return honoAppClient.post(OOBHonoWebApiConsts.PERSON_EDIT_BACK, vm);
 	}
 	public ResponseEntity<String> personRow(OOBPersonTableRowModel vm) {
 		return honoAppClient.post(OOBHonoWebApiConsts.PERSON_ROW, vm);

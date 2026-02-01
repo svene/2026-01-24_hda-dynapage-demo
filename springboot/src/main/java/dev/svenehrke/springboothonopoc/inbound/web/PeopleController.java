@@ -51,6 +51,15 @@ public class PeopleController {
 		return honoApi.personTable(peopleService.peopleForSearch(search));
 	}
 
+	@GetMapping(RouteBuilder.DETAILS_URL)
+	public ResponseEntity<String> details(@PathVariable int id) {
+		return honoApi.personDetails(peopleService.personDetailModel(id));
+	}
+	@GetMapping(RouteBuilder.DETAILS_BACK_URL)
+	public ResponseEntity<String> detailsBack(@PathVariable int id) {
+		return honoApi.personDetailsBack(peopleService.personTableRowModel(id));
+	}
+
 	@GetMapping(RouteBuilder.EDIT_URL)
 	public ResponseEntity<String> edit(@PathVariable int id) {
 		OOBPersonEditModel vm = peopleService.personEditModel(id);
@@ -62,17 +71,6 @@ public class PeopleController {
 		return honoApi.personEditBack(peopleService.personDetailModel(id));
 	}
 
-
-	@GetMapping(RouteBuilder.DETAILS_URL)
-	public ResponseEntity<String> details(@PathVariable int id) {
-		return honoApi.personDetails(peopleService.personDetailModel(id));
-	}
-	@GetMapping(RouteBuilder.DETAILS_BACK_URL)
-	public ResponseEntity<String> detailsBack(@PathVariable int id) {
-		return honoApi.personDetailsBack(peopleService.personTableRowModel(id));
-	}
-
-
 	@GetMapping(RouteBuilder.ROW_URL)
 	public ResponseEntity<String> row(@PathVariable int id) {
 		return honoApi.personRow(peopleService.personTableRowModel(id));
@@ -81,13 +79,13 @@ public class PeopleController {
 	@DeleteMapping(RouteBuilder.DELETE_URL)
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
-		response.setHeader("HX-Redirect", PAGE_URL);
+		response.setHeader("HX-Redirect", routeBuilder.url(RouteBuilder.PAGE_URL));
 		return peoplePage();
 	}
 
 	@PutMapping(RouteBuilder.PERSON_URL)
 	public ResponseEntity<String> updatePerson(@PathVariable int id, OOBPersonEditModel personEditModel, HttpServletResponse response) {
-		response.setHeader("HX-Redirect", OobConfig.OOB_BASE_URL + PAGE_URL);
+		response.setHeader("HX-Redirect", routeBuilder.url(RouteBuilder.PAGE_URL));
 		peopleService.updatePerson(id, personEditModel);
 		return peoplePage();
 	}
