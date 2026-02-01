@@ -1,9 +1,9 @@
 import {EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
-import {EvtPersonPageModel} from "./evt-person-page-model-vm";
 import {EvtPersonTable} from "./evt-persontable";
 import {MpaLayout} from "../../root/mpalayout";
+import {OOBPersonPageModel} from "../p01oobpage/oob-person-page-model-vm";
 
-export const EvtPersonPage = (props: { vm: EvtPersonPageModel }) => {
+export const EvtPersonPage = (props: { vm: OOBPersonPageModel }) => {
 	return (
 		<MpaLayout selectedMenu={EvtHonoWebApiConsts.PAGE_MENU_ID}>
 			<>

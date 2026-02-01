@@ -1,6 +1,6 @@
-import {EvtPersonDetailModel} from "./evt-person-page-model-vm";
+import {OOBPersonDetailModel} from "../p01oobpage/oob-person-page-model-vm";
 
-export const EvtPersondetailsCard = (props: { vm: EvtPersonDetailModel }) => (
+export const EvtPersondetailsCard = (props: { vm: OOBPersonDetailModel }) => (
 		<>
 			<tr
 				id={`row-${props.vm.id}-details`}

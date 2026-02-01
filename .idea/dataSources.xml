@@ -17,7 +17,7 @@
       <jdbc-url>jdbc:hsqldb:mem:testdb;DB_CLOSE_DELAY=-1</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="jdbc:hsqldb:mem:testdb;DB_CLOSE_DELAY=-1 [DEBUG]" group="​Application" uuid="92ff44ad-855e-453b-8e99-4a205ab78bca">
+    <data-source source="LOCAL" name="jdbc:hsqldb:mem:testdb;DB_CLOSE_DELAY=-1 [DEBUG]" group="​Application" uuid="ef91fba8-3851-4858-98c8-7f14ee60c99f">
       <driver-ref>hsqldb.local</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>

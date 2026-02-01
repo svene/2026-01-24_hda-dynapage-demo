@@ -1,6 +1,6 @@
-import {EvtPersonDetailModel} from "./evt-person-page-model-vm";
 import {EvtPersondetailsCard} from "./evt-persondetailscard";
+import {OOBPersonDetailModel} from "../p01oobpage/oob-person-page-model-vm";
 
-export const EvtPersonEditBack = (props: { vm: EvtPersonDetailModel }) => (
+export const EvtPersonEditBack = (props: { vm: OOBPersonDetailModel }) => (
 	<EvtPersondetailsCard vm={props.vm}/>
 );

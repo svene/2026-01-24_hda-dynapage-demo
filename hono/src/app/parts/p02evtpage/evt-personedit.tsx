@@ -1,10 +1,10 @@
-import {EvtPersonEditModel} from "./evt-person-page-model-vm";
+import {OOBPersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
 
-export const EvtPersonEditor = (props: { vm: EvtPersonEditModel }) => (
+export const EvtPersonEditor = (props: { vm: OOBPersonEditModel }) => (
 	<tr id={`row-${props.vm.id}-edit`}>
 		<td colSpan={4} style="padding: 0px">
 			<div class="card p-5 my-2">
-				<form hx-put={`/person/${props.vm.id}`}>
+				<form>
 					<div class="fixed-grid">
 						<div class="grid">
 							<div class="cell">
@@ -46,7 +46,7 @@ export const EvtPersonEditor = (props: { vm: EvtPersonEditModel }) => (
 							type="submit"
 							class="level-item button is-primary"
 							hx-trigger="click consume"
-							hx-put={`/person/${props.vm.id}`}
+							hx-put={`${props.vm._submitLink}`}
 							hx-target="closest tr"
 							hx-swap="outerHTML"
 						>Save

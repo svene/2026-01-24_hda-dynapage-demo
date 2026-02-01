@@ -1,6 +1,6 @@
-import {EvtPersonTableRowModel} from "./evt-person-page-model-vm";
+import {OOBPersonTableRowModel} from "../p01oobpage/oob-person-page-model-vm";
 
-export const EvtPersonRow = (props: {vm: EvtPersonTableRowModel}) => (
+export const EvtPersonRow = (props: {vm: OOBPersonTableRowModel}) => (
 	<tr
 		id={`row-${props.vm.id}`}
 		style="cursor: pointer"
