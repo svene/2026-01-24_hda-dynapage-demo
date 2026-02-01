@@ -1,7 +1,6 @@
 package dev.svenehrke.springboothonopoc.outbound.db;
 
 import dev.svenehrke.springboothonopoc.core.*;
-import dev.svenehrke.springboothonopoc.inbound.web.RoutingUrls;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.JdbcClient;
 
@@ -97,7 +96,8 @@ public class HSQLPeopleRepository implements PeopleRepository {
 					rs.getString("firstname"),
 					rs.getString("lastname"),
 					rs.getString("streetname"),
-					RoutingUrls.EDIT_BACK.url(rs.getInt("id"))
+					routeBuilder.editBackUrl(rs.getInt("id")),
+					routeBuilder.saveUrl(rs.getInt("id"))
 				)).single();
 	}
 
@@ -126,7 +126,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("phonenumber"),
 				rs.getString("cellphone"),
 				routeBuilder.detailsBackUrl(rs.getInt("id")),
-				RoutingUrls.EDIT.url(rs.getInt("id"))
+				routeBuilder.editUrl(rs.getInt("id"))
 			)
 		).single();
 		return result;

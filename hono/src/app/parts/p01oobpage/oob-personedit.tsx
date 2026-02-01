@@ -4,7 +4,7 @@ export const OOBPersonEditor = (props: { vm: OOBPersonEditModel }) => (
 	<tr id={`row-${props.vm.id}-edit`}>
 		<td colSpan={4} style="padding: 0px">
 			<div class="card p-5 my-2">
-				<form hx-put={`/person/${props.vm.id}`}>
+				<form>
 					<div class="fixed-grid">
 						<div class="grid">
 							<div class="cell">
@@ -42,11 +42,12 @@ export const OOBPersonEditor = (props: { vm: OOBPersonEditModel }) => (
 							hx-get={props.vm._editBackLink}
 						>&lt; Back
 						</button>
+						{/* TODO: can this hx-* stuff be put on form above? */}
 						<button
 							type="submit"
 							class="level-item button is-primary"
 							hx-trigger="click consume"
-							hx-put={`/person/${props.vm.id}`}
+							hx-put={`${props.vm._submitLink}`}
 							hx-target="closest tr"
 							hx-swap="outerHTML"
 						>Save

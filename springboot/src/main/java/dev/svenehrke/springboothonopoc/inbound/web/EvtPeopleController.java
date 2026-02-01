@@ -4,6 +4,7 @@ import dev.svenehrke.springboothonopoc.app.Evt;
 import dev.svenehrke.springboothonopoc.core.EvtRouteBuilder;
 import dev.svenehrke.springboothonopoc.core.OOBPersonPageModel;
 import dev.svenehrke.springboothonopoc.core.PeopleService;
+import dev.svenehrke.springboothonopoc.core.RouteBuilder;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoEventPersonApi;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -29,17 +30,17 @@ public class EvtPeopleController {
 		this.honoApi = honoApi;
 	}
 
-	@GetMapping(RoutingUrls.PAGE)
+	@GetMapping(RouteBuilder.PAGE_URL)
 	public ResponseEntity<String> peoplePage() {
-		var vm = new OOBPersonPageModel(peopleService.personTableModel(), RoutingUrls.PERSON_TABLE);
+		var vm = new OOBPersonPageModel(peopleService.personTableModel(), RouteBuilder.PERSON_TABLE_URL);
 		return honoApi.peoplePage(vm);
 	}
 
-	@GetMapping(RoutingUrls.DETAILS.URL)
+	@GetMapping(RouteBuilder.DETAILS_URL)
 	public ResponseEntity<String> details(@PathVariable int id) {
 		return honoApi.personDetails(peopleService.personDetailModel(id));
 	}
-	@GetMapping(RoutingUrls.DETAILS_BACK.URL)
+	@GetMapping(RouteBuilder.DETAILS_BACK_URL)
 	public ResponseEntity<String> detailsBack(@PathVariable int id) {
 		return honoApi.personDetailsBack(peopleService.personTableRowModel(id));
 	}

@@ -37,5 +37,6 @@ export type OOBPersonEditModel = {
 	lastName: string,
 	streetName: string,
 	_editBackLink: string,
+	_submitLink: string,
 }
 
