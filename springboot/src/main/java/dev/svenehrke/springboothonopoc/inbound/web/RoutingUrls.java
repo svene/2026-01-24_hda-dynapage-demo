@@ -3,6 +3,10 @@ package dev.svenehrke.springboothonopoc.inbound.web;
 import org.springframework.web.util.UriComponentsBuilder;
 
 public interface RoutingUrls {
+	String PAGE = "/page";
+	String PERSON_TABLE = "/persontable";
+	String DELETE = "/delete";
+
 	interface DETAILS_BACK {
 		String URL = "/person/{id}/detailsback";
 		static String url(int id) {
@@ -32,12 +36,6 @@ public interface RoutingUrls {
 	}
 	interface DETAILS {
 		String URL = "/person/{id}/details";
-		static String url(int id) {
-			return UriComponentsBuilder
-				.fromPath(URL)
-				.buildAndExpand(id)
-				.toUriString();
-		};
 	}
 	interface ROW {
 		String URL = "/person/{id}/row";

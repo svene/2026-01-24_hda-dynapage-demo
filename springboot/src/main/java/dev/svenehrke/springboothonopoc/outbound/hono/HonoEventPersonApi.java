@@ -16,4 +16,7 @@ public class HonoEventPersonApi {
 	public ResponseEntity<String> peoplePage(OOBPersonPageModel vm) {
 		return honoAppClient.post(EvtHonoWebApiConsts.PAGE, vm);
 	}
+	public ResponseEntity<String> personDetails(OOBPersonDetailModel vm) {
+		return honoAppClient.post(EvtHonoWebApiConsts.PERSON_DETAILS, vm);
+	}
 }

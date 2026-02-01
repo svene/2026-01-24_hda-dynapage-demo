@@ -4,7 +4,6 @@ import dev.svenehrke.springboothonopoc.app.Oob;
 import dev.svenehrke.springboothonopoc.core.OOBPersonEditModel;
 import dev.svenehrke.springboothonopoc.core.OOBPersonPageModel;
 import dev.svenehrke.springboothonopoc.core.PeopleService;
-import dev.svenehrke.springboothonopoc.core.OobHonoWebApiSharedConsts.OOBHonoWebApiConsts;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoOOBPersonApi;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
@@ -19,66 +18,69 @@ import java.util.List;
  * - Step 2: Forward HTTP request to HONO
  */
 @Controller
+@RequestMapping(PeopleController.BASE)
 public class PeopleController {
 
 	private final PeopleService peopleService;
-	private final HonoOOBPersonApi honoOOBPersonApi;
+	private final HonoOOBPersonApi honoApi;
+
+	public static final String BASE = "/demo/oob";
 
 	public PeopleController(
 		@Oob PeopleService peopleService,
-		HonoOOBPersonApi honoOOBPersonApi
+		HonoOOBPersonApi honoApi
 	) {
 		this.peopleService = peopleService;
-		this.honoOOBPersonApi = honoOOBPersonApi;
+		this.honoApi = honoApi;
 	}
 
-	@GetMapping(OOBHonoWebApiConsts.PAGE)
+	@GetMapping(RoutingUrls.PAGE)
 	public ResponseEntity<String> peoplePage() {
-		var vm = new OOBPersonPageModel(peopleService.personTableModel(), OOBHonoWebApiConsts.PERSON_TABLE);
-		return honoOOBPersonApi.peoplePage(vm);
+		var vm = new OOBPersonPageModel(peopleService.personTableModel(), RoutingUrls.PERSON_TABLE);
+		return honoApi.peoplePage(vm);
 	}
 
-	@GetMapping(OOBHonoWebApiConsts.PERSON_TABLE)
+	@GetMapping(RoutingUrls.PERSON_TABLE)
 	public ResponseEntity<String> peopleUrl(@RequestParam() String search) {
-		return honoOOBPersonApi.peopleUrl(peopleService.peopleForSearch(search));
+		return honoApi.peopleUrl(peopleService.peopleForSearch(search));
 	}
 
 	@GetMapping(RoutingUrls.EDIT.URL)
 	public ResponseEntity<String> edit(@PathVariable int id) {
-		return honoOOBPersonApi.personEdit(peopleService.personEditModel(id));
+		return honoApi.personEdit(peopleService.personEditModel(id));
 	}
 
 	@GetMapping(RoutingUrls.EDIT_BACK.URL)
 	public ResponseEntity<String> editback(@PathVariable int id) {
-		return honoOOBPersonApi.personEditBack(peopleService.personDetailModel(id));
+		return honoApi.personEditBack(peopleService.personDetailModel(id));
 	}
 
 
 	@GetMapping(RoutingUrls.DETAILS.URL)
 	public ResponseEntity<String> details(@PathVariable int id) {
-		return honoOOBPersonApi.personDetails(peopleService.personDetailModel(id));
+		return honoApi.personDetails(peopleService.personDetailModel(id));
 	}
 
 	@GetMapping(RoutingUrls.ROW.URL)
 	public ResponseEntity<String> row(@PathVariable int id) {
-		return honoOOBPersonApi.personRow(peopleService.personTableRowModel(id));
+		return honoApi.personRow(peopleService.personTableRowModel(id));
 	}
 
 	@GetMapping(RoutingUrls.DETAILS_BACK.URL)
 	public ResponseEntity<String> detailsback(@PathVariable int id) {
-		return honoOOBPersonApi.personDetailsBack(peopleService.personTableRowModel(id));
+		return honoApi.personDetailsBack(peopleService.personTableRowModel(id));
 	}
 
-	@DeleteMapping(OOBHonoWebApiConsts.DELETE)
+	@DeleteMapping(RoutingUrls.DELETE)
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
-		response.setHeader("HX-Redirect", OOBHonoWebApiConsts.PAGE);
+		response.setHeader("HX-Redirect", RoutingUrls.PAGE);
 		return peoplePage();
 	}
 
 	@PutMapping(RoutingUrls.PERSON.URL)
 	public ResponseEntity<String> updatePerson(@PathVariable int id, OOBPersonEditModel personEditModel, HttpServletResponse response) {
-		response.setHeader("HX-Redirect", OOBHonoWebApiConsts.PAGE);
+		response.setHeader("HX-Redirect", RoutingUrls.PAGE);
 		peopleService.updatePerson(id, personEditModel);
 		return peoplePage();
 	}

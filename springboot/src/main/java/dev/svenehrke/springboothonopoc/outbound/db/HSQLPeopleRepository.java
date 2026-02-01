@@ -56,7 +56,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("firstname"),
 				rs.getString("lastname"),
 				rs.getString("streetname"),
-				RoutingUrls.DETAILS.url(rs.getInt("id"))
+				routeBuilder.detailsUrl(rs.getInt("id"))
 			)).list();
 		return new OOBPersonTableModel(result, total());
 	}
@@ -81,7 +81,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("firstname"),
 				rs.getString("lastname"),
 				rs.getString("streetname"),
-				RoutingUrls.DETAILS.url(rs.getInt("id"))
+				routeBuilder.detailsUrl(rs.getInt("id"))
 			)).single();
 		return result;
 	}
