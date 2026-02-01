@@ -97,7 +97,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 					rs.getString("lastname"),
 					rs.getString("streetname"),
 					routeBuilder.editBackUrl(rs.getInt("id")),
-					routeBuilder.saveUrl(rs.getInt("id"))
+					routeBuilder.updateUrl(rs.getInt("id"))
 				)).single();
 	}
 

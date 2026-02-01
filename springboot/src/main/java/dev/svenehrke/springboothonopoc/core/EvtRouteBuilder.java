@@ -2,7 +2,6 @@ package dev.svenehrke.springboothonopoc.core;
 
 import dev.svenehrke.springboothonopoc.app.Evt;
 import org.springframework.stereotype.Component;
-import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
 @Evt
@@ -10,37 +9,22 @@ public class EvtRouteBuilder implements RouteBuilder {
 	public static final String BASE = "/demo/event";
 	@Override
 	public String detailsUrl(int id) {
-		return UriComponentsBuilder
-			.fromPath(BASE + RouteBuilder.DETAILS_URL)
-			.buildAndExpand(id)
-			.toUriString();
+		return idUrl(BASE + RouteBuilder.DETAILS_URL, id);
 	}
 	@Override
 	public String detailsBackUrl(int id) {
-		return UriComponentsBuilder
-			.fromPath(BASE + RouteBuilder.DETAILS_BACK_URL)
-			.buildAndExpand(id)
-			.toUriString();
+		return idUrl(BASE + RouteBuilder.DETAILS_BACK_URL, id);
 	}
 	@Override
 	public String editUrl(int id) {
-		return UriComponentsBuilder
-			.fromPath(BASE + RouteBuilder.EDIT_URL)
-			.buildAndExpand(id)
-			.toUriString();
+		return idUrl(BASE + RouteBuilder.EDIT_URL, id);
 	}
 	@Override
 	public String editBackUrl(int id) {
-		return UriComponentsBuilder
-			.fromPath(BASE + RouteBuilder.EDIT_BACK_URL)
-			.buildAndExpand(id)
-			.toUriString();
+		return idUrl(BASE + RouteBuilder.EDIT_BACK_URL, id);
 	}
 	@Override
-	public String saveUrl(int id) {
-		return UriComponentsBuilder
-			.fromPath(BASE + RouteBuilder.PERSON_URL)
-			.buildAndExpand(id)
-			.toUriString();
+	public String updateUrl(int id) {
+		return idUrl(BASE + RouteBuilder.PERSON_URL, id);
 	}
 }

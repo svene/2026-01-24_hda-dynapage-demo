@@ -1,5 +1,7 @@
 package dev.svenehrke.springboothonopoc.core;
 
+import org.springframework.web.util.UriComponentsBuilder;
+
 public interface RouteBuilder {
 	String DETAILS_URL = "/person/{id}/details";
 	String DETAILS_BACK_URL = "/person/{id}/detailsback";
@@ -15,6 +17,10 @@ public interface RouteBuilder {
 	String detailsBackUrl(int id);
 	String editUrl(int id);
 	String editBackUrl(int id);
-	String saveUrl(int id);
+	String updateUrl(int id);
+
+	default String idUrl(String url, int id) {
+		return UriComponentsBuilder.fromPath(url).buildAndExpand(id).toUriString();
+	}
 
 }
