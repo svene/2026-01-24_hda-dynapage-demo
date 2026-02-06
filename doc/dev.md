@@ -1,6 +1,6 @@
-= Information for Development
+# Information for Development
 
-== Setup and run
+## Setup and run
 
 To install dependencies:
 ```sh
@@ -14,16 +14,16 @@ bun run dev
 
 open http://localhost:3000
 
-== TODO
+## TODO
 
 - rename: people -> person
 
 
-== Notes
+## Notes
 
-=== 10.01.2026
+### 10.01.2026
 
-**Context:**  
+**Context**  
 A table with first column of checkboxes for selection
 (e.g. for mass deletion)
 means the whole table needs to be in a form.
@@ -31,10 +31,10 @@ means the whole table needs to be in a form.
 If a row can be put into an edit mode to modify an existing
 row this needs to be in a form as well.
 
-**Problem:**  
+**Problem**  
 Now we have two nested forms which should be avoided.
 
-**Solution (recommended):**  
+**Recommended Solution**  
 Put a form with just the delete button inside outside of the table
 and set the 'form' attribute on the checkboxes pointing to it:
 
@@ -59,11 +59,43 @@ and set the 'form' attribute on the checkboxes pointing to it:
 
 Now the edit-form is not nested anymore and everything works.
 
-**Alternative Solution:**  
+**Alternative Solution**  
 introduce a "selection mode" so that
 the column with the checkboxes only appears when this
 mode is chosen and the mass deletion can be performed.
 In this mode editing of rows is prohibited.
 When mass deletion is done by the user the table
 can be switched back to normal mode.
+
+### 06.02.2026
+
+**Context**
+
+Idea for event approach:  
+instead of sending an 'action request to the server' to only produce an event with the HTTP response (and no html coming back)
+send the event directly on the client.  
+Example with htmx on the sending side and alpineJS on the receiving side:
+````html
+// evt-persondetailrow.tsx:
+export const EvtPersondetailsRow = (props: { vm: EvtPersonDetailModel }) => (
+<>
+<tr
+  id={`row-${props.vm.id}`}
+  hx-on:click={`htmx.trigger(window, 'cdr', {id: '${props.vm.id}'})`}
+...
+
+// evt-personpage.tsx:
+// JSX-workaround for special chars:
+<div
+{...{
+  'x-on:cdr.window': `console.log('cdr from window received:', event.detail.id)`
+}}
+>Alpine Receiver</div>
+````
+
+Another idea to avoid sending events via HTTP-response (to be verified):  
+Use reactive alpineJS: sender sets a alpine-store property and receiver reacts to it.
+
+
+
 
