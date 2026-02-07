@@ -9,7 +9,7 @@ export const EvtPersonRow = (props: {vm: OOBPersonTableRowModel}) => (
 		hx-swap="outerHTML"
 		hx-get={props.vm._detailsLink}
 	>
-		<td hx-trigger="click consume">
+		<td hx-trigger="click consume"> {/* consume: prevent bubbling, only checkbox needs to be clicked, not parents*/}
 			<input type="checkbox" name="selection" value={props.vm.id} form="bulkDeleteForm"></input>
 		</td>
 		<td>{props.vm.firstName}</td>
