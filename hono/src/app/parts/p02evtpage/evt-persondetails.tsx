@@ -12,6 +12,8 @@ export const EvtPersonDetails = (props: { vm: OOBPersonDetailModel }) => (
 				hx-swap="outerHTML"
 			>
 			</EvtPersondetailsRow>
-			<EvtPersondetailsCard vm={props.vm}/>
+			<EvtPersondetailsCard
+				vm={props.vm}
+			></EvtPersondetailsCard>
 		</>
 );
