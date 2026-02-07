@@ -32,4 +32,9 @@ public class ConfigurableRouteBuilder implements RouteBuilder {
 	public String updateUrl(int id) {
 		return idUrl(base + RouteBuilder.PERSON_URL, id);
 	}
+
+	@Override
+	public String rowUrl(int id) {
+		return idUrl(base + RouteBuilder.ROW_URL, id);
+	}
 }

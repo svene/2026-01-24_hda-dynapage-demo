@@ -18,6 +18,7 @@ public interface RouteBuilder {
 	String editUrl(int id);
 	String editBackUrl(int id);
 	String updateUrl(int id);
+	String rowUrl(int id);
 
 	default String idUrl(String url, int id) {
 		return UriComponentsBuilder.fromPath(url).buildAndExpand(id).toUriString();

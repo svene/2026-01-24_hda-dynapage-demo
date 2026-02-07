@@ -29,6 +29,7 @@ export type OOBPersonDetailModel = {
 	cellPhone: string,
 	_backLink: string,
 	_editLink: string,
+	_rowUrl: string,
 }
 
 export type OOBPersonEditModel = {

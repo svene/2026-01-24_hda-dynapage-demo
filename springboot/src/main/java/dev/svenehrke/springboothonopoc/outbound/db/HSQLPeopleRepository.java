@@ -126,7 +126,8 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("phonenumber"),
 				rs.getString("cellphone"),
 				routeBuilder.detailsBackUrl(rs.getInt("id")),
-				routeBuilder.editUrl(rs.getInt("id"))
+				routeBuilder.editUrl(rs.getInt("id")),
+				routeBuilder.rowUrl(rs.getInt("id"))
 			)
 		).single();
 		return result;

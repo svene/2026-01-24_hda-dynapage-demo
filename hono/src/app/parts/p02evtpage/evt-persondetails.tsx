@@ -7,8 +7,7 @@ export const EvtPersonDetails = (props: { vm: OOBPersonDetailModel }) => (
 			<EvtPersondetailsRow
 				vm={props.vm}
 				hx-trigger={`close-details-requested[event.detail.id === ${props.vm.id}] from:body`}
-				hx-get="/demo/event/person/{id}/row"
-				hx-vals='js:{id: event.detail.id}'
+				hx-get={props.vm._rowUrl}
 				hx-target='closest tr'
 				hx-swap="outerHTML"
 			>
