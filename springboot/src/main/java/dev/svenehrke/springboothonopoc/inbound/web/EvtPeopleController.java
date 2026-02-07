@@ -49,12 +49,6 @@ public class EvtPeopleController {
 	public ResponseEntity<String> details(@PathVariable int id) {
 		return honoApi.personDetails(peopleService.personDetailModel(id));
 	}
-	@GetMapping(RouteBuilder.DETAILS_BACK_URL)
-	public void detailsBack(@PathVariable int id, HttpServletResponse response) {
-		response.setHeader(HTMXConsts.HX_TRIGGER, """
-			{"%s": {"id": %d}}\
-			""".formatted(EvtConstants.CLOSE_DETAILS_REQUESTED, id));
-	}
 
 	@GetMapping(RouteBuilder.EDIT_URL)
 	public ResponseEntity<String> edit(@PathVariable int id) {

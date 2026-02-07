@@ -9,9 +9,10 @@ export const EvtPersondetailsRow = (props: {
 			<tr
 				id={`row-${props.vm.id}`}
 				style="cursor: pointer"
-				hx-trigger="click"
-				hx-swap="none"
-				hx-get={props.vm._backLink}
+
+				{...{
+					'x-on:click': `document.body.dispatchEvent('close-details-requested', {"id": "${props.vm.id}"})`
+				}}
 			>
 				<td style="border-style: none">
 					{/* Ugly: workaround for multiple trigger/action pairs:*/}
