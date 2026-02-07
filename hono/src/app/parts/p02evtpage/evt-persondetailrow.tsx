@@ -9,11 +9,7 @@ export const EvtPersondetailsRow = (props: {
 			<tr
 				id={`row-${props.vm.id}`}
 				style="cursor: pointer"
-				xonClick={`document.body.dispatchEvent(new CustomEvent('close-details-requested', {detail: {"id": ${props.vm.id}}}))`}
-
-				{...{
-					'x-on:click': `$dispatch('close-details-requested', {"id": ${props.vm.id}})`
-				}}
+				_={`on click send 'close-details-requested'(id:${props.vm.id}) to <body/>`}
 			>
 				<td style="border-style: none">
 					{/* Ugly: workaround for multiple trigger/action pairs:*/}
