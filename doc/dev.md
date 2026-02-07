@@ -96,6 +96,19 @@ export const EvtPersondetailsRow = (props: { vm: EvtPersonDetailModel }) => (
 Another idea to avoid sending events via HTTP-response (to be verified):  
 Use reactive alpineJS: sender sets a alpine-store property and receiver reacts to it.
 
+### 07.02.2026
 
+Some notes when working with events
 
+````html
+<tr id={`row-${props.vm.id}-edit`}>
+  <template
+    _={`on 'close-edit-requested'(id) from <body/> if id == ${props.vm.id} console.log(id) end`}
+	></template>
+<button
+		class="level-item button"
+		_={`on click halt the event then send 'close-edit-requested'(id:${props.vm.id}) to <body/>`}
+>&lt; Back
+</button>
 
+````

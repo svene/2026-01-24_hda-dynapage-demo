@@ -2,6 +2,13 @@ import {OOBPersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
 
 export const EvtPersonEditor = (props: { vm: OOBPersonEditModel }) => (
 	<tr id={`row-${props.vm.id}-edit`}>
+		<template
+			_={`on 'close-edit-requested'(id) from <body/> if id == ${props.vm.id} console.log(id) end`}
+			hx-trigger={`close-edit-requested[event.detail.id === ${props.vm.id}] from:body`}
+			hx-target="closest tr"
+			hx-swap="outerHTML"
+			hx-get={props.vm._editBackLink}
+		></template>
 		<td colSpan={4} style="padding: 0px">
 			<div class="card p-5 my-2">
 				<form>
@@ -36,10 +43,7 @@ export const EvtPersonEditor = (props: { vm: OOBPersonEditModel }) => (
 					<nav class="level">
 						<button
 							class="level-item button"
-							hx-trigger="click consume"
-							hx-target="closest tr"
-							hx-swap="outerHTML"
-							hx-get={props.vm._editBackLink}
+							_={`on click halt the event then send 'close-edit-requested'(id:${props.vm.id}) to <body/>`}
 						>&lt; Back
 						</button>
 						<button
