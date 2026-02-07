@@ -1,27 +1,21 @@
 import {EvtPersonDetailModel} from "./evt-person-page-model-vm";
-import {ComponentChildren} from "hono/jsx";
 
-export const EvtPersondetailsRow = (props: {
-	vm: EvtPersonDetailModel,
-	children: ComponentChildren
-}) => (
+type TrAttrs = JSX.IntrinsicElements["tr"]
+
+export const EvtPersondetailsRow = (
+	{ vm, ...attrs }: { vm: EvtPersonDetailModel } & TrAttrs
+) => (
 		<>
 			<tr
-				id={`row-${props.vm.id}`}
+				id={`row-${vm.id}`}
 				style="cursor: pointer"
-				_={`on click send 'close-details-requested'(id:${props.vm.id}) to <body/>`}
+				_={`on click send 'close-details-requested'(id:${vm.id}) to <body/>`}
+				{...attrs}
 			>
-				<td style="border-style: none">
-					{/* Ugly: workaround for multiple trigger/action pairs:*/}
-					{/* Since HTMX does not support multiple trigger/action pairs*/}
-					{/* this <td> serves as a workaround on which further trigger/actions can be placed on.*/}
-					{/* In addition this component should be unaware what happens when the click of <tr> happens*/}
-					{/* but it should support the replacement of itself with something else (the standard row for this app)*/}
-					{props.children}
-				</td>
-				<td style="border-style: none">{props.vm.firstName}</td>
-				<td style="border-style: none">{props.vm.lastName}</td>
-				<td style="border-style: none">{props.vm.streetName}</td>
+				<td style="border-style: none"></td>
+				<td style="border-style: none">{vm.firstName}</td>
+				<td style="border-style: none">{vm.lastName}</td>
+				<td style="border-style: none">{vm.streetName}</td>
 				<td style="border-style: none"><span className="icon"><i className="material-icons">arrow_drop_up</i></span></td>
 			</tr>
 		</>

@@ -23,7 +23,7 @@ export const MpaLayout = (props: {selectedMenu: string, children: ComponentChild
 
 	<body
 		hx-ext="path-params"
-		hx-on:close-details-requested="console.log('close-details-requested evt received in body', event)"
+		hx-on:close-details-requested="console.log('close-details-requested evt received in body. id: ', event?.detail?.id)"
 	>
 	<section class="hero is-link">
 		<div class="hero-body">
