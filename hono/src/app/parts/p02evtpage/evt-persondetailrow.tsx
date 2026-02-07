@@ -9,9 +9,10 @@ export const EvtPersondetailsRow = (props: {
 			<tr
 				id={`row-${props.vm.id}`}
 				style="cursor: pointer"
+				onClick={`document.body.dispatchEvent(new CustomEvent('close-details-requested', {detail: {"id": ${props.vm.id}}}))`}
 
 				{...{
-					'x-on:click': `document.body.dispatchEvent('close-details-requested', {"id": "${props.vm.id}"})`
+					'xx-on:click': `$dispatch('close-details-requested', {"id": "${props.vm.id}"})`
 				}}
 			>
 				<td style="border-style: none">
