@@ -9,7 +9,7 @@ export const EvtPersondetailsCard = (props: { vm: OOBPersonDetailModel }) => (
 				hx-target="this"
 				hx-swap="outerHTML"
 				hx-get={props.vm._editLink}
-				_={`on 'close-details-requested'(id) from <body/> if id == ${props.vm.id} remove closest <tr/> end`}
+				_={`on 'close-details-requested'(id) from <body/> if id == ${props.vm.id} remove me end`}
 			>
 				<td colSpan={5} style="padding-left: 30px">
 
