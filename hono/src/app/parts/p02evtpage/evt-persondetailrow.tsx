@@ -14,7 +14,11 @@ export const EvtPersondetailsRow = (props: {
 				hx-get={props.vm._backLink}
 			>
 				<td style="border-style: none">
-					{/* ugly: workaround for multiple trigger/action pairs: */}
+					{/* Ugly: workaround for multiple trigger/action pairs:*/}
+					{/* Since HTMX does not support multiple trigger/action pairs*/}
+					{/* this <td> serves as a workaround on which further trigger/actions can be placed on.*/}
+					{/* In addition this component should be unaware what happens when the click of <tr> happens*/}
+					{/* but it should support the replacement of itself with something else (the standard row for this app)*/}
 					{props.children}
 				</td>
 				<td style="border-style: none">{props.vm.firstName}</td>
