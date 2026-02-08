@@ -33,7 +33,7 @@ function init(hono: Hono) {
 		return c.render(<EvtPersonTable vm={vm}></EvtPersonTable>);
 	});
 
-	hono.post(EvtHonoWebApiConsts.PERSON_EDIT_BACK, async (c) => {
+	hono.post(EvtHonoWebApiConsts.PERSON_DETAILS_CARD, async (c) => {
 		const vm = await c.req.json() as OOBPersonDetailModel;
 		return c.render(<EvtPersondetailsCard vm={vm}></EvtPersondetailsCard>);
 	});

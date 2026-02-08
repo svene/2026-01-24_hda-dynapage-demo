@@ -25,8 +25,8 @@ public class ConfigurableRouteBuilder implements RouteBuilder {
 		return idUrl(base + RouteBuilder.EDIT_URL, id);
 	}
 	@Override
-	public String editBackUrl(int id) {
-		return idUrl(base + RouteBuilder.EDIT_BACK_URL, id);
+	public String detailsCardUrl(int id) {
+		return idUrl(base + RouteBuilder.DETAILS_CARD_URL, id);
 	}
 	@Override
 	public String updateUrl(int id) {

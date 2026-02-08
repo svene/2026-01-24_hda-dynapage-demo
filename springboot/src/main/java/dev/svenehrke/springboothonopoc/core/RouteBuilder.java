@@ -6,7 +6,7 @@ public interface RouteBuilder {
 	String DETAILS_URL = "/person/{id}/details";
 	String DETAILS_BACK_URL = "/person/{id}/detailsback";
 	String EDIT_URL = "/person/{id}/edit";
-	String EDIT_BACK_URL = "/person/{id}/editback";
+	String DETAILS_CARD_URL = "/person/{id}/detailscard";
 	String ROW_URL = "/person/{id}/row";
 	String PERSON_URL = "/person/{id}";
 	String PAGE_URL = "/page";
@@ -16,7 +16,7 @@ public interface RouteBuilder {
 	String detailsUrl(int id);
 	String detailsBackUrl(int id);
 	String editUrl(int id);
-	String editBackUrl(int id);
+	String detailsCardUrl(int id);
 	String updateUrl(int id);
 	String rowUrl(int id);
 

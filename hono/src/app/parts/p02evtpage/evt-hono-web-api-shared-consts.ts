@@ -7,6 +7,6 @@ export const EvtHonoWebApiConsts = {
 	PERSON_DETAILS: `${BASE}/person/details`,
 	PERSON_EDIT: `${BASE}/person/edit`,
 	PERSON_ROW: `${BASE}/person/row`,
-	PERSON_EDIT_BACK: `${BASE}/person/editback`,
+	PERSON_DETAILS_CARD: `${BASE}/person/detailscard`,
 	DELETE: `${BASE}/delete`,
 };

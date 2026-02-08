@@ -8,6 +8,6 @@ export const OOBHonoWebApiConsts = {
 	PERSON_EDIT: `${BASE}/person/edit`,
 	PERSON_ROW: `${BASE}/person/row`,
 	PERSON_DETAILS_BACK: `${BASE}/person/detailsback`,
-	PERSON_EDIT_BACK: `${BASE}/person/editback`,
+	PERSON_DETAILS_CARD: `${BASE}/person/detailscard`,
 	DELETE: `${BASE}/delete`,
 };

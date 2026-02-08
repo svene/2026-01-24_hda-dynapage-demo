@@ -32,8 +32,8 @@ public class HonoOOBPersonApi {
 	public ResponseEntity<String> personEdit(OOBPersonEditModel vm) {
 		return honoAppClient.post(OOBHonoWebApiConsts.PERSON_EDIT, vm);
 	}
-	public ResponseEntity<String> personEditBack(OOBPersonDetailModel vm) {
-		return honoAppClient.post(OOBHonoWebApiConsts.PERSON_EDIT_BACK, vm);
+	public ResponseEntity<String> personDetailsCard(OOBPersonDetailModel vm) {
+		return honoAppClient.post(OOBHonoWebApiConsts.PERSON_DETAILS_CARD, vm);
 	}
 	public ResponseEntity<String> personRow(OOBPersonTableRowModel vm) {
 		return honoAppClient.post(OOBHonoWebApiConsts.PERSON_ROW, vm);

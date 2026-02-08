@@ -66,9 +66,9 @@ public class PeopleController {
 		return honoApi.personEdit(vm);
 	}
 
-	@GetMapping(RouteBuilder.EDIT_BACK_URL)
-	public ResponseEntity<String> editback(@PathVariable int id) {
-		return honoApi.personEditBack(peopleService.personDetailModel(id));
+	@GetMapping(RouteBuilder.DETAILS_CARD_URL)
+	public ResponseEntity<String> detailsCard(@PathVariable int id) {
+		return honoApi.personDetailsCard(peopleService.personDetailModel(id));
 	}
 
 	@GetMapping(RouteBuilder.ROW_URL)

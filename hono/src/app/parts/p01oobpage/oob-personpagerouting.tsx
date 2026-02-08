@@ -6,8 +6,8 @@ import {OOBPersonTable} from "./oob-persontable";
 import {OOBPersonPage} from "./oob-personpage";
 import {OOBPersonDetailModel, OOBPersonEditModel, OOBPersonPageModel, OOBPersonTableModel, OOBPersonTableRowModel} from "./oob-person-page-model-vm";
 import {OOBPersonRow} from "./oob-personrow";
-import {OOBPersonEditBack} from "./oob-personeditback";
 import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
+import {OOBPersondetailsCard} from "./oob-persondetailscard";
 
 function init(hono: Hono) {
 	hono.post(OOBHonoWebApiConsts.PAGE, async (c) => {
@@ -38,9 +38,9 @@ function init(hono: Hono) {
 		return c.render(<OOBPersonTable vm={vm}></OOBPersonTable>);
 	});
 
-	hono.post(OOBHonoWebApiConsts.PERSON_EDIT_BACK, async (c) => {
+	hono.post(OOBHonoWebApiConsts.PERSON_DETAILS_CARD, async (c) => {
 		const vm = await c.req.json() as OOBPersonDetailModel;
-		return c.render(<OOBPersonEditBack vm={vm}></OOBPersonEditBack>);
+		return c.render(<OOBPersondetailsCard vm={vm}></OOBPersondetailsCard>);
 	});
 
 }
