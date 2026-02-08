@@ -3,7 +3,6 @@ import {OOBPersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
 export const EvtPersonEditor = (props: { vm: OOBPersonEditModel }) => (
 	<tr id={`row-${props.vm.id}-edit`}>
 		<template
-			_={`on 'close-edit-requested'(id) from <body/> if id == ${props.vm.id} console.log(id) end`}
 			hx-trigger={`close-edit-requested[event.detail.id === ${props.vm.id}] from:body`}
 			hx-target="closest tr"
 			hx-swap="outerHTML"
