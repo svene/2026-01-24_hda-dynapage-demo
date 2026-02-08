@@ -17,6 +17,7 @@ open http://localhost:3000
 ## TODO
 
 - rename: people -> person
+- patterns: events: 1: no HTML needed (only new event), 2: HTML needed
 
 
 ## Notes
