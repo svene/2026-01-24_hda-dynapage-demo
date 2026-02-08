@@ -5,8 +5,8 @@ import {EvtPersonRow} from "./evt-personrow";
 import {EvtPersonTable} from "./evt-persontable";
 import {EvtPersonDetails} from "./evt-persondetails";
 import {EvtPersonEditor} from "./evt-personedit";
-import {EvtPersonEditBack} from "./evt-personeditback";
 import {OOBPersonDetailModel, OOBPersonEditModel, OOBPersonPageModel, OOBPersonTableModel, OOBPersonTableRowModel} from "../p01oobpage/oob-person-page-model-vm";
+import {EvtPersondetailsCard} from "./evt-persondetailscard";
 
 function init(hono: Hono) {
 	hono.post(EvtHonoWebApiConsts.PAGE, async (c) => {
@@ -35,7 +35,7 @@ function init(hono: Hono) {
 
 	hono.post(EvtHonoWebApiConsts.PERSON_EDIT_BACK, async (c) => {
 		const vm = await c.req.json() as OOBPersonDetailModel;
-		return c.render(<EvtPersonEditBack vm={vm}></EvtPersonEditBack>);
+		return c.render(<EvtPersondetailsCard vm={vm}></EvtPersondetailsCard>);
 	});
 
 }
