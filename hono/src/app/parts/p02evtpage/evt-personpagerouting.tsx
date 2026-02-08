@@ -1,40 +1,40 @@
 import {Hono} from "hono";
 import {EvtPersonPage} from "./evt-personpage";
 import {EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
-import {EvtPersonDetailModel, EvtPersonEditModel, EvtPersonPageModel, EvtPersonTableModel, EvtPersonTableRowModel} from "./evt-person-page-model-vm";
 import {EvtPersonRow} from "./evt-personrow";
 import {EvtPersonTable} from "./evt-persontable";
 import {EvtPersonDetails} from "./evt-persondetails";
 import {EvtPersonEditor} from "./evt-personedit";
 import {EvtPersonEditBack} from "./evt-personeditback";
+import {OOBPersonDetailModel, OOBPersonEditModel, OOBPersonPageModel, OOBPersonTableModel, OOBPersonTableRowModel} from "../p01oobpage/oob-person-page-model-vm";
 
 function init(hono: Hono) {
 	hono.post(EvtHonoWebApiConsts.PAGE, async (c) => {
-		const vm = await c.req.json() as EvtPersonPageModel;
+		const vm = await c.req.json() as OOBPersonPageModel;
 		return c.render(<EvtPersonPage vm={vm}></EvtPersonPage>);
 	});
 
 	hono.post(EvtHonoWebApiConsts.PERSON_DETAILS, async (c) => {
-		const vm = await c.req.json() as EvtPersonDetailModel;
+		const vm = await c.req.json() as OOBPersonDetailModel;
 		return c.render(<EvtPersonDetails vm={vm}></EvtPersonDetails>);
 	});
 	hono.post(EvtHonoWebApiConsts.PERSON_EDIT, async (c) => {
-		const vm = await c.req.json() as EvtPersonEditModel;
+		const vm = await c.req.json() as OOBPersonEditModel;
 		return c.render(<EvtPersonEditor vm={vm}></EvtPersonEditor>);
 	});
 
 	hono.post(EvtHonoWebApiConsts.PERSON_ROW, async (c) => {
-		const vm = await c.req.json() as EvtPersonTableRowModel;
+		const vm = await c.req.json() as OOBPersonTableRowModel;
 		return c.render(<EvtPersonRow vm={vm}></EvtPersonRow>);
 	});
 
 	hono.post(EvtHonoWebApiConsts.PERSON_TABLE, async (c) => {
-		const vm = await c.req.json() as EvtPersonTableModel;
+		const vm = await c.req.json() as OOBPersonTableModel;
 		return c.render(<EvtPersonTable vm={vm}></EvtPersonTable>);
 	});
 
 	hono.post(EvtHonoWebApiConsts.PERSON_EDIT_BACK, async (c) => {
-		const vm = await c.req.json() as EvtPersonDetailModel;
+		const vm = await c.req.json() as OOBPersonDetailModel;
 		return c.render(<EvtPersonEditBack vm={vm}></EvtPersonEditBack>);
 	});
 

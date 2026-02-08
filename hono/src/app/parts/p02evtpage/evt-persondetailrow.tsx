@@ -1,9 +1,9 @@
-import {EvtPersonDetailModel} from "./evt-person-page-model-vm";
+import {OOBPersonDetailModel} from "../p01oobpage/oob-person-page-model-vm";
 
 type TrAttrs = JSX.IntrinsicElements["tr"]
 
 export const EvtPersondetailsRow = (
-	{ vm, ...attrs }: { vm: EvtPersonDetailModel } & TrAttrs
+	{ vm, ...attrs }: { vm: OOBPersonDetailModel } & TrAttrs
 ) => (
 		<>
 			<tr
