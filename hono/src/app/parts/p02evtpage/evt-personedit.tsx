@@ -3,7 +3,10 @@ import {OOBPersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
 export const EvtPersonEditor = (props: { vm: OOBPersonEditModel }) => (
 	<tr id={`row-${props.vm.id}-edit`}>
 		<template
-			hx-trigger={`close-edit-requested[event.detail.id === ${props.vm.id}] from:body`}
+			hx-trigger={`
+			close-edit-requested[event.detail.id === ${props.vm.id}] from:body,
+			person-updated[event.detail.id === ${props.vm.id}] from:body
+			`}
 			hx-target="closest tr"
 			hx-swap="outerHTML"
 			hx-get={props.vm._editBackLink}
@@ -50,8 +53,7 @@ export const EvtPersonEditor = (props: { vm: OOBPersonEditModel }) => (
 							class="level-item button is-primary"
 							hx-trigger="click consume"
 							hx-put={`${props.vm._submitLink}`}
-							hx-target="closest tr"
-							hx-swap="outerHTML"
+							hx-swap="none" /* Works with event handling of 'person-updated' */
 						>Save
 						</button>
 					</nav>

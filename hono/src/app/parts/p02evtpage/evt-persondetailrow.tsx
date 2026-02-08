@@ -12,6 +12,12 @@ export const EvtPersondetailsRow = (
 				_={`on click send 'close-details-requested'(id:${vm.id}) to <body/>`}
 				{...attrs}
 			>
+				<template
+					hx-trigger={`person-updated[event.detail.id === ${vm.id}] from:body`}
+					hx-target="closest tr"
+					hx-swap="outerHTML"
+					hx-get={`/demo/event/person/${vm.id}/detailsrow`} /*TODO: replace hard coded URL */
+				></template>
 				<td style="border-style: none"></td>
 				<td style="border-style: none">{vm.firstName}</td>
 				<td style="border-style: none">{vm.lastName}</td>

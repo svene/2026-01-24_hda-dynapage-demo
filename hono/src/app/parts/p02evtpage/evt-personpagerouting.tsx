@@ -7,6 +7,7 @@ import {EvtPersonDetails} from "./evt-persondetails";
 import {EvtPersonEditor} from "./evt-personedit";
 import {OOBPersonDetailModel, OOBPersonEditModel, OOBPersonPageModel, OOBPersonTableModel, OOBPersonTableRowModel} from "../p01oobpage/oob-person-page-model-vm";
 import {EvtPersondetailsCard} from "./evt-persondetailscard";
+import {EvtPersondetailsRow} from "./evt-persondetailrow";
 
 function init(hono: Hono) {
 	hono.post(EvtHonoWebApiConsts.PAGE, async (c) => {
@@ -18,6 +19,24 @@ function init(hono: Hono) {
 		const vm = await c.req.json() as OOBPersonDetailModel;
 		return c.render(<EvtPersonDetails vm={vm}></EvtPersonDetails>);
 	});
+
+	hono.post(EvtHonoWebApiConsts.PERSON_DETAILS_ROW, async (c) => {
+		const vm = await c.req.json() as OOBPersonDetailModel;
+		// TODO: refactor duplication of attributes (see EvtPersonDetails component):
+		return c.render(<EvtPersondetailsRow
+			vm={vm}
+			hx-trigger={`close-details-requested[event.detail.id === ${vm.id}] from:body`}
+			hx-get={vm._rowUrl}
+			hx-target='closest tr'
+			hx-swap="outerHTML"
+		></EvtPersondetailsRow>);
+	});
+
+	hono.post(EvtHonoWebApiConsts.PERSON_DETAILS_CARD, async (c) => {
+		const vm = await c.req.json() as OOBPersonDetailModel;
+		return c.render(<EvtPersondetailsCard vm={vm}></EvtPersondetailsCard>);
+	});
+
 	hono.post(EvtHonoWebApiConsts.PERSON_EDIT, async (c) => {
 		const vm = await c.req.json() as OOBPersonEditModel;
 		return c.render(<EvtPersonEditor vm={vm}></EvtPersonEditor>);
@@ -31,11 +50,6 @@ function init(hono: Hono) {
 	hono.post(EvtHonoWebApiConsts.PERSON_TABLE, async (c) => {
 		const vm = await c.req.json() as OOBPersonTableModel;
 		return c.render(<EvtPersonTable vm={vm}></EvtPersonTable>);
-	});
-
-	hono.post(EvtHonoWebApiConsts.PERSON_DETAILS_CARD, async (c) => {
-		const vm = await c.req.json() as OOBPersonDetailModel;
-		return c.render(<EvtPersondetailsCard vm={vm}></EvtPersondetailsCard>);
 	});
 
 }

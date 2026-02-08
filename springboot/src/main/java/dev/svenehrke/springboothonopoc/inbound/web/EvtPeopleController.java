@@ -49,17 +49,21 @@ public class EvtPeopleController {
 	public ResponseEntity<String> details(@PathVariable int id) {
 		return honoApi.personDetails(peopleService.personDetailModel(id));
 	}
+	@GetMapping(RouteBuilder.DETAILS_ROW_URL)
+	public ResponseEntity<String> detailsRow(@PathVariable int id) {
+		return honoApi.personDetailsRow(peopleService.personDetailModel(id));
+	}
+
+	@GetMapping(RouteBuilder.DETAILS_CARD_URL)
+	public ResponseEntity<String> detailsCard(@PathVariable int id) {
+		return honoApi.personDetailsCard(peopleService.personDetailModel(id));
+	}
 
 	@GetMapping(RouteBuilder.EDIT_URL)
 	public ResponseEntity<String> edit(@PathVariable int id) {
 		OOBPersonEditModel vm = peopleService.personEditModel(id);
 		return honoApi.personEdit(vm);
 	}
-	@GetMapping(RouteBuilder.DETAILS_CARD_URL)
-	public ResponseEntity<String> detailsCard(@PathVariable int id) {
-		return honoApi.personDetailsCard(peopleService.personDetailModel(id));
-	}
-
 	@GetMapping(RouteBuilder.ROW_URL)
 	public ResponseEntity<String> row(@PathVariable int id) {
 		return honoApi.personRow(peopleService.personTableRowModel(id));
@@ -73,10 +77,11 @@ public class EvtPeopleController {
 	}
 
 	@PutMapping(RouteBuilder.PERSON_URL)
-	public ResponseEntity<String> updatePerson(@PathVariable int id, OOBPersonEditModel personEditModel, HttpServletResponse response) {
-		response.setHeader("HX-Redirect", routeBuilder.url(RouteBuilder.PAGE_URL));
+	public void updatePerson(@PathVariable int id, OOBPersonEditModel personEditModel, HttpServletResponse response) {
 		peopleService.updatePerson(id, personEditModel);
-		return peoplePage();
+		response.setHeader(HTMXConsts.HX_TRIGGER, """
+			{"%s": {"id": %d}}\
+			""".formatted(EvtConstants.PERSON_UPDATED, id));
 	}
 
 }

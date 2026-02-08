@@ -28,6 +28,9 @@ public class HonoEventPersonApi {
 	public ResponseEntity<String> personEdit(OOBPersonEditModel vm) {
 		return honoAppClient.post(EvtHonoWebApiConsts.PERSON_EDIT, vm);
 	}
+	public ResponseEntity<String> personDetailsRow(OOBPersonDetailModel vm) {
+		return honoAppClient.post(EvtHonoWebApiConsts.PERSON_DETAILS_ROW, vm);
+	}
 	public ResponseEntity<String> personDetailsCard(OOBPersonDetailModel vm) {
 		return honoAppClient.post(EvtHonoWebApiConsts.PERSON_DETAILS_CARD, vm);
 	}
