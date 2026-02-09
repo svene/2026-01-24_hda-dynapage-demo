@@ -39,7 +39,17 @@ function init(hono: Hono) {
 
 	hono.post(EvtHonoWebApiConsts.PERSON_EDIT, async (c) => {
 		const vm = await c.req.json() as OOBPersonEditModel;
-		return c.render(<EvtPersonEditor vm={vm}></EvtPersonEditor>);
+		return c.render(<EvtPersonEditor vm={vm}>
+			<template
+				hx-trigger={`
+			close-edit-requested[event.detail.id === ${vm.id}] from:closest tr,
+			person-updated[event.detail.id === ${vm.id}] from:closest tr
+			`}
+				hx-target="closest tr"
+				hx-swap="outerHTML"
+				hx-get={vm._editBackLink}
+			></template>
+		</EvtPersonEditor>);
 	});
 
 	hono.post(EvtHonoWebApiConsts.PERSON_ROW, async (c) => {

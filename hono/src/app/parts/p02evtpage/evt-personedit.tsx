@@ -1,16 +1,8 @@
 import {OOBPersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
 
-export const EvtPersonEditor = (props: { vm: OOBPersonEditModel }) => (
+export const EvtPersonEditor = (props: { vm: OOBPersonEditModel, children: ComponentChildren }) => (
 	<tr id={`row-${props.vm.id}-edit`}>
-		<template
-			hx-trigger={`
-			close-edit-requested[event.detail.id === ${props.vm.id}] from:closest tr,
-			person-updated[event.detail.id === ${props.vm.id}] from:closest tr
-			`}
-			hx-target="closest tr"
-			hx-swap="outerHTML"
-			hx-get={props.vm._editBackLink}
-		></template>
+		{props.children}
 		<td colSpan={4} style="padding: 0px">
 			<div class="card p-5 my-2">
 				<form>
