@@ -4,8 +4,8 @@ export const EvtPersonEditor = (props: { vm: OOBPersonEditModel }) => (
 	<tr id={`row-${props.vm.id}-edit`}>
 		<template
 			hx-trigger={`
-			close-edit-requested[event.detail.id === ${props.vm.id}] from:body,
-			person-updated[event.detail.id === ${props.vm.id}] from:body
+			close-edit-requested[event.detail.id === ${props.vm.id}] from:closest tr,
+			person-updated[event.detail.id === ${props.vm.id}] from:closest tr
 			`}
 			hx-target="closest tr"
 			hx-swap="outerHTML"
@@ -45,7 +45,7 @@ export const EvtPersonEditor = (props: { vm: OOBPersonEditModel }) => (
 					<nav class="level">
 						<button
 							class="level-item button"
-							_={`on click halt the event then send 'close-edit-requested'(id:${props.vm.id}) to <body/>`}
+							_={`on click halt the event then send 'close-edit-requested'(id:${props.vm.id})`}
 						>&lt; Back
 						</button>
 						<button
