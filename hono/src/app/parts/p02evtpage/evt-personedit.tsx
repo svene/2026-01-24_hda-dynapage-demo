@@ -1,4 +1,10 @@
 import {OOBPersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
+import {ComponentChildren} from "hono/jsx";
+
+export const EditEvents = {
+	CLOSE_REQUESTED: 'close-edit-requested',
+	UPDATED: 'person-updated',
+};
 
 export const EvtPersonEditor = (props: { vm: OOBPersonEditModel, children: ComponentChildren }) => (
 	<tr id={`row-${props.vm.id}-edit`}>
@@ -37,7 +43,7 @@ export const EvtPersonEditor = (props: { vm: OOBPersonEditModel, children: Compo
 					<nav class="level">
 						<button
 							class="level-item button"
-							_={`on click halt the event then send 'close-edit-requested'(id:${props.vm.id})`}
+							_={`on click halt the event then send '${EditEvents.CLOSE_REQUESTED}'(id:${props.vm.id})`}
 						>&lt; Back
 						</button>
 						<button
