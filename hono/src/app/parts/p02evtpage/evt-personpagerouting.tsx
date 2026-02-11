@@ -4,7 +4,7 @@ import {EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
 import {EvtPersonRow} from "./evt-personrow";
 import {EvtPersonTable} from "./evt-persontable";
 import {EvtPersonDetails} from "./evt-persondetails";
-import {EditEvents, EvtPersonEditor, EvtPersonEditor_CLOSE_EDIT_REQUESTED, EvtPersonEditorEvents} from "./evt-personedit";
+import {EvtPersonEditor, EvtPersonEditorCloseHandler, EvtPersonEditorUpdatedHandler} from "./evt-personedit";
 import {OOBPersonDetailModel, OOBPersonEditModel, OOBPersonPageModel, OOBPersonTableModel, OOBPersonTableRowModel} from "../p01oobpage/oob-person-page-model-vm";
 import {EvtPersondetailsCard} from "./evt-persondetailscard";
 import {EvtPersondetailsRow} from "./evt-persondetailrow";
@@ -39,17 +39,13 @@ function init(hono: Hono) {
 
 	hono.post(EvtHonoWebApiConsts.PERSON_EDIT, async (c) => {
 		const vm = await c.req.json() as OOBPersonEditModel;
-		return c.render(<EvtPersonEditor vm={vm}>
-			<template
-				hx-trigger={`
-			${EditEvents.CLOSE_REQUESTED}[event.detail.id === ${vm.id}] from:closest tr,
-			${EditEvents.UPDATED}[event.detail.id === ${vm.id}] from:closest tr
-			`}
-				hx-target="closest tr"
-				hx-swap="outerHTML"
-				hx-get={vm._editBackLink}
-			></template>
-		</EvtPersonEditor>);
+		const cid = vm.id + '';
+		return c.render(
+			<EvtPersonEditor cid={cid} vm={vm}>
+				<EvtPersonEditorCloseHandler cid={cid} vm={vm}></EvtPersonEditorCloseHandler>
+				<EvtPersonEditorUpdatedHandler vm={vm}></EvtPersonEditorUpdatedHandler>
+			</EvtPersonEditor>
+		);
 	});
 
 	hono.post(EvtHonoWebApiConsts.PERSON_ROW, async (c) => {

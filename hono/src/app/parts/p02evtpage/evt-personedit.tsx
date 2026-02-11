@@ -1,12 +1,7 @@
 import {OOBPersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
-import {ComponentChildren} from "hono/jsx";
+import {ComponentChildren, JSX} from "hono/jsx";
 
-export const EditEvents = {
-	CLOSE_REQUESTED: 'close-edit-requested',
-	UPDATED: 'person-updated',
-};
-
-export const EvtPersonEditor = (props: { vm: OOBPersonEditModel, children: ComponentChildren }) => (
+export const EvtPersonEditor = (props: { cid: string, vm: OOBPersonEditModel, children: ComponentChildren }) => (
 	<tr id={`row-${props.vm.id}-edit`}>
 		{props.children}
 		<td colSpan={4} style="padding: 0px">
@@ -43,7 +38,7 @@ export const EvtPersonEditor = (props: { vm: OOBPersonEditModel, children: Compo
 					<nav class="level">
 						<button
 							class="level-item button"
-							_={`on click halt the event then send '${EditEvents.CLOSE_REQUESTED}'(id:${props.vm.id})`}
+							_={`on click halt the event then send '${EditEvents.CLOSE_REQUESTED}'(id:${props.cid})`}
 						>&lt; Back
 						</button>
 						<button
@@ -60,3 +55,39 @@ export const EvtPersonEditor = (props: { vm: OOBPersonEditModel, children: Compo
 		</td>
 	</tr>
 );
+
+export const EditEvents = {
+	CLOSE_REQUESTED: 'close-edit-requested',
+	UPDATED: 'person-updated',
+};
+
+type TemplateAttrs = JSX.IntrinsicElements["template"]
+export const EvtPersonEditorCloseHandler = (
+	{ cid, vm, ...attrs }: { cid: string, vm: OOBPersonEditModel } & TemplateAttrs
+) => (
+	<template
+		hx-trigger={`
+			${EditEvents.CLOSE_REQUESTED}[event.detail.id == ${cid}] from:closest tr
+			`}
+		hx-target="closest tr"
+		hx-swap="outerHTML"
+		hx-get={vm._editBackLink}
+		{...attrs}
+	></template>
+);
+export const EvtPersonEditorUpdatedHandler = (
+	{ vm, ...attrs }: { vm: OOBPersonEditModel } & TemplateAttrs
+) => (
+	<template
+		hx-trigger={`
+			${EditEvents.UPDATED}[event.detail.id === ${vm.id}] from:closest tr
+			`}
+		hx-target="closest tr"
+		hx-swap="outerHTML"
+		hx-get={vm._editBackLink}
+		{...attrs}
+	></template>
+);
+
+export class EvtPersonEditorEvents {
+}
