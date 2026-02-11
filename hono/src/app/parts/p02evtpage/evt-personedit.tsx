@@ -71,7 +71,6 @@ export const EvtPersonEditorCloseHandler = (
 			`}
 		hx-target="closest tr"
 		hx-swap="outerHTML"
-		hx-get={vm._editBackLink}
 		{...attrs}
 	></template>
 );

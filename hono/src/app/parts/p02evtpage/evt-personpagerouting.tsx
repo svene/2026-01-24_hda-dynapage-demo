@@ -42,7 +42,11 @@ function init(hono: Hono) {
 		const cid = vm.id + '';
 		return c.render(
 			<EvtPersonEditor cid={cid} vm={vm}>
-				<EvtPersonEditorCloseHandler cid={cid} vm={vm}></EvtPersonEditorCloseHandler>
+				<EvtPersonEditorCloseHandler
+					cid={cid}
+					vm={vm}
+					hx-get={vm._editBackLink}
+				></EvtPersonEditorCloseHandler>
 				<EvtPersonEditorUpdatedHandler vm={vm}></EvtPersonEditorUpdatedHandler>
 			</EvtPersonEditor>
 		);
