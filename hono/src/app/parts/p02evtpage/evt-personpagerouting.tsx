@@ -47,7 +47,11 @@ function init(hono: Hono) {
 					vm={vm}
 					hx-get={vm._editBackLink}
 				></EvtPersonEditorCloseHandler>
-				<EvtPersonEditorUpdatedHandler vm={vm}></EvtPersonEditorUpdatedHandler>
+				<EvtPersonEditorUpdatedHandler
+					cid={cid}
+					vm={vm}
+					hx-get={vm._editBackLink}
+				></EvtPersonEditorUpdatedHandler>
 			</EvtPersonEditor>
 		);
 	});

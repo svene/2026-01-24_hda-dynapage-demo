@@ -75,15 +75,14 @@ export const EvtPersonEditorCloseHandler = (
 	></template>
 );
 export const EvtPersonEditorUpdatedHandler = (
-	{ vm, ...attrs }: { vm: OOBPersonEditModel } & TemplateAttrs
+	{ cid, vm, ...attrs }: { cid: string, vm: OOBPersonEditModel } & TemplateAttrs
 ) => (
 	<template
 		hx-trigger={`
-			${EditEvents.UPDATED}[event.detail.id === ${vm.id}] from:closest tr
+			${EditEvents.UPDATED}[event.detail.id === ${cid}] from:closest tr
 			`}
 		hx-target="closest tr"
 		hx-swap="outerHTML"
-		hx-get={vm._editBackLink}
 		{...attrs}
 	></template>
 );
