@@ -58,7 +58,7 @@ export const EvtPersonEditor = (props: { cid: string, vm: OOBPersonEditModel, ch
 
 export const EditEvents = {
 	CLOSE_REQUESTED: 'close-edit-requested',
-	UPDATED: 'person-updated',
+	BE_UPDATED: 'person-updated',
 };
 
 type TemplateAttrs = JSX.IntrinsicElements["template"]
@@ -78,11 +78,12 @@ export const EvtPersonEditorUpdatedHandler = (
 	{ cid, vm, ...attrs }: { cid: string, vm: OOBPersonEditModel } & TemplateAttrs
 ) => (
 	<template
-		hx-trigger={`
-			${EditEvents.UPDATED}[event.detail.id === ${cid}] from:closest tr
+		_={`on '${EditEvents.BE_UPDATED}'(id) from <body/> if id == ${vm.id} then send '${EditEvents.CLOSE_REQUESTED}'(id:${vm.id + ''})`}
+		xhx-trigger={`
+			${EditEvents.BE_UPDATED}[event.detail.id === ${cid}] from:closest tr
 			`}
-		hx-target="closest tr"
-		hx-swap="outerHTML"
+		hxx-target="closest tr"
+		xhx-swap="outerHTML"
 		{...attrs}
 	></template>
 );
