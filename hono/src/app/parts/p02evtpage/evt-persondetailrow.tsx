@@ -1,4 +1,6 @@
 import {OOBPersonDetailModel} from "../p01oobpage/oob-person-page-model-vm";
+import {EvtBackendEvents} from "./evt-hono-web-api-shared-consts";
+import {JSX} from "hono/jsx";
 
 type TrAttrs = JSX.IntrinsicElements["tr"]
 
@@ -13,7 +15,7 @@ export const EvtPersondetailsRow = (
 				{...attrs}
 			>
 				<template
-					hx-trigger={`person-updated[event.detail.id === ${vm.id}] from:body`}
+					hx-trigger={`${EvtBackendEvents.PERSON_UPDATED}[event.detail.id === ${vm.id}] from:body`}
 					hx-target="closest tr"
 					hx-swap="outerHTML"
 					hx-get={`/demo/event/person/${vm.id}/detailsrow`} /*TODO: replace hard coded URL */

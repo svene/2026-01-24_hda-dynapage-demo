@@ -3,6 +3,7 @@ package dev.svenehrke.springboothonopoc.inbound.web;
 import dev.svenehrke.springboothonopoc.app.Evt;
 import dev.svenehrke.springboothonopoc.app.EvtConfig;
 import dev.svenehrke.springboothonopoc.core.*;
+import dev.svenehrke.springboothonopoc.core.EvtHonoWebApiSharedConsts.EvtBackendEvents;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoEventPersonApi;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
@@ -81,7 +82,7 @@ public class EvtPeopleController {
 		peopleService.updatePerson(id, personEditModel);
 		response.setHeader(HTMXConsts.HX_TRIGGER, """
 			{"%s": {"id": %d}}\
-			""".formatted(EvtConstants.PERSON_UPDATED, id));
+			""".formatted(EvtBackendEvents.PERSON_UPDATED, id));
 	}
 
 }

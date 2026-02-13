@@ -1,5 +1,6 @@
 import {OOBPersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
 import {ComponentChildren, JSX} from "hono/jsx";
+import {EvtBackendEvents} from "./evt-hono-web-api-shared-consts";
 
 export const EvtPersonEditor = (props: { cid: string, vm: OOBPersonEditModel, children: ComponentChildren }) => (
 	<tr id={`row-${props.vm.id}-edit`}>
@@ -56,9 +57,8 @@ export const EvtPersonEditor = (props: { cid: string, vm: OOBPersonEditModel, ch
 	</tr>
 );
 
-export const EditEvents = {
+const EditEvents = {
 	CLOSE_REQUESTED: 'close-edit-requested',
-	BE_UPDATED: 'person-updated',
 };
 
 type TemplateAttrs = JSX.IntrinsicElements["template"]
@@ -79,7 +79,7 @@ export const EvtPersonEditorUpdatedHandler = (
 ) => (
 	<template
 		hx-trigger={`
-			${EditEvents.BE_UPDATED}[event.detail.id === ${cid}] from:closest tr
+			${EvtBackendEvents.PERSON_UPDATED}[event.detail.id === ${cid}] from:closest tr
 			`}
 		hx-target="closest tr"
 		hx-swap="outerHTML"
