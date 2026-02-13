@@ -78,12 +78,11 @@ export const EvtPersonEditorUpdatedHandler = (
 	{ cid, vm, ...attrs }: { cid: string, vm: OOBPersonEditModel } & TemplateAttrs
 ) => (
 	<template
-		_={`on '${EditEvents.BE_UPDATED}'(id) from <body/> if id == ${vm.id} then send '${EditEvents.CLOSE_REQUESTED}'(id:${vm.id + ''})`}
-		xhx-trigger={`
+		hx-trigger={`
 			${EditEvents.BE_UPDATED}[event.detail.id === ${cid}] from:closest tr
 			`}
-		hxx-target="closest tr"
-		xhx-swap="outerHTML"
+		hx-target="closest tr"
+		hx-swap="outerHTML"
 		{...attrs}
 	></template>
 );

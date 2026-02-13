@@ -50,7 +50,7 @@ function init(hono: Hono) {
 				<EvtPersonEditorUpdatedHandler
 					cid={cid}
 					vm={vm}
-					dhx-get={vm._editBackLink}
+					hx-get={vm._editBackLink}
 				></EvtPersonEditorUpdatedHandler>
 			</EvtPersonEditor>
 		);
