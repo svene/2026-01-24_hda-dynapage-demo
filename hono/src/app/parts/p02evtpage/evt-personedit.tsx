@@ -1,10 +1,15 @@
 import {OOBPersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
-import {ComponentChildren, JSX} from "hono/jsx";
+import {PropsWithChildren, JSX} from "hono/jsx";
 import {EvtBackendEvents} from "./evt-hono-web-api-shared-consts";
 
-export const EvtPersonEditor = (props: { cid: string, vm: OOBPersonEditModel, children: ComponentChildren }) => (
-	<tr id={`row-${props.vm.id}-edit`}>
-		{props.children}
+type CmpProps = PropsWithChildren<{
+	cid: string;
+	vm: OOBPersonEditModel;
+}>;
+
+export const EvtPersonEditor = ({ cid, vm, children }: CmpProps) => (
+	<tr id={`row-${vm.id}-edit`}>
+		{children}
 		<td colSpan={4} style="padding: 0px">
 			<div class="card p-5 my-2">
 				<form>
@@ -14,7 +19,7 @@ export const EvtPersonEditor = (props: { cid: string, vm: OOBPersonEditModel, ch
 								<div class="field">
 									<label class="label">Firstname</label>
 									<div class="control">
-										<input class="input" type="text" name="firstName" value={props.vm.firstName}></input>
+										<input class="input" type="text" name="firstName" value={vm.firstName}></input>
 									</div>
 								</div>
 							</div>
@@ -22,7 +27,7 @@ export const EvtPersonEditor = (props: { cid: string, vm: OOBPersonEditModel, ch
 								<div class="field">
 									<label class="label">Lastname</label>
 									<div class="control">
-										<input class="input" type="text" name="lastName" value={props.vm.lastName}></input>
+										<input class="input" type="text" name="lastName" value={vm.lastName}></input>
 									</div>
 								</div>
 							</div>
@@ -30,7 +35,7 @@ export const EvtPersonEditor = (props: { cid: string, vm: OOBPersonEditModel, ch
 								<div class="field">
 									<label class="label">Street</label>
 									<div class="control">
-										<input class="input" type="text" name="streetName" value={props.vm.streetName}></input>
+										<input class="input" type="text" name="streetName" value={vm.streetName}></input>
 									</div>
 								</div>
 							</div>
@@ -39,14 +44,14 @@ export const EvtPersonEditor = (props: { cid: string, vm: OOBPersonEditModel, ch
 					<nav class="level">
 						<button
 							class="level-item button"
-							_={`on click halt the event then send '${EditEvents.CLOSE_REQUESTED}'(id:${props.cid})`}
+							_={`on click halt the event then send '${EditEvents.CLOSE_REQUESTED}'(id:${cid})`}
 						>&lt; Back
 						</button>
 						<button
 							type="submit"
 							class="level-item button is-primary"
 							hx-trigger="click consume"
-							hx-put={`${props.vm._submitLink}`} /* Expects backend to respond with 'person-updated'(id) event */
+							hx-put={`${vm._submitLink}`} /* Expects backend to respond with 'person-updated'(id) event */
 							hx-swap="none" /* Works with event handling of 'person-updated' */
 						>Save
 						</button>
@@ -86,6 +91,3 @@ export const EvtPersonEditorUpdatedHandler = (
 		{...attrs}
 	></template>
 );
-
-export class EvtPersonEditorEvents {
-}
