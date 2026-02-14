@@ -7,7 +7,7 @@ import {EvtPersonDetails} from "./evt-persondetails";
 import {EvtPersonEditor, EvtPersonEditorCloseHandler, EvtPersonEditorUpdatedHandler} from "./evt-personedit";
 import {OOBPersonDetailModel, OOBPersonEditModel, OOBPersonPageModel, OOBPersonTableModel, OOBPersonTableRowModel} from "../p01oobpage/oob-person-page-model-vm";
 import {EvtPersondetailsCard} from "./evt-persondetailscard";
-import {EvtPersondetailsRow} from "./evt-persondetailrow";
+import {EvtPersondetailsRow, EvtPersonDetailsRowX} from "./evt-persondetailrow";
 
 function init(hono: Hono) {
 	hono.post(EvtHonoWebApiConsts.PAGE, async (c) => {
@@ -27,11 +27,14 @@ function init(hono: Hono) {
 		return c.render(<EvtPersondetailsRow
 			cid={cid}
 			vm={vm}
-			hx-trigger={`close-details-requested[event.detail.id === '${cid}'] from:body`}
-			hx-get={vm._rowUrl}
-			hx-target='closest tr'
-			hx-swap="outerHTML"
-		></EvtPersondetailsRow>);
+		>
+			<EvtPersonDetailsRowX.CloseHandler
+				cid={vm.id + ''}
+				vm={vm}
+				hx-get={vm._rowUrl}
+			>
+			</EvtPersonDetailsRowX.CloseHandler>
+		</EvtPersondetailsRow>);
 	});
 
 	hono.post(EvtHonoWebApiConsts.PERSON_DETAILS_CARD, async (c) => {

@@ -18,6 +18,7 @@ export const EvtPersondetailsRow = ({ cid, vm, children, ...attrs }: CmpProps) =
 				_={`on click halt the event then send '${Events.CLOSE_REQUESTED}'(id:${cid})`}
 				{...attrs}
 			>
+				{children}
 				<template
 					hx-trigger={`${EvtBackendEvents.PERSON_UPDATED}[event.detail.id === ${vm.id}] from:body`}
 					hx-target="closest tr"
@@ -36,15 +37,23 @@ export const EvtPersondetailsRow = ({ cid, vm, children, ...attrs }: CmpProps) =
 const Events = {
 	CLOSE_REQUESTED: 'close-details-requested',
 };
-export const EvtPersondetailsRowCloseHandler = (
-	{ cid, vm, ...attrs }: { cid: string, vm: OOBPersonDetailModel } & TemplateAttrs
-) => (
-	<template
-		hx-trigger={`
+
+export const EvtPersonDetailsRowX = {
+	CloseHandler: (
+		{ cid, vm, ...attrs }: { cid: string, vm: OOBPersonDetailModel } & TemplateAttrs
+	) => (
+		<template
+			hx-trigger={`
 			${Events.CLOSE_REQUESTED}[event.detail.id == ${cid}] from:closest tr
 			`}
-		hx-target="closest tr"
-		hx-swap="outerHTML"
-		{...attrs}
-	></template>
-);
+			hx-target="closest tr"
+			hx-swap="outerHTML"
+			{...attrs}
+		></template>
+	)
+}
+export const XXX = {
+	A: () => (
+		<div>hallo</div>
+	)
+}
