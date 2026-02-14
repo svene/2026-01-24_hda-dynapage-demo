@@ -23,9 +23,11 @@ function init(hono: Hono) {
 	hono.post(EvtHonoWebApiConsts.PERSON_DETAILS_ROW, async (c) => {
 		const vm = await c.req.json() as OOBPersonDetailModel;
 		// TODO: refactor duplication of attributes (see EvtPersonDetails component):
+		const cid = vm.id + '';
 		return c.render(<EvtPersondetailsRow
+			cid={cid}
 			vm={vm}
-			hx-trigger={`close-details-requested[event.detail.id === ${vm.id}] from:body`}
+			hx-trigger={`close-details-requested[event.detail.id === '${cid}'] from:body`}
 			hx-get={vm._rowUrl}
 			hx-target='closest tr'
 			hx-swap="outerHTML"

@@ -1,18 +1,21 @@
-import {OOBPersonDetailModel, OOBPersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
+import {OOBPersonDetailModel} from "../p01oobpage/oob-person-page-model-vm";
 import {EvtBackendEvents} from "./evt-hono-web-api-shared-consts";
-import {JSX} from "hono/jsx";
+import {JSX, PropsWithChildren} from "hono/jsx";
 
 type TrAttrs = JSX.IntrinsicElements["tr"]
 type TemplateAttrs = JSX.IntrinsicElements["template"]
 
-export const EvtPersondetailsRow = (
-	{ vm, children, ...attrs }: { vm: OOBPersonDetailModel } & TrAttrs
-) => (
+type CmpProps = PropsWithChildren<{
+	cid: string;
+	vm: OOBPersonDetailModel;
+}> & TrAttrs;
+
+export const EvtPersondetailsRow = ({ cid, vm, children, ...attrs }: CmpProps) => (
 		<>
 			<tr
 				id={`row-${vm.id}`}
 				style="cursor: pointer"
-				_={`on click send '${Events.CLOSE_REQUESTED}'(id:${vm.id}) to <body/>`}
+				_={`on click halt the event then send '${Events.CLOSE_REQUESTED}'(id:${cid})`}
 				{...attrs}
 			>
 				<template
@@ -33,8 +36,8 @@ export const EvtPersondetailsRow = (
 const Events = {
 	CLOSE_REQUESTED: 'close-details-requested',
 };
-export const EvtCloseHandler = (
-	{ cid, vm, ...attrs }: { cid: string, vm: OOBPersonEditModel } & TemplateAttrs
+export const EvtPersondetailsRowCloseHandler = (
+	{ cid, vm, ...attrs }: { cid: string, vm: OOBPersonDetailModel } & TemplateAttrs
 ) => (
 	<template
 		hx-trigger={`
