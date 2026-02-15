@@ -15,10 +15,11 @@ export const EvtPersondetailsRow = ({ cid, vm, children, ...attrs }: CmpProps) =
 			<tr
 				id={`row-${vm.id}`}
 				style="cursor: pointer"
-				_={`on click halt the event then send '${Events.CLOSE_REQUESTED}'(id:${cid})`}
+				_={`on click halt the event then send '${EvtPersonDetailsRowX.CLOSE_REQUESTED}'(id:${cid})`}
 				{...attrs}
 			>
 				{children}
+				{/* refresh this component after update in backend happened: */}
 				<template
 					hx-trigger={`${EvtBackendEvents.PERSON_UPDATED}[event.detail.id === ${vm.id}] from:body`}
 					hx-target="closest tr"
@@ -34,17 +35,14 @@ export const EvtPersondetailsRow = ({ cid, vm, children, ...attrs }: CmpProps) =
 		</>
 );
 
-const Events = {
-	CLOSE_REQUESTED: 'close-details-requested',
-};
-
 export const EvtPersonDetailsRowX = {
-	CloseHandler: (
-		{ cid, vm, ...attrs }: { cid: string, vm: OOBPersonDetailModel } & TemplateAttrs
+	CLOSE_REQUESTED: 'close-details-requested',
+	RowEventHandler: (
+		{ cid, eventName, vm, ...attrs }: { cid: string, eventName: string, vm: OOBPersonDetailModel } & TemplateAttrs
 	) => (
 		<template
 			hx-trigger={`
-			${Events.CLOSE_REQUESTED}[event.detail.id == ${cid}] from:closest tr
+			${eventName}[event.detail.id == ${cid}] from:closest tr
 			`}
 			hx-target="closest tr"
 			hx-swap="outerHTML"
