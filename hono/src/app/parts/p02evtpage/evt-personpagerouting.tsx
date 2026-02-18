@@ -28,13 +28,6 @@ function init(hono: Hono) {
 			cid={cid}
 			vm={vm}
 		>
-			<EvtPersonDetailsRowX.RowEventHandler
-				cid={vm.id + ''}
-				eventName={EvtPersonDetailsRowX.CLOSE_REQUESTED}
-				vm={vm}
-				hx-get={vm._rowUrl}
-			>
-			</EvtPersonDetailsRowX.RowEventHandler>
 		</EvtPersondetailsRow>);
 	});
 
