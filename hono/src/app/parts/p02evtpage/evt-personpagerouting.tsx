@@ -3,11 +3,10 @@ import {EvtPersonPage} from "./evt-personpage";
 import {EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
 import {EvtPersonRow} from "./evt-personrow";
 import {EvtPersonTable} from "./evt-persontable";
-import {EvtPersonDetails} from "./evt-persondetails";
 import {EvtPersonEditor, EvtPersonEditorCloseHandler, EvtPersonEditorUpdatedHandler} from "./evt-personedit";
 import {OOBPersonDetailModel, OOBPersonEditModel, OOBPersonPageModel, OOBPersonTableModel, OOBPersonTableRowModel} from "../p01oobpage/oob-person-page-model-vm";
 import {EvtPersondetailsCard} from "./evt-persondetailscard";
-import {EvtPersondetailsRow, EvtPersonDetailsRowX} from "./evt-persondetailrow";
+import {EvtPersondetailsRow} from "./evt-persondetailrow";
 
 function init(hono: Hono) {
 	hono.post(EvtHonoWebApiConsts.PAGE, async (c) => {
@@ -17,18 +16,19 @@ function init(hono: Hono) {
 
 	hono.post(EvtHonoWebApiConsts.PERSON_DETAILS, async (c) => {
 		const vm = await c.req.json() as OOBPersonDetailModel;
-		return c.render(<EvtPersonDetails vm={vm}></EvtPersonDetails>);
+		return c.render(
+			<>
+				<EvtPersondetailsRow vm={vm}></EvtPersondetailsRow>
+				<EvtPersondetailsCard vm={vm}></EvtPersondetailsCard>
+			</>
+		);
 	});
 
 	hono.post(EvtHonoWebApiConsts.PERSON_DETAILS_ROW, async (c) => {
 		const vm = await c.req.json() as OOBPersonDetailModel;
-		// TODO: refactor duplication of attributes (see EvtPersonDetails component):
-		const cid = vm.id + '';
-		return c.render(<EvtPersondetailsRow
-			cid={cid}
-			vm={vm}
-		>
-		</EvtPersondetailsRow>);
+		return c.render(
+			<EvtPersondetailsRow vm={vm}></EvtPersondetailsRow>
+		);
 	});
 
 	hono.post(EvtHonoWebApiConsts.PERSON_DETAILS_CARD, async (c) => {

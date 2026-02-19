@@ -1,31 +1,21 @@
 import {OOBPersonDetailModel} from "../p01oobpage/oob-person-page-model-vm";
-import {JSX, PropsWithChildren} from "hono/jsx";
 import {EvtBackendEvents} from "./evt-hono-web-api-shared-consts";
 
-type TrAttrs = JSX.IntrinsicElements["tr"]
-type TemplateAttrs = JSX.IntrinsicElements["template"]
-
-type CmpProps = PropsWithChildren<{
-	cid: string;
-	vm: OOBPersonDetailModel;
-}> & TrAttrs;
-
-export const EvtPersondetailsRow = ({ cid, vm, children, ...attrs }: CmpProps) => (
+export const EvtPersondetailsRow = ({vm}: { vm: OOBPersonDetailModel }) => (
 		<>
 			<tr
 				id={`row-${vm.id}`}
 				style="cursor: pointer"
-				_={`on click halt the event then send '${EvtPersonDetailsRowX.CLOSE_REQUESTED}'(id:${cid})`}
-				{...attrs}
+				_={`on click halt the event then send '${EvtPersonDetailsRowX.CLOSE_REQUESTED}'(id:${vm.id})`}
 			>
 				<template
-					hx-trigger={`${EvtPersonDetailsRowX.CLOSE_REQUESTED}[event.detail.id == ${cid}] from:closest tr`}
+					hx-trigger={`${EvtPersonDetailsRowX.CLOSE_REQUESTED}[event.detail.id == ${vm.id}] from:closest tr`}
 					hx-target="closest tr"
 					hx-swap="outerHTML"
 					hx-get={vm._rowUrl}
 				></template>
 				<template
-					hx-trigger={`${EvtBackendEvents.PERSON_UPDATED}[event.detail.id == ${cid}] from:body`}
+					hx-trigger={`${EvtBackendEvents.PERSON_UPDATED}[event.detail.id == ${vm.id}] from:body`}
 					hx-target="closest tr"
 					hx-swap="outerHTML"
 					hx-get={`/demo/event/person/${vm.id}/detailsrow`} /*TODO: replace hard coded URL */
