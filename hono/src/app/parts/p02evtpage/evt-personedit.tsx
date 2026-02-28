@@ -1,15 +1,24 @@
 import {OOBPersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
-import {PropsWithChildren, JSX} from "hono/jsx";
 import {EvtBackendEvents} from "./evt-hono-web-api-shared-consts";
 
-type CmpProps = PropsWithChildren<{
-	cid: string;
-	vm: OOBPersonEditModel;
-}>;
-
-export const EvtPersonEditor = ({ cid, vm, children }: CmpProps) => (
+export const EvtPersonEditor = ({ vm }: {vm: OOBPersonEditModel}) => (
 	<tr id={`row-${vm.id}-edit`}>
-		{children}
+		<template
+			hx-trigger={`
+			${EditEvents.CLOSE_REQUESTED}[event.detail.id == ${vm.id}] from:closest tr
+			`}
+			hx-target="closest tr"
+			hx-swap="outerHTML"
+			hx-get={vm._editBackLink}
+		></template>
+		<template
+			hx-trigger={`
+			${EvtBackendEvents.PERSON_UPDATED}[event.detail.id === ${vm.id}] from:closest tr
+			`}
+			hx-target="closest tr"
+			hx-swap="outerHTML"
+			hx-get={vm._editBackLink}
+		></template>
 		<td colSpan={4} style="padding: 0px">
 			<div class="card p-5 my-2">
 				<form>
@@ -44,7 +53,7 @@ export const EvtPersonEditor = ({ cid, vm, children }: CmpProps) => (
 					<nav class="level">
 						<button
 							class="level-item button"
-							_={`on click halt the event then send '${EditEvents.CLOSE_REQUESTED}'(id:${cid})`}
+							_={`on click halt the event then send '${EditEvents.CLOSE_REQUESTED}'(id:${vm.id})`}
 						>&lt; Back
 						</button>
 						<button
@@ -65,29 +74,3 @@ export const EvtPersonEditor = ({ cid, vm, children }: CmpProps) => (
 const EditEvents = {
 	CLOSE_REQUESTED: 'close-edit-requested',
 };
-
-type TemplateAttrs = JSX.IntrinsicElements["template"]
-export const EvtPersonEditorCloseHandler = (
-	{ cid, vm, ...attrs }: { cid: string, vm: OOBPersonEditModel } & TemplateAttrs
-) => (
-	<template
-		hx-trigger={`
-			${EditEvents.CLOSE_REQUESTED}[event.detail.id == ${cid}] from:closest tr
-			`}
-		hx-target="closest tr"
-		hx-swap="outerHTML"
-		{...attrs}
-	></template>
-);
-export const EvtPersonEditorUpdatedHandler = (
-	{ cid, vm, ...attrs }: { cid: string, vm: OOBPersonEditModel } & TemplateAttrs
-) => (
-	<template
-		hx-trigger={`
-			${EvtBackendEvents.PERSON_UPDATED}[event.detail.id === ${cid}] from:closest tr
-			`}
-		hx-target="closest tr"
-		hx-swap="outerHTML"
-		{...attrs}
-	></template>
-);

@@ -60,7 +60,7 @@ export const MpaLayout = (props: {selectedMenu: string, children: ComponentChild
 			</div>
 		</nav>
 
-		<div class="p-1 mt-1 area-border" style="min-height: 500px">
+		<div class="p-1 mt-1" style="min-height: 500px">
 			{props.children}
 		</div>
 

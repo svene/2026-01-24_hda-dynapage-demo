@@ -40,18 +40,7 @@ function init(hono: Hono) {
 		const vm = await c.req.json() as OOBPersonEditModel;
 		const cid = vm.id + '';
 		return c.render(
-			<EvtPersonEditor cid={cid} vm={vm}>
-				<EvtPersonEditorCloseHandler
-					cid={cid}
-					vm={vm}
-					hx-get={vm._editBackLink}
-				></EvtPersonEditorCloseHandler>
-				<EvtPersonEditorUpdatedHandler
-					cid={cid}
-					vm={vm}
-					hx-get={vm._editBackLink}
-				></EvtPersonEditorUpdatedHandler>
-			</EvtPersonEditor>
+			<EvtPersonEditor vm={vm}></EvtPersonEditor>
 		);
 	});
 
