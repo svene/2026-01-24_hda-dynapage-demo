@@ -1,5 +1,7 @@
 package dev.svenehrke.springboothonopoc.core;
 
+import dev.svenehrke.springboothonopoc.core.OobHonoWebApiSharedConsts.OOBHonoWebApiConsts;
+
 public class ConfigurableRouteBuilder implements RouteBuilder {
 	private final String base;
 
@@ -14,7 +16,7 @@ public class ConfigurableRouteBuilder implements RouteBuilder {
 
 	@Override
 	public String detailsUrl(int id) {
-		return idUrl(base + RouteBuilder.DETAILS_URL, id);
+		return idUrl(OOBHonoWebApiConsts.PERSON_DETAILS, id); // TODO: OOB specific
 	}
 	@Override
 	public String detailsBackUrl(int id) {

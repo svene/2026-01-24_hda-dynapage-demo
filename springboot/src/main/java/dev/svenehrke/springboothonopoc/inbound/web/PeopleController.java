@@ -2,10 +2,8 @@ package dev.svenehrke.springboothonopoc.inbound.web;
 
 import dev.svenehrke.springboothonopoc.app.Oob;
 import dev.svenehrke.springboothonopoc.app.OobConfig;
-import dev.svenehrke.springboothonopoc.core.OOBPersonEditModel;
-import dev.svenehrke.springboothonopoc.core.OOBPersonPageModel;
-import dev.svenehrke.springboothonopoc.core.PeopleService;
-import dev.svenehrke.springboothonopoc.core.RouteBuilder;
+import dev.svenehrke.springboothonopoc.core.*;
+import dev.svenehrke.springboothonopoc.core.OobHonoWebApiSharedConsts.OOBHonoWebApiConsts;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoAppClient;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -24,7 +22,6 @@ import static dev.svenehrke.springboothonopoc.inbound.web.HTMXConsts.HX_REDIRECT
  * - Step 2: Forward HTTP request to HONO
  */
 @Controller
-@RequestMapping(OobConfig.OOB_BASE_URL)
 public class PeopleController {
 
 	private final PeopleService peopleService;
@@ -42,18 +39,18 @@ public class PeopleController {
 		this.honoAppClient = honoAppClient;
 	}
 
-	@GetMapping(PAGE_URL)
+	@GetMapping(OOBHonoWebApiConsts.PAGE)
 	public ResponseEntity<String> peoplePage(HttpServletRequest request) {
 		var vm = new OOBPersonPageModel(peopleService.personTableModel(), routeBuilder.url(RouteBuilder.PERSON_TABLE_URL));
 		return honoAppClient.post(request.getRequestURI(), vm);
 	}
 
-	@GetMapping(RouteBuilder.PERSON_TABLE_URL)
+	@GetMapping(OOBHonoWebApiConsts.PERSON_TABLE)
 	public ResponseEntity<String> peopleUrl(@RequestParam() String search, HttpServletRequest request) {
 		return honoAppClient.post(request.getRequestURI(), peopleService.peopleForSearch(search));
 	}
 
-	@GetMapping(RouteBuilder.DETAILS_URL)
+	@GetMapping(OOBHonoWebApiConsts.PERSON_DETAILS)
 	public ResponseEntity<String> details(@PathVariable int id, HttpServletRequest request) {
 		return honoAppClient.post(request.getRequestURI(), peopleService.personDetailModel(id));
 	}

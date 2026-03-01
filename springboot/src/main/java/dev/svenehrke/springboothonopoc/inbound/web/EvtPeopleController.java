@@ -4,6 +4,7 @@ import dev.svenehrke.springboothonopoc.app.Evt;
 import dev.svenehrke.springboothonopoc.app.EvtConfig;
 import dev.svenehrke.springboothonopoc.core.*;
 import dev.svenehrke.springboothonopoc.core.EvtHonoWebApiSharedConsts.EvtBackendEvents;
+import dev.svenehrke.springboothonopoc.core.OobHonoWebApiSharedConsts.OOBHonoWebApiConsts;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoEventPersonApi;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
@@ -46,7 +47,7 @@ public class EvtPeopleController {
 		return honoApi.personTable(vm);
 	}
 
-	@GetMapping(RouteBuilder.DETAILS_URL)
+	@GetMapping(OOBHonoWebApiConsts.PERSON_DETAILS)
 	public ResponseEntity<String> details(@PathVariable int id) {
 		return honoApi.personDetails(peopleService.personDetailModel(id));
 	}

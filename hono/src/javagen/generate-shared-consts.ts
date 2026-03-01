@@ -125,8 +125,10 @@ function emitNestedInterface(
 		const init = prop.getInitializer();
 		if (!init) return;
 
-		const javaExpr = emitJavaExpression(init);
-
+		let javaExpr = emitJavaExpression(init);
+		// Convert Hono-PathVariables to Spring-PathVariables:
+		// E.g.: PERSON_EDIT: `${BASE}/person/:id/edit` -> String PERSON_EDIT = BASE + "/person/{id}/edit";
+		javaExpr = javaExpr.replace(/(:)(id)/, '{$2}');
 		lines.push(
 			...indent([`String ${key} = ${javaExpr};`])
 		);
