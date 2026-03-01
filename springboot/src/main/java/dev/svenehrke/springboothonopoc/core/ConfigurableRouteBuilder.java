@@ -20,7 +20,7 @@ public class ConfigurableRouteBuilder implements RouteBuilder {
 	}
 	@Override
 	public String detailsBackUrl(int id) {
-		return idUrl(base + RouteBuilder.DETAILS_BACK_URL, id);
+		return idUrl(OOBHonoWebApiConsts.PERSON_DETAILS_BACK, id);
 	}
 	@Override
 	public String editUrl(int id) {

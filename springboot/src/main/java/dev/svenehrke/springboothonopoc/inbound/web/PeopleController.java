@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static dev.svenehrke.springboothonopoc.core.RouteBuilder.PAGE_URL;
 import static dev.svenehrke.springboothonopoc.inbound.web.HTMXConsts.HX_REDIRECT;
 
 /**
@@ -54,7 +53,7 @@ public class PeopleController {
 	public ResponseEntity<String> details(@PathVariable int id, HttpServletRequest request) {
 		return honoAppClient.post(request.getRequestURI(), peopleService.personDetailModel(id));
 	}
-	@GetMapping(RouteBuilder.DETAILS_BACK_URL)
+	@GetMapping(OOBHonoWebApiConsts.PERSON_DETAILS_BACK)
 	public ResponseEntity<String> detailsBack(@PathVariable int id, HttpServletRequest request) {
 		return honoAppClient.post(request.getRequestURI(), peopleService.personTableRowModel(id));
 	}
