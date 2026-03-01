@@ -10,16 +10,13 @@ public class HSQLPeopleRepository implements PeopleRepository {
 
 	private final JdbcClient jdbcClient;
 	private final JdbcTemplate jdbcTemplate;
-	private final RouteBuilder routeBuilder;
 
 	public HSQLPeopleRepository(
 		JdbcClient jdbcClient,
-		JdbcTemplate jdbcTemplate,
-		RouteBuilder routeBuilder
+		JdbcTemplate jdbcTemplate
 	) {
 		this.jdbcClient = jdbcClient;
 		this.jdbcTemplate = jdbcTemplate;
-		this.routeBuilder = routeBuilder;
 	}
 
 	@Override
@@ -31,7 +28,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("firstname"),
 				rs.getString("lastname"),
 				rs.getString("streetname"),
-				routeBuilder.detailsUrl(rs.getInt("id"))
+				RouteBuilder.detailsUrl(rs.getInt("id"))
 		)).list();
 		return new OOBPersonTableModel(result, total());
 	}
@@ -55,7 +52,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("firstname"),
 				rs.getString("lastname"),
 				rs.getString("streetname"),
-				routeBuilder.detailsUrl(rs.getInt("id"))
+				RouteBuilder.detailsUrl(rs.getInt("id"))
 			)).list();
 		return new OOBPersonTableModel(result, total());
 	}
@@ -80,7 +77,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("firstname"),
 				rs.getString("lastname"),
 				rs.getString("streetname"),
-				routeBuilder.detailsUrl(rs.getInt("id"))
+				RouteBuilder.detailsUrl(rs.getInt("id"))
 			)).single();
 		return result;
 	}
@@ -96,8 +93,8 @@ public class HSQLPeopleRepository implements PeopleRepository {
 					rs.getString("firstname"),
 					rs.getString("lastname"),
 					rs.getString("streetname"),
-					routeBuilder.detailsCardUrl(rs.getInt("id")),
-					routeBuilder.updateUrl(rs.getInt("id"))
+					RouteBuilder.detailsCardUrl(rs.getInt("id")),
+					RouteBuilder.updateUrl(rs.getInt("id"))
 				)).single();
 	}
 
@@ -125,9 +122,9 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("mailbox"),
 				rs.getString("phonenumber"),
 				rs.getString("cellphone"),
-				routeBuilder.detailsBackUrl(rs.getInt("id")),
-				routeBuilder.editUrl(rs.getInt("id")),
-				routeBuilder.rowUrl(rs.getInt("id"))
+				RouteBuilder.detailsBackUrl(rs.getInt("id")),
+				RouteBuilder.editUrl(rs.getInt("id")),
+				RouteBuilder.rowUrl(rs.getInt("id"))
 			)
 		).single();
 		return result;

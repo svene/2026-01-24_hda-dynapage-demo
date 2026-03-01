@@ -1,4 +1,5 @@
 import {OOBPersonTableRowModel} from "../p01oobpage/oob-person-page-model-vm";
+import {EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
 
 export const EvtPersonRow = (props: {vm: OOBPersonTableRowModel}) => (
 	<tr
@@ -7,7 +8,7 @@ export const EvtPersonRow = (props: {vm: OOBPersonTableRowModel}) => (
 		hx-trigger="click"
 		hx-target="this"
 		hx-swap="outerHTML"
-		hx-get={props.vm._detailsLink}
+		hx-get={EvtHonoWebApiConsts.BASE + props.vm._detailsLink}
 	>
 		<td hx-trigger="click consume"> {/* consume: prevent bubbling, only checkbox needs to be clicked, not parents*/}
 			<input type="checkbox" name="selection" value={props.vm.id} form="bulkDeleteForm"></input>

@@ -1,30 +1,37 @@
 package dev.svenehrke.springboothonopoc.core;
 
+import dev.svenehrke.springboothonopoc.core.HonoWebApiSharedConsts.HonoWebApiConsts;
 import org.springframework.web.util.UriComponentsBuilder;
 
 public interface RouteBuilder {
-	String DETAILS_URL = "/person/{id}/details";
-	String DETAILS_ROW_URL = "/person/{id}/detailsrow";
-	String DETAILS_CARD_URL = "/person/{id}/detailscard";
-	String DETAILS_BACK_URL = "/person/{id}/detailsback";
-	String EDIT_URL = "/person/{id}/edit";
-	String ROW_URL = "/person/{id}/row";
 	String PERSON_URL = "/person/{id}"; // TODO: no UI, only update
 	String PAGE_URL = "/page";
 	String PERSON_TABLE_URL = "/persontable";
 	String DELETE_URL = "/delete"; // TODO: no UI, only update
 
-	String detailsUrl(int id);
-	String detailsBackUrl(int id);
-	String editUrl(int id);
-	String detailsCardUrl(int id);
-	String updateUrl(int id);
-	String rowUrl(int id);
+	static String detailsUrl(int id) {
+		return idUrl(HonoWebApiConsts.PERSON_DETAILS, id);
+	}
+	static String detailsBackUrl(int id) {
+		return idUrl(HonoWebApiConsts.PERSON_DETAILS_BACK, id);
+	}
+	static String editUrl(int id) {
+		return idUrl(HonoWebApiConsts.PERSON_EDIT, id);
+	}
+	static String detailsCardUrl(int id) {
+		return idUrl(HonoWebApiConsts.PERSON_DETAILS_CARD, id);
+	}
+	static String updateUrl(int id) {
+		return idUrl(HonoWebApiConsts.PERSON, id);
+	} // TODO: no UI, only update
+	static String rowUrl(int id) {
+		return idUrl(HonoWebApiConsts.PERSON_ROW, id);
+	}
 
-	default String idUrl(String url, int id) {
+	static String idUrl(String url, int id) {
 		return UriComponentsBuilder.fromPath(url).buildAndExpand(id).toUriString();
 	}
-	default String url(String url) {
+	static String url(String url) {
 		return url;
 	}
 

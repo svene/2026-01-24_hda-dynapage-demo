@@ -1,6 +1,7 @@
 import {OOBPersonTableModel} from "./oob-person-page-model-vm";
 import {OOBPersonRow} from "./oob-personrow";
 import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
+import {HonoWebApiConsts} from "./hono-web-api-shared-consts";
 
 export const OOBPersonTable = (props: { vm: OOBPersonTableModel }) => (
 	<div id="result-table">
@@ -10,7 +11,7 @@ export const OOBPersonTable = (props: { vm: OOBPersonTableModel }) => (
 				<td colSpan={5}>
 					<form
 						id="bulkDeleteForm"
-						hx-delete={OOBHonoWebApiConsts.DELETE}
+						hx-delete={OOBHonoWebApiConsts.BASE + HonoWebApiConsts.DELETE}
 						hx-target="#result-table"
 					>
 						<button type="submit" className="button">

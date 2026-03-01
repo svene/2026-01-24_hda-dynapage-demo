@@ -1,4 +1,5 @@
 import {OOBPersonDetailModel} from "./oob-person-page-model-vm";
+import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
 
 export const OOBPersondetailsCard = (props: { vm: OOBPersonDetailModel }) => (
 		<>
@@ -8,7 +9,7 @@ export const OOBPersondetailsCard = (props: { vm: OOBPersonDetailModel }) => (
 				hx-trigger="click"
 				hx-target="this"
 				hx-swap="outerHTML"
-				hx-get={props.vm._editLink}
+				hx-get={OOBHonoWebApiConsts.BASE + props.vm._editLink}
 			>
 				<td colSpan={5} style="padding-left: 30px">
 

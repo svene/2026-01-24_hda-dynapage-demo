@@ -1,8 +1,10 @@
+const X = '';
 const BASE = '/demo/event';
 
 export const EvtHonoWebApiConsts = {
+	BASE: `${X}/demo/event`,
+	PAGE_MENU_ID: `${X}event`,
 	PAGE: `${BASE}/page`,
-	PAGE_MENU_ID: 'event',
 	PERSON_TABLE: `${BASE}/persontable`,
 	PERSON_EDIT: `${BASE}/person/edit`,
 	PERSON_ROW: `${BASE}/person/row`,

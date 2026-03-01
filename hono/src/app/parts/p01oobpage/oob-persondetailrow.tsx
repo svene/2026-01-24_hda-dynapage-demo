@@ -1,4 +1,5 @@
 import {OOBPersonDetailModel} from "./oob-person-page-model-vm";
+import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
 
 export const OOBPersondetailsRow = (props: { vm: OOBPersonDetailModel }) => (
 		<>
@@ -8,7 +9,7 @@ export const OOBPersondetailsRow = (props: { vm: OOBPersonDetailModel }) => (
 				hx-trigger="click"
 				hx-target="this"
 				hx-swap="outerHTML"
-				hx-get={props.vm._backLink}
+				hx-get={OOBHonoWebApiConsts.BASE + props.vm._backLink}
 			>
 				<td style="border-style: none"></td>
 				<td style="border-style: none">{props.vm.firstName}</td>

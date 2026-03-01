@@ -1,5 +1,5 @@
 import {OOBPersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
-import {EvtBackendEvents} from "./evt-hono-web-api-shared-consts";
+import {EvtBackendEvents, EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
 
 export const EvtPersonEditor = ({ vm }: {vm: OOBPersonEditModel}) => (
 	<tr id={`row-${vm.id}-edit`}>
@@ -9,7 +9,7 @@ export const EvtPersonEditor = ({ vm }: {vm: OOBPersonEditModel}) => (
 			`}
 			hx-target="closest tr"
 			hx-swap="outerHTML"
-			hx-get={vm._editBackLink}
+			hx-get={EvtHonoWebApiConsts.BASE + vm._editBackLink}
 		></template>
 		<template
 			hx-trigger={`
@@ -17,7 +17,7 @@ export const EvtPersonEditor = ({ vm }: {vm: OOBPersonEditModel}) => (
 			`}
 			hx-target="closest tr"
 			hx-swap="outerHTML"
-			hx-get={vm._editBackLink}
+			hx-get={EvtHonoWebApiConsts.BASE + vm._editBackLink}
 		></template>
 		<td colSpan={4} style="padding: 0px">
 			<div class="card p-5 my-2">
