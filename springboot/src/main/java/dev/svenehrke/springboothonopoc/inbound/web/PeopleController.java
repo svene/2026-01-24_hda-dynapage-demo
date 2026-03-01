@@ -58,28 +58,28 @@ public class PeopleController {
 		return honoAppClient.post(request.getRequestURI(), peopleService.personTableRowModel(id));
 	}
 
-	@GetMapping(RouteBuilder.EDIT_URL)
+	@GetMapping(OOBHonoWebApiConsts.PERSON_EDIT)
 	public ResponseEntity<String> edit(@PathVariable int id, HttpServletRequest request) {
 		return honoAppClient.post(request.getRequestURI(), peopleService.personEditModel(id));
 	}
 
-	@GetMapping(RouteBuilder.DETAILS_CARD_URL)
+	@GetMapping(OOBHonoWebApiConsts.PERSON_DETAILS_CARD)
 	public ResponseEntity<String> detailsCard(@PathVariable int id, HttpServletRequest request) {
 		return honoAppClient.post(request.getRequestURI(), peopleService.personDetailModel(id));
 	}
 
-	@GetMapping(RouteBuilder.ROW_URL)
+	@GetMapping(OOBHonoWebApiConsts.PERSON_ROW)
 	public ResponseEntity<String> row(@PathVariable int id, HttpServletRequest request) {
 		return honoAppClient.post(request.getRequestURI(), peopleService.personTableRowModel(id));
 	}
 
-	@DeleteMapping(RouteBuilder.DELETE_URL)
+	@DeleteMapping(OobConfig.OOB_BASE_URL + RouteBuilder.DELETE_URL)
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection, HttpServletRequest request, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
 		return honoAppClient.post(routeBuilder.url(RouteBuilder.PERSON_TABLE_URL) , peopleService.peopleForSearch(""));
 	}
 
-	@PutMapping(RouteBuilder.PERSON_URL)
+	@PutMapping(OobConfig.OOB_BASE_URL + RouteBuilder.PERSON_URL)
 	public ResponseEntity<String> updatePerson(
 		@PathVariable int id,
 		OOBPersonEditModel personEditModel,

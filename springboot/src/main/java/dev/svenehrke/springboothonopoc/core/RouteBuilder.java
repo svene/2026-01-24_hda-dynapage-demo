@@ -9,10 +9,10 @@ public interface RouteBuilder {
 	String DETAILS_BACK_URL = "/person/{id}/detailsback";
 	String EDIT_URL = "/person/{id}/edit";
 	String ROW_URL = "/person/{id}/row";
-	String PERSON_URL = "/person/{id}";
+	String PERSON_URL = "/person/{id}"; // TODO: no UI, only update
 	String PAGE_URL = "/page";
 	String PERSON_TABLE_URL = "/persontable";
-	String DELETE_URL = "/delete";
+	String DELETE_URL = "/delete"; // TODO: no UI, only update
 
 	String detailsUrl(int id);
 	String detailsBackUrl(int id);
