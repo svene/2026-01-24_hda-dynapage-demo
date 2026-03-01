@@ -19,7 +19,6 @@ import java.util.List;
  * - Step 2: Forward HTTP request to HONO
  */
 @Controller
-@RequestMapping(EvtConfig.EVT_BASE_URL)
 public class EvtPeopleController {
 
 	private final PeopleService peopleService;
@@ -36,49 +35,49 @@ public class EvtPeopleController {
 		this.routeBuilder = routeBuilder;
 	}
 
-	@GetMapping(RouteBuilder.PAGE_URL)
+	@GetMapping(EvtConfig.EVT_BASE_URL + RouteBuilder.PAGE_URL)
 	public ResponseEntity<String> peoplePage() {
 		var vm = new OOBPersonPageModel(peopleService.personTableModel(), routeBuilder.url(RouteBuilder.PERSON_TABLE_URL));
 		return honoApi.peoplePage(vm);
 	}
-	@GetMapping(RouteBuilder.PERSON_TABLE_URL)
+	@GetMapping(EvtConfig.EVT_BASE_URL + RouteBuilder.PERSON_TABLE_URL)
 	public ResponseEntity<String> peopleUrl(@RequestParam() String search) {
 		OOBPersonTableModel vm = peopleService.peopleForSearch(search);
 		return honoApi.personTable(vm);
 	}
 
-	@GetMapping(OOBHonoWebApiConsts.PERSON_DETAILS)
+	@GetMapping(EvtConfig.EVT_BASE_URL + OOBHonoWebApiConsts.PERSON_DETAILS)
 	public ResponseEntity<String> details(@PathVariable int id) {
 		return honoApi.personDetails(peopleService.personDetailModel(id));
 	}
-	@GetMapping(RouteBuilder.DETAILS_ROW_URL)
+	@GetMapping(EvtConfig.EVT_BASE_URL + RouteBuilder.DETAILS_ROW_URL)
 	public ResponseEntity<String> detailsRow(@PathVariable int id) {
 		return honoApi.personDetailsRow(peopleService.personDetailModel(id));
 	}
 
-	@GetMapping(RouteBuilder.DETAILS_CARD_URL)
+	@GetMapping(EvtConfig.EVT_BASE_URL + RouteBuilder.DETAILS_CARD_URL)
 	public ResponseEntity<String> detailsCard(@PathVariable int id) {
 		return honoApi.personDetailsCard(peopleService.personDetailModel(id));
 	}
 
-	@GetMapping(RouteBuilder.EDIT_URL)
+	@GetMapping(EvtConfig.EVT_BASE_URL + RouteBuilder.EDIT_URL)
 	public ResponseEntity<String> edit(@PathVariable int id) {
 		OOBPersonEditModel vm = peopleService.personEditModel(id);
 		return honoApi.personEdit(vm);
 	}
-	@GetMapping(RouteBuilder.ROW_URL)
+	@GetMapping(EvtConfig.EVT_BASE_URL + RouteBuilder.ROW_URL)
 	public ResponseEntity<String> row(@PathVariable int id) {
 		return honoApi.personRow(peopleService.personTableRowModel(id));
 	}
 
-	@DeleteMapping(RouteBuilder.DELETE_URL)
+	@DeleteMapping(EvtConfig.EVT_BASE_URL + RouteBuilder.DELETE_URL)
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
 		response.setHeader("HX-Redirect", routeBuilder.url(RouteBuilder.PAGE_URL));
 		return peoplePage();
 	}
 
-	@PutMapping(RouteBuilder.PERSON_URL)
+	@PutMapping(EvtConfig.EVT_BASE_URL + RouteBuilder.PERSON_URL)
 	public void updatePerson(@PathVariable int id, OOBPersonEditModel personEditModel, HttpServletResponse response) {
 		peopleService.updatePerson(id, personEditModel);
 		response.setHeader(HTMXConsts.HX_TRIGGER, """
