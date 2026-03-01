@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import static dev.svenehrke.springboothonopoc.core.RouteBuilder.PAGE_URL;
+import static dev.svenehrke.springboothonopoc.inbound.web.HTMXConsts.HX_REDIRECT;
 
 /**
  * General Forwarding Pattern (Spring -> Hono):
@@ -79,13 +80,12 @@ public class PeopleController {
 	@DeleteMapping(RouteBuilder.DELETE_URL)
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
-		response.setHeader("HX-Redirect", routeBuilder.url(RouteBuilder.PAGE_URL));
-		return peoplePage();
+		return honoApi.personTable(peopleService.peopleForSearch(""));
 	}
 
 	@PutMapping(RouteBuilder.PERSON_URL)
 	public ResponseEntity<String> updatePerson(@PathVariable int id, OOBPersonEditModel personEditModel, HttpServletResponse response) {
-		response.setHeader("HX-Redirect", routeBuilder.url(RouteBuilder.PAGE_URL));
+		response.setHeader(HX_REDIRECT, routeBuilder.url(RouteBuilder.PAGE_URL));
 		peopleService.updatePerson(id, personEditModel);
 		return peoplePage();
 	}

@@ -8,7 +8,11 @@ export const OOBPersonTable = (props: { vm: OOBPersonTableModel }) => (
 			<thead>
 			<tr>
 				<td colSpan={5}>
-					<form id="bulkDeleteForm" hx-delete={OOBHonoWebApiConsts.DELETE}>
+					<form
+						id="bulkDeleteForm"
+						hx-delete={OOBHonoWebApiConsts.DELETE}
+						hx-target="#result-table"
+					>
 						<button type="submit" className="button">
 							<span className="icon"><i className="material-icons">delete</i></span>
 							<span>Delete</span>
