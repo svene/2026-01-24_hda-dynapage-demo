@@ -74,7 +74,7 @@ public class PeopleController {
 	@DeleteMapping(HonoWebApiConsts.DELETE)
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection) {
 		peopleService.deleteByIds(selection);
-		return honoAppClient.post(OOBHonoWebApiConsts.BASE + RouteBuilder.PERSON_TABLE_URL, peopleService.peopleForSearch(""));
+		return honoAppClient.post(OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_TABLE, peopleService.peopleForSearch(""));
 	}
 
 	@PutMapping(HonoWebApiConsts.PERSON)

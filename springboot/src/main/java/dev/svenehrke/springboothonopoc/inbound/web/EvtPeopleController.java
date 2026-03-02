@@ -76,7 +76,7 @@ public class EvtPeopleController {
 	@DeleteMapping(HonoWebApiConsts.DELETE)
 	public void deleteRows(@RequestParam List<Integer> selection, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
-		response.setHeader(HTMXConsts.HX_REDIRECT, EvtHonoWebApiConsts.BASE + RouteBuilder.PAGE_URL);
+		response.setHeader(HTMXConsts.HX_REDIRECT, EvtHonoWebApiConsts.BASE + HonoWebApiConsts.PAGE);
 	}
 
 	@PutMapping(HonoWebApiConsts.PERSON)
