@@ -60,7 +60,7 @@ export const EvtPersonEditor = ({ vm }: {vm: OOBPersonEditModel}) => (
 							type="submit"
 							class="level-item button is-primary"
 							hx-trigger="click consume"
-							hx-put={`${vm._submitLink}`} /* Expects backend to respond with 'person-updated'(id) event */
+							hx-put={`${EvtHonoWebApiConsts.BASE + vm._submitLink}`} /* Expects backend to respond with 'person-updated'(id) event */
 							hx-swap="none" /* Works with event handling of 'person-updated' */
 						>Save
 						</button>

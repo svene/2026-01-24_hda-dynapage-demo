@@ -38,7 +38,7 @@ public class PeopleController {
 
 	@GetMapping(HonoWebApiConsts.PAGE)
 	public ResponseEntity<String> peoplePage(HttpServletRequest request) {
-		var vm = new OOBPersonPageModel(peopleService.personTableModel(), RouteBuilder.url(RouteBuilder.PERSON_TABLE_URL));
+		var vm = new OOBPersonPageModel(peopleService.personTableModel(), RouteBuilder.PERSON_TABLE_URL);
 		return honoAppClient.post(request.getRequestURI(), vm);
 	}
 
@@ -74,7 +74,7 @@ public class PeopleController {
 	@DeleteMapping(HonoWebApiConsts.DELETE)
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection) {
 		peopleService.deleteByIds(selection);
-		return honoAppClient.post(RouteBuilder.url(OOBHonoWebApiConsts.BASE + RouteBuilder.PERSON_TABLE_URL) , peopleService.peopleForSearch(""));
+		return honoAppClient.post(OOBHonoWebApiConsts.BASE + RouteBuilder.PERSON_TABLE_URL, peopleService.peopleForSearch(""));
 	}
 
 	@PutMapping(HonoWebApiConsts.PERSON)

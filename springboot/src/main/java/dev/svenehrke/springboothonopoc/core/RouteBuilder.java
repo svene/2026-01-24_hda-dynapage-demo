@@ -31,8 +31,5 @@ public interface RouteBuilder {
 	static String idUrl(String url, int id) {
 		return UriComponentsBuilder.fromPath(url).buildAndExpand(id).toUriString();
 	}
-	static String url(String url) {
-		return url;
-	}
 
 }
