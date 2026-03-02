@@ -3,7 +3,6 @@ export type OOBPersonTableRowModel = {
 	firstName: string,
 	lastName: string,
 	streetName: string,
-	_detailsLink: string,
 }
 
 export type OOBPersonTableModel = {
@@ -12,7 +11,6 @@ export type OOBPersonTableModel = {
 }
 export type OOBPersonPageModel = {
 	table: OOBPersonTableModel,
-	_tableLink: string,
 }
 
 export type OOBPersonDetailModel = {
@@ -27,9 +25,6 @@ export type OOBPersonDetailModel = {
 	mailBox: string,
 	phoneNumber: string,
 	cellPhone: string,
-	_backLink: string,
-	_editLink: string,
-	_rowUrl: string,
 }
 
 export type OOBPersonEditModel = {
@@ -37,7 +32,5 @@ export type OOBPersonEditModel = {
 	firstName: string,
 	lastName: string,
 	streetName: string,
-	_editBackLink: string,
-	_submitLink: string,
 }
 

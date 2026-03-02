@@ -27,8 +27,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getInt("id"),
 				rs.getString("firstname"),
 				rs.getString("lastname"),
-				rs.getString("streetname"),
-				RouteBuilder.detailsUrl(rs.getInt("id"))
+				rs.getString("streetname")
 		)).list();
 		return new OOBPersonTableModel(result, total());
 	}
@@ -51,8 +50,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getInt("id"),
 				rs.getString("firstname"),
 				rs.getString("lastname"),
-				rs.getString("streetname"),
-				RouteBuilder.detailsUrl(rs.getInt("id"))
+				rs.getString("streetname")
 			)).list();
 		return new OOBPersonTableModel(result, total());
 	}
@@ -76,8 +74,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getInt("id"),
 				rs.getString("firstname"),
 				rs.getString("lastname"),
-				rs.getString("streetname"),
-				RouteBuilder.detailsUrl(rs.getInt("id"))
+				rs.getString("streetname")
 			)).single();
 		return result;
 	}
@@ -92,9 +89,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 					rs.getInt("id"),
 					rs.getString("firstname"),
 					rs.getString("lastname"),
-					rs.getString("streetname"),
-					RouteBuilder.detailsCardUrl(rs.getInt("id")),
-					RouteBuilder.updateUrl(rs.getInt("id"))
+					rs.getString("streetname")
 				)).single();
 	}
 
@@ -121,10 +116,7 @@ public class HSQLPeopleRepository implements PeopleRepository {
 				rs.getString("country"),
 				rs.getString("mailbox"),
 				rs.getString("phonenumber"),
-				rs.getString("cellphone"),
-				RouteBuilder.detailsBackUrl(rs.getInt("id")),
-				RouteBuilder.editUrl(rs.getInt("id")),
-				RouteBuilder.rowUrl(rs.getInt("id"))
+				rs.getString("cellphone")
 			)
 		).single();
 		return result;

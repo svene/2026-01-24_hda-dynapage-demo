@@ -36,7 +36,7 @@ public class EvtPeopleController {
 
 	@GetMapping(HonoWebApiConsts.PAGE)
 	public ResponseEntity<String> peoplePage(HttpServletRequest request) {
-		var vm = new OOBPersonPageModel(peopleService.personTableModel(), RouteBuilder.PERSON_TABLE_URL);
+		var vm = new OOBPersonPageModel(peopleService.personTableModel());
 		return honoAppClient.post(request.getRequestURI(), vm);
 	}
 	@GetMapping(HonoWebApiConsts.PERSON_TABLE)
