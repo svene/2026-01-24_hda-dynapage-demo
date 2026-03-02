@@ -7,8 +7,7 @@ import {EvtPersonEditor} from "./evt-personedit";
 import {OOBPersonDetailModel, OOBPersonEditModel, OOBPersonPageModel, OOBPersonTableModel, OOBPersonTableRowModel} from "../p01oobpage/oob-person-page-model-vm";
 import {EvtPersondetailsCard} from "./evt-persondetailscard";
 import {EvtPersondetailsRow} from "./evt-persondetailrow";
-import {OOBHonoWebApiConsts} from "../p01oobpage/oob-hono-web-api-shared-consts";
-import { HonoWebApiConsts } from "../p01oobpage/hono-web-api-shared-consts";
+import {HonoWebApiConsts} from "../p00shared/hono-web-api-shared-consts";
 
 function init(hono: Hono) {
 	hono.post(EvtHonoWebApiConsts.BASE + HonoWebApiConsts.PAGE, async (c) => {

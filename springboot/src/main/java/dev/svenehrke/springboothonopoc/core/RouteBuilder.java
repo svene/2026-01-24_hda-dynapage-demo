@@ -21,9 +21,9 @@ public interface RouteBuilder {
 	static String detailsCardUrl(int id) {
 		return idUrl(HonoWebApiConsts.PERSON_DETAILS_CARD, id);
 	}
-	static String updateUrl(int id) {
+	static String updateUrl(int id) { // TODO: no UI, only update
 		return idUrl(HonoWebApiConsts.PERSON, id);
-	} // TODO: no UI, only update
+	}
 	static String rowUrl(int id) {
 		return idUrl(HonoWebApiConsts.PERSON_ROW, id);
 	}

@@ -8,7 +8,7 @@ import {OOBPersonDetailModel, OOBPersonEditModel, OOBPersonPageModel, OOBPersonT
 import {OOBPersonRow} from "./oob-personrow";
 import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
 import {OOBPersondetailsCard} from "./oob-persondetailscard";
-import { HonoWebApiConsts } from "./hono-web-api-shared-consts";
+import {HonoWebApiConsts} from "../p00shared/hono-web-api-shared-consts";
 
 function init(hono: Hono) {
 	hono.post(OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PAGE, async (c) => {

@@ -11,3 +11,10 @@ export const HonoWebApiConsts = {
 	PERSON_DETAILS_CARD: `${X}/person/:id/detailscard`,
 	DELETE: `${X}/delete`,
 };
+
+export const SpringHonoWebApiConsts = Object.fromEntries(
+	Object.entries(HonoWebApiConsts).map(([key, value]) => [
+		key,
+		value.replace(":id", "${id}")
+	])
+) as { [K in keyof typeof HonoWebApiConsts]: string };

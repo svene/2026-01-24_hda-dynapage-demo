@@ -1,5 +1,6 @@
 import {OOBPersonDetailModel} from "../p01oobpage/oob-person-page-model-vm";
 import {EvtBackendEvents, EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
+import {detailsRowUrl, rowUrl} from "../p00shared/route-builder";
 
 export const EvtPersondetailsRow = ({vm}: { vm: OOBPersonDetailModel }) => (
 		<>
@@ -12,13 +13,13 @@ export const EvtPersondetailsRow = ({vm}: { vm: OOBPersonDetailModel }) => (
 					hx-trigger={`${EvtPersonDetailsRowX.CLOSE_REQUESTED}[event.detail.id == ${vm.id}] from:closest tr`}
 					hx-target="closest tr"
 					hx-swap="outerHTML"
-					hx-get={EvtHonoWebApiConsts.BASE + vm._rowUrl}
+					hx-get={EvtHonoWebApiConsts.BASE + rowUrl(vm.id)}
 				></template>
 				<template
 					hx-trigger={`${EvtBackendEvents.PERSON_UPDATED}[event.detail.id == ${vm.id}] from:body`}
 					hx-target="closest tr"
 					hx-swap="outerHTML"
-					hx-get={`/demo/event/person/${vm.id}/detailsrow`} /*TODO: replace hard coded URL */
+					hx-get={EvtHonoWebApiConsts.BASE + detailsRowUrl(vm.id)}
 				></template>
 				<td style="border-style: none"></td>
 				<td style="border-style: none">{vm.firstName}</td>

@@ -1,7 +1,7 @@
 import {OOBPersonTableModel} from "./oob-person-page-model-vm";
 import {OOBPersonRow} from "./oob-personrow";
 import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
-import {HonoWebApiConsts} from "./hono-web-api-shared-consts";
+import {HonoWebApiConsts} from "../p00shared/hono-web-api-shared-consts";
 
 export const OOBPersonTable = (props: { vm: OOBPersonTableModel }) => (
 	<div id="result-table">

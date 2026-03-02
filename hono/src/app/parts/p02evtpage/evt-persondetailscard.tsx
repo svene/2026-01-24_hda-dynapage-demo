@@ -1,5 +1,6 @@
 import {OOBPersonDetailModel} from "../p01oobpage/oob-person-page-model-vm";
 import {EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
+import {editUrl} from "../p00shared/route-builder";
 
 export const EvtPersondetailsCard = (props: { vm: OOBPersonDetailModel }) => (
 		<>
@@ -9,7 +10,7 @@ export const EvtPersondetailsCard = (props: { vm: OOBPersonDetailModel }) => (
 				hx-trigger="click"
 				hx-target="this"
 				hx-swap="outerHTML"
-				hx-get={EvtHonoWebApiConsts.BASE + props.vm._editLink}
+				hx-get={EvtHonoWebApiConsts.BASE + editUrl(props.vm.id)}
 				_={`on 'close-details-requested'(id) from <body/> if id == ${props.vm.id} remove me end`}
 			>
 				<td colSpan={5} style="padding-left: 30px">
