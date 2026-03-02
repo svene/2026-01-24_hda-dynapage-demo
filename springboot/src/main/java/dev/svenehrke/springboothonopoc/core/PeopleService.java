@@ -21,10 +21,6 @@ public class PeopleService {
         return StringUtils.hasLength(search) ? peopleRepository.peopleForSearch(search) : peopleRepository.people();
     }
 
-	public int total() {
-        return peopleRepository.total();
-    }
-
 	public OOBPersonTableRowModel personTableRowModel(int id) {
 		return peopleRepository.personTableRowModel(id);
 	}
