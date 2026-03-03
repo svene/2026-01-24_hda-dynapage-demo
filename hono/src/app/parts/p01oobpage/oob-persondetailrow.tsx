@@ -1,8 +1,8 @@
-import {OOBPersonDetailModel} from "./oob-person-page-model-vm";
+import {PersonDetailModel} from "./oob-person-page-model-vm";
 import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
 import {detailsBackUrl} from "../p00shared/route-builder";
 
-export const OOBPersondetailsRow = (props: { vm: OOBPersonDetailModel }) => (
+export const OOBPersondetailsRow = (props: { vm: PersonDetailModel }) => (
 		<>
 			<tr
 				id={`row-${props.vm.id}`}

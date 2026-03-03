@@ -1,10 +1,10 @@
-import {OOBPersonPageModel} from "./oob-person-page-model-vm";
+import {PersonPageModel} from "./oob-person-page-model-vm";
 import {OOBPersonTable} from "./oob-persontable";
 import {MpaLayout} from "../../root/mpalayout";
 import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
 import {HonoWebApiConsts} from "../p00shared/hono-web-api-shared-consts";
 
-export const OOBPersonPage = (props: { vm: OOBPersonPageModel }) => (
+export const OOBPersonPage = (props: { vm: PersonPageModel }) => (
 	<MpaLayout selectedMenu={OOBHonoWebApiConsts.PAGE_MENU_ID}>
 		<>
 			<div class="field">

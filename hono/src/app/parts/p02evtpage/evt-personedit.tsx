@@ -1,8 +1,8 @@
-import {OOBPersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
+import {PersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
 import {EvtBackendEvents, EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
 import {detailsCardUrl, updateUrl} from "../p00shared/route-builder";
 
-export const EvtPersonEditor = ({ vm }: {vm: OOBPersonEditModel}) => (
+export const EvtPersonEditor = ({ vm }: {vm: PersonEditModel}) => (
 	<tr id={`row-${vm.id}-edit`}>
 		<template
 			hx-trigger={`

@@ -38,7 +38,7 @@ public class PeopleController {
 
 	@GetMapping(HonoWebApiConsts.PAGE)
 	public ResponseEntity<String> peoplePage(HttpServletRequest request) {
-		var vm = new OOBPersonPageModel(peopleService.personTableModel());
+		var vm = new PersonPageModel(peopleService.personTableModel());
 		return honoAppClient.post(request.getRequestURI(), vm);
 	}
 
@@ -80,7 +80,7 @@ public class PeopleController {
 	@PutMapping(HonoWebApiConsts.PERSON)
 	public void updatePerson(
 		@PathVariable int id,
-		OOBPersonEditModel personEditModel,
+		PersonEditModel personEditModel,
 		HttpServletResponse response
 	) {
 		peopleService.updatePerson(id, personEditModel);

@@ -1,8 +1,8 @@
-import {OOBPersonEditModel} from "./oob-person-page-model-vm";
+import {PersonEditModel} from "./oob-person-page-model-vm";
 import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
 import {detailsCardUrl, updateUrl} from "../p00shared/route-builder";
 
-export const OOBPersonEditor = (props: { vm: OOBPersonEditModel }) => (
+export const OOBPersonEditor = (props: { vm: PersonEditModel }) => (
 	<tr id={`row-${props.vm.id}-edit`}>
 		<td colSpan={4} style="padding: 0px">
 			<div class="card p-5 my-2">

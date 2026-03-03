@@ -1,8 +1,8 @@
-import {OOBPersonTableRowModel} from "../p01oobpage/oob-person-page-model-vm";
+import {PersonTableRowModel} from "../p01oobpage/oob-person-page-model-vm";
 import {EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
 import {detailsUrl} from "../p00shared/route-builder";
 
-export const EvtPersonRow = (props: {vm: OOBPersonTableRowModel}) => (
+export const EvtPersonRow = (props: {vm: PersonTableRowModel}) => (
 	<tr
 		id={`row-${props.vm.id}`}
 		style="cursor: pointer"

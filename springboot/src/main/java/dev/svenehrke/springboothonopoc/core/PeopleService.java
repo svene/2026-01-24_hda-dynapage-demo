@@ -13,22 +13,22 @@ public class PeopleService {
 		this.peopleRepository = peopleRepository;
 	}
 
-	public OOBPersonTableModel personTableModel() {
+	public PersonTableModel personTableModel() {
         return peopleRepository.people();
     }
 
-	public OOBPersonTableModel peopleForSearch(String search) {
+	public PersonTableModel peopleForSearch(String search) {
         return StringUtils.hasLength(search) ? peopleRepository.peopleForSearch(search) : peopleRepository.people();
     }
 
-	public OOBPersonTableRowModel personTableRowModel(int id) {
+	public PersonTableRowModel personTableRowModel(int id) {
 		return peopleRepository.personTableRowModel(id);
 	}
-	public OOBPersonEditModel personEditModel(int id) {
+	public PersonEditModel personEditModel(int id) {
 		return peopleRepository.personEditModel(id);
 	}
 
-	public OOBPersonDetailModel personDetailModel(int id) {
+	public PersonDetailModel personDetailModel(int id) {
 		return peopleRepository.personDetailModel(id);
 	}
 
@@ -38,7 +38,7 @@ public class PeopleService {
 	}
 
 	@Transactional
-	public int updatePerson(int id, OOBPersonEditModel personEditModel) {
+	public int updatePerson(int id, PersonEditModel personEditModel) {
 		return peopleRepository.updatePerson(id, personEditModel);
 	}
 

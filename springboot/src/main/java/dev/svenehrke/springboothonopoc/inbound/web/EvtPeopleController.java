@@ -36,12 +36,12 @@ public class EvtPeopleController {
 
 	@GetMapping(HonoWebApiConsts.PAGE)
 	public ResponseEntity<String> peoplePage(HttpServletRequest request) {
-		var vm = new OOBPersonPageModel(peopleService.personTableModel());
+		var vm = new PersonPageModel(peopleService.personTableModel());
 		return honoAppClient.post(request.getRequestURI(), vm);
 	}
 	@GetMapping(HonoWebApiConsts.PERSON_TABLE)
 	public ResponseEntity<String> peopleUrl(@RequestParam() String search, HttpServletRequest request) {
-		OOBPersonTableModel vm = peopleService.peopleForSearch(search);
+		PersonTableModel vm = peopleService.peopleForSearch(search);
 		return honoAppClient.post(request.getRequestURI(), vm);
 	}
 
@@ -80,7 +80,7 @@ public class EvtPeopleController {
 	}
 
 	@PutMapping(HonoWebApiConsts.PERSON)
-	public void updatePerson(@PathVariable int id, OOBPersonEditModel personEditModel, HttpServletResponse response) {
+	public void updatePerson(@PathVariable int id, PersonEditModel personEditModel, HttpServletResponse response) {
 		peopleService.updatePerson(id, personEditModel);
 		response.setHeader(HTMXConsts.HX_TRIGGER, """
 			{"%s": {"id": %d}}\

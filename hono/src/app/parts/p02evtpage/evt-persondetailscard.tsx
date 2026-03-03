@@ -1,8 +1,8 @@
-import {OOBPersonDetailModel} from "../p01oobpage/oob-person-page-model-vm";
+import {PersonDetailModel} from "../p01oobpage/oob-person-page-model-vm";
 import {EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
 import {editUrl} from "../p00shared/route-builder";
 
-export const EvtPersondetailsCard = (props: { vm: OOBPersonDetailModel }) => (
+export const EvtPersondetailsCard = (props: { vm: PersonDetailModel }) => (
 		<>
 			<tr
 				id={`row-${props.vm.id}-details`}

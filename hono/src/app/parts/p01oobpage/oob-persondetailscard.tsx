@@ -1,8 +1,8 @@
-import {OOBPersonDetailModel} from "./oob-person-page-model-vm";
+import {PersonDetailModel} from "./oob-person-page-model-vm";
 import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
 import {editUrl} from "../p00shared/route-builder";
 
-export const OOBPersondetailsCard = (props: { vm: OOBPersonDetailModel }) => (
+export const OOBPersondetailsCard = (props: { vm: PersonDetailModel }) => (
 		<>
 			<tr
 				id={`row-${props.vm.id}-details`}
