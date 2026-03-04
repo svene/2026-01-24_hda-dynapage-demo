@@ -16,7 +16,7 @@ export const OOBPersondetailsRow = (props: { vm: PersonDetailModel }) => (
 				<td style="border-style: none">{props.vm.firstName}</td>
 				<td style="border-style: none">{props.vm.lastName}</td>
 				<td style="border-style: none">{props.vm.streetName}</td>
-				<td style="border-style: none"><span className="icon"><i className="material-icons">arrow_drop_up</i></span></td>
+				<td style="border-style: none"><span class="icon"><i class="material-icons">arrow_drop_up</i></span></td>
 			</tr>
 		</>
 );

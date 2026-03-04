@@ -5,7 +5,7 @@ import {HonoWebApiConsts} from "../p00shared/hono-web-api-shared-consts";
 
 export const OOBPersonTable = (props: { vm: PersonTableModel }) => (
 	<div id="result-table">
-		<table className="table">
+		<table class="table">
 			<thead>
 			<tr>
 				<td colSpan={5}>
@@ -14,8 +14,8 @@ export const OOBPersonTable = (props: { vm: PersonTableModel }) => (
 						hx-delete={OOBHonoWebApiConsts.BASE + HonoWebApiConsts.DELETE}
 						hx-target="#result-table"
 					>
-						<button type="submit" className="button">
-							<span className="icon"><i className="material-icons">delete</i></span>
+						<button type="submit" class="button">
+							<span class="icon"><i class="material-icons">delete</i></span>
 							<span>Delete</span>
 						</button>
 					</form>

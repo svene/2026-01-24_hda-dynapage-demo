@@ -25,7 +25,7 @@ export const EvtPersondetailsRow = ({vm}: { vm: PersonDetailModel }) => (
 				<td style="border-style: none">{vm.firstName}</td>
 				<td style="border-style: none">{vm.lastName}</td>
 				<td style="border-style: none">{vm.streetName}</td>
-				<td style="border-style: none"><span className="icon"><i className="material-icons">arrow_drop_up</i></span></td>
+				<td style="border-style: none"><span class="icon"><i class="material-icons">arrow_drop_up</i></span></td>
 			</tr>
 		</>
 );

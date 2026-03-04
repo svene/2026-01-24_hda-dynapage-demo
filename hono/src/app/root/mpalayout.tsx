@@ -28,13 +28,13 @@ export const MpaLayout = (props: {selectedMenu: string, children: Child }) => (
 	>
 	<section class="hero is-link">
 		<div class="hero-body">
-			<nav className="level">
-				<div className="level-left">
-					<p className="title">People Admin Application</p>
+			<nav class="level">
+				<div class="level-left">
+					<p class="title">People Admin Application</p>
 				</div>
-				<div className="level-right">
+				<div class="level-right">
 					<button x-on:click="$store.darkMode.toggle()">
-						<span className="icon"><i className="material-icons" x-text="icon"></i></span>
+						<span class="icon"><i class="material-icons" x-text="icon"></i></span>
 					</button>
 				</div>
 			</nav>
