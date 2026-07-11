@@ -6,9 +6,7 @@ import {OOBPersonTable} from "./oob-persontable";
 import {OOBPersonPage} from "./oob-personpage";
 import {PersonDetailModel, PersonEditModel, PersonPageModel, PersonTableModel, PersonTableRowModel} from "./oob-person-page-model-vm";
 import {OOBPersonRow} from "./oob-personrow";
-import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
 import {OOBPersondetailsCard} from "./oob-persondetailscard";
-import {HonoWebApiConsts} from "../p00shared/hono-web-api-shared-consts";
 
 export const oobPersonRoutes = {
 	OOBPersonPage: async (c: Context) => {
@@ -19,38 +17,24 @@ export const oobPersonRoutes = {
 		const vm = await c.req.json() as PersonDetailModel;
 		return c.render(<OOBPersonDetails vm={vm}></OOBPersonDetails>);
 	},
-}
-
-function init(hono: Hono) {
-	// hono.post(OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_DETAILS, async (c) => {
-	// });
-	hono.post(OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_EDIT, async (c) => {
+	OOBPersonEditor: async (c: Context) => {
 		const vm = await c.req.json() as PersonEditModel;
 		return c.render(<OOBPersonEditor vm={vm}></OOBPersonEditor>);
-	});
-
-	hono.post(OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_ROW, async (c) => {
+	},
+	OOBPersonRow: async (c: Context) => {
 		const vm = await c.req.json() as PersonTableRowModel;
 		return c.render(<OOBPersonRow vm={vm}></OOBPersonRow>);
-	});
-
-	hono.post(OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_DETAILS_BACK, async (c) => {
+	},
+	OOBPersonDetailsBack: async (c: Context) => {
 		const vm = await c.req.json() as PersonTableRowModel;
 		return c.render(<OOBPersonDetailsBack vm={vm}></OOBPersonDetailsBack>);
-	});
-
-	hono.post(OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_TABLE, async (c) => {
+	},
+	OOBPersonTable: async (c: Context) => {
 		const vm = await c.req.json() as PersonTableModel;
 		return c.render(<OOBPersonTable vm={vm}></OOBPersonTable>);
-	});
-
-	hono.post(OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_DETAILS_CARD, async (c) => {
+	},
+	OOBPersondetailsCard: async (c: Context) => {
 		const vm = await c.req.json() as PersonDetailModel;
 		return c.render(<OOBPersondetailsCard vm={vm}></OOBPersondetailsCard>);
-	});
-
-}
-
-export const oobPersonPageRouting = {
-	init,
+	},
 }

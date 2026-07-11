@@ -5,7 +5,6 @@ import dev.svenehrke.springboothonopoc.core.*;
 import dev.svenehrke.springboothonopoc.core.HonoWebApiSharedConsts.HonoWebApiConsts;
 import dev.svenehrke.springboothonopoc.core.OobHonoWebApiSharedConsts.OOBHonoWebApiConsts;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoAppClient;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -43,8 +42,8 @@ public class PeopleController {
 	}
 
 	@GetMapping(HonoWebApiConsts.PERSON_TABLE)
-	public ResponseEntity<String> peopleUrl(@RequestParam() String search, HttpServletRequest request) {
-		return honoAppClient.post(request.getRequestURI(), peopleService.peopleForSearch(search));
+	public ResponseEntity<String> peopleUrl(@RequestParam() String search) {
+		return honoAppClient.route("OOBPersonTable", peopleService.peopleForSearch(search));
 	}
 
 	@GetMapping(HonoWebApiConsts.PERSON_DETAILS)
@@ -52,29 +51,29 @@ public class PeopleController {
 		return honoAppClient.route("OOBPersonDetails", peopleService.personDetailModel(id));
 	}
 	@GetMapping(HonoWebApiConsts.PERSON_DETAILS_BACK)
-	public ResponseEntity<String> detailsBack(@PathVariable int id, HttpServletRequest request) {
-		return honoAppClient.post(request.getRequestURI(), peopleService.personTableRowModel(id));
+	public ResponseEntity<String> detailsBack(@PathVariable int id) {
+		return honoAppClient.route("OOBPersonDetailsBack", peopleService.personTableRowModel(id));
 	}
 
 	@GetMapping(HonoWebApiConsts.PERSON_EDIT)
-	public ResponseEntity<String> edit(@PathVariable int id, HttpServletRequest request) {
-		return honoAppClient.post(request.getRequestURI(), peopleService.personEditModel(id));
+	public ResponseEntity<String> edit(@PathVariable int id) {
+		return honoAppClient.route("OOBPersonEditor", peopleService.personEditModel(id));
 	}
 
 	@GetMapping(HonoWebApiConsts.PERSON_DETAILS_CARD)
-	public ResponseEntity<String> detailsCard(@PathVariable int id, HttpServletRequest request) {
-		return honoAppClient.post(request.getRequestURI(), peopleService.personDetailModel(id));
+	public ResponseEntity<String> detailsCard(@PathVariable int id) {
+		return honoAppClient.route("OOBPersondetailsCard", peopleService.personDetailModel(id));
 	}
 
 	@GetMapping(HonoWebApiConsts.PERSON_ROW)
-	public ResponseEntity<String> row(@PathVariable int id, HttpServletRequest request) {
-		return honoAppClient.post(request.getRequestURI(), peopleService.personTableRowModel(id));
+	public ResponseEntity<String> row(@PathVariable int id) {
+		return honoAppClient.route("OOBPersonRow", peopleService.personTableRowModel(id));
 	}
 
 	@DeleteMapping(HonoWebApiConsts.DELETE)
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection) {
 		peopleService.deleteByIds(selection);
-		return honoAppClient.post(OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_TABLE, peopleService.peopleForSearch(""));
+		return honoAppClient.route("OOBPersonTable", peopleService.peopleForSearch(""));
 	}
 
 	@PutMapping(HonoWebApiConsts.PERSON)

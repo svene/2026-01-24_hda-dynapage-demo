@@ -2,7 +2,7 @@ import {Context, Hono} from "hono";
 import { serveStatic } from 'hono/bun';
 import {infoRouting} from "../parts/p09info/info-routing";
 import {evtPersonPageRouting, evtPersonRoutes} from "../parts/p02evtpage/evt-personpagerouting";
-import {oobPersonPageRouting, oobPersonRoutes} from "../parts/p01oobpage/oob-personpagerouting";
+import {oobPersonRoutes} from "../parts/p01oobpage/oob-personpagerouting";
 
 const ROUTER_URL = '/router';
 
@@ -23,7 +23,6 @@ function init(hono: Hono) {
 		const handler = routes[name] ?? unsupported(name);
 		return handler(c);
 	});
-	oobPersonPageRouting.init(hono);
 	evtPersonPageRouting.init(hono);
 	infoRouting.init(hono);
 }
