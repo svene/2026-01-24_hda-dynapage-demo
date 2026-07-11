@@ -1,23 +1,18 @@
-import {Context, Hono} from "hono";
+import {Context} from "hono";
 import {EvtPersonPage} from "./evt-personpage";
-import {EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
 import {EvtPersonRow} from "./evt-personrow";
 import {EvtPersonTable} from "./evt-persontable";
 import {EvtPersonEditor} from "./evt-personedit";
 import {PersonDetailModel, PersonEditModel, PersonPageModel, PersonTableModel, PersonTableRowModel} from "../p01oobpage/oob-person-page-model-vm";
 import {EvtPersondetailsCard} from "./evt-persondetailscard";
 import {EvtPersondetailsRow} from "./evt-persondetailrow";
-import {HonoWebApiConsts} from "../p00shared/hono-web-api-shared-consts";
 
 export const evtPersonRoutes = {
 	EvtPersonPage: async (c: Context) => {
 		const vm = await c.req.json() as PersonPageModel;
 		return c.render(<EvtPersonPage vm={vm}></EvtPersonPage>);
 	},
-}
-
-function init(hono: Hono) {
-	hono.post(EvtHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_DETAILS, async (c) => {
+	EvtPersonDetails: async (c: Context) => {
 		const vm = await c.req.json() as PersonDetailModel;
 		return c.render(
 			<>
@@ -25,39 +20,30 @@ function init(hono: Hono) {
 				<EvtPersondetailsCard vm={vm}></EvtPersondetailsCard>
 			</>
 		);
-	});
-
-	hono.post(EvtHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_DETAILS_ROW, async (c) => {
+	},
+	EvtPersondetailsRow: async (c: Context) => {
 		const vm = await c.req.json() as PersonDetailModel;
 		return c.render(
 			<EvtPersondetailsRow vm={vm}></EvtPersondetailsRow>
 		);
-	});
-
-	hono.post(EvtHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_DETAILS_CARD, async (c) => {
+	},
+	EvtPersondetailsCard: async (c: Context) => {
 		const vm = await c.req.json() as PersonDetailModel;
 		return c.render(<EvtPersondetailsCard vm={vm}></EvtPersondetailsCard>);
-	});
-
-	hono.post(EvtHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_EDIT, async (c) => {
+	},
+	EvtPersonEditor: async (c: Context) => {
 		const vm = await c.req.json() as PersonEditModel;
 		return c.render(
 			<EvtPersonEditor vm={vm}></EvtPersonEditor>
 		);
-	});
-
-	hono.post(EvtHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_ROW, async (c) => {
+	},
+	EvtPersonRow: async (c: Context) => {
 		const vm = await c.req.json() as PersonTableRowModel;
 		return c.render(<EvtPersonRow vm={vm}></EvtPersonRow>);
-	});
-
-	hono.post(EvtHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_TABLE, async (c) => {
+	},
+	EvtPersonTable: async (c: Context) => {
 		const vm = await c.req.json() as PersonTableModel;
 		return c.render(<EvtPersonTable vm={vm}></EvtPersonTable>);
-	});
-
+	},
 }
 
-export const evtPersonPageRouting = {
-	init,
-}

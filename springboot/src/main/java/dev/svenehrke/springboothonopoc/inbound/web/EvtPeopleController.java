@@ -6,7 +6,6 @@ import dev.svenehrke.springboothonopoc.core.EvtHonoWebApiSharedConsts.EvtBackend
 import dev.svenehrke.springboothonopoc.core.EvtHonoWebApiSharedConsts.EvtHonoWebApiConsts;
 import dev.svenehrke.springboothonopoc.core.HonoWebApiSharedConsts.HonoWebApiConsts;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoAppClient;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -40,37 +39,37 @@ public class EvtPeopleController {
 		return honoAppClient.route("EvtPersonPage", vm);
 	}
 	@GetMapping(HonoWebApiConsts.PERSON_TABLE)
-	public ResponseEntity<String> peopleUrl(@RequestParam() String search, HttpServletRequest request) {
+	public ResponseEntity<String> peopleUrl(@RequestParam() String search) {
 		PersonTableModel vm = peopleService.peopleForSearch(search);
-		return honoAppClient.post(request.getRequestURI(), vm);
+		return honoAppClient.route("EvtPersonTable", vm);
 	}
 
 	@GetMapping(HonoWebApiConsts.PERSON_DETAILS)
-	public ResponseEntity<String> details(@PathVariable int id, HttpServletRequest request) {
+	public ResponseEntity<String> details(@PathVariable int id) {
 		var vm = peopleService.personDetailModel(id);
-		return honoAppClient.post(request.getRequestURI(), vm);
+		return honoAppClient.route("EvtPersonDetails", vm);
 	}
 	@GetMapping(HonoWebApiConsts.PERSON_DETAILS_ROW)
-	public ResponseEntity<String> detailsRow(@PathVariable int id, HttpServletRequest request) {
+	public ResponseEntity<String> detailsRow(@PathVariable int id) {
 		var vm = peopleService.personDetailModel(id);
-		return honoAppClient.post(request.getRequestURI(), vm);
+		return honoAppClient.route("EvtPersondetailsRow", vm);
 	}
 
 	@GetMapping(HonoWebApiConsts.PERSON_DETAILS_CARD)
-	public ResponseEntity<String> detailsCard(@PathVariable int id, HttpServletRequest request) {
+	public ResponseEntity<String> detailsCard(@PathVariable int id) {
 		var vm = peopleService.personDetailModel(id);
-		return honoAppClient.post(request.getRequestURI(), vm);
+		return honoAppClient.route("EvtPersondetailsCard", vm);
 	}
 
 	@GetMapping(HonoWebApiConsts.PERSON_EDIT)
-	public ResponseEntity<String> edit(@PathVariable int id, HttpServletRequest request) {
+	public ResponseEntity<String> edit(@PathVariable int id) {
 		var vm = peopleService.personEditModel(id);
-		return honoAppClient.post(request.getRequestURI(), vm);
+		return honoAppClient.route("EvtPersonEditor", vm);
 	}
 	@GetMapping(HonoWebApiConsts.PERSON_ROW)
-	public ResponseEntity<String> row(@PathVariable int id, HttpServletRequest request) {
+	public ResponseEntity<String> row(@PathVariable int id) {
 		var vm = peopleService.personTableRowModel(id);
-		return honoAppClient.post(request.getRequestURI(), vm);
+		return honoAppClient.route("EvtPersonRow", vm);
 	}
 
 	@DeleteMapping(HonoWebApiConsts.DELETE)
