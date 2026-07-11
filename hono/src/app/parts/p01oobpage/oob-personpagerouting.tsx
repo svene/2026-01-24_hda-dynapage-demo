@@ -15,13 +15,15 @@ export const oobPersonRoutes = {
 		const vm = await c.req.json() as PersonPageModel;
 		return c.render(<OOBPersonPage vm={vm}></OOBPersonPage>);
 	},
+	OOBPersonDetails: async (c: Context) => {
+		const vm = await c.req.json() as PersonDetailModel;
+		return c.render(<OOBPersonDetails vm={vm}></OOBPersonDetails>);
+	},
 }
 
 function init(hono: Hono) {
-	hono.post(OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_DETAILS, async (c) => {
-		const vm = await c.req.json() as PersonDetailModel;
-		return c.render(<OOBPersonDetails vm={vm}></OOBPersonDetails>);
-	});
+	// hono.post(OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_DETAILS, async (c) => {
+	// });
 	hono.post(OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_EDIT, async (c) => {
 		const vm = await c.req.json() as PersonEditModel;
 		return c.render(<OOBPersonEditor vm={vm}></OOBPersonEditor>);

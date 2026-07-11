@@ -48,8 +48,8 @@ public class PeopleController {
 	}
 
 	@GetMapping(HonoWebApiConsts.PERSON_DETAILS)
-	public ResponseEntity<String> details(@PathVariable int id, HttpServletRequest request) {
-		return honoAppClient.post(request.getRequestURI(), peopleService.personDetailModel(id));
+	public ResponseEntity<String> details(@PathVariable int id) {
+		return honoAppClient.route("OOBPersonDetails", peopleService.personDetailModel(id));
 	}
 	@GetMapping(HonoWebApiConsts.PERSON_DETAILS_BACK)
 	public ResponseEntity<String> detailsBack(@PathVariable int id, HttpServletRequest request) {
