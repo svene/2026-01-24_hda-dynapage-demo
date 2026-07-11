@@ -1,4 +1,4 @@
-import {Hono} from "hono";
+import {Context, Hono} from "hono";
 import {EvtPersonPage} from "./evt-personpage";
 import {EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
 import {EvtPersonRow} from "./evt-personrow";
@@ -8,6 +8,13 @@ import {PersonDetailModel, PersonEditModel, PersonPageModel, PersonTableModel, P
 import {EvtPersondetailsCard} from "./evt-persondetailscard";
 import {EvtPersondetailsRow} from "./evt-persondetailrow";
 import {HonoWebApiConsts} from "../p00shared/hono-web-api-shared-consts";
+
+export const evtPersonRoutes = {
+	// PersonPage: async (c: Context) => {
+	// 	const vm = await c.req.json() as PersonPageModel;
+	// 	return c.render(<PersonPage vm={vm}></PersonPage>);
+	// },
+}
 
 function init(hono: Hono) {
 	hono.post(EvtHonoWebApiConsts.BASE + HonoWebApiConsts.PAGE, async (c) => {

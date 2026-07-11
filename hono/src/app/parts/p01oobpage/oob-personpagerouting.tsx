@@ -1,4 +1,4 @@
-import {Hono} from "hono";
+import {Context, Hono} from "hono";
 import {OOBPersonEditor} from "./oob-personedit";
 import {OOBPersonDetails} from "./oob-persondetails";
 import {OOBPersonDetailsBack} from "./oob-persondetailsback";
@@ -10,11 +10,14 @@ import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
 import {OOBPersondetailsCard} from "./oob-persondetailscard";
 import {HonoWebApiConsts} from "../p00shared/hono-web-api-shared-consts";
 
-function init(hono: Hono) {
-	hono.post(OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PAGE, async (c) => {
+export const oobPersonRoutes = {
+	OOBPersonPage: async (c: Context) => {
 		const vm = await c.req.json() as PersonPageModel;
 		return c.render(<OOBPersonPage vm={vm}></OOBPersonPage>);
-	});
+	},
+}
+
+function init(hono: Hono) {
 	hono.post(OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_DETAILS, async (c) => {
 		const vm = await c.req.json() as PersonDetailModel;
 		return c.render(<OOBPersonDetails vm={vm}></OOBPersonDetails>);

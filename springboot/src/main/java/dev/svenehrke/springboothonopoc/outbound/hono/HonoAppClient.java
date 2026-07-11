@@ -35,6 +35,20 @@ public class HonoAppClient {
 			;
 	}
 
+	public <T> ResponseEntity<String> route(String name, T vm) {
+		return restClient
+			.post()
+			.uri(uriBuilder -> uriBuilder
+				.path("/router")
+				.queryParam("name", name)
+				.build())
+			.contentType(MediaType.APPLICATION_JSON)
+			.body(vm)
+			.retrieve()
+			.toEntity(String.class)
+			;
+	}
+
 	public ResponseEntity<String> get(String path, Map<String, String> queryParams) {
 		return restClient
 			.get()
