@@ -1,11 +1,10 @@
 import {PersonPageModel} from "./oob-person-page-model-vm";
 import {OOBPersonTable} from "./oob-persontable";
 import {MpaLayout} from "../../root/mpalayout";
-import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
-import {HonoWebApiConsts} from "../p00shared/hono-web-api-shared-consts";
+import {oobPersonRoutes} from "./oob-personpagerouting";
 
 export const OOBPersonPage = (props: { vm: PersonPageModel }) => (
-	<MpaLayout selectedMenu={OOBHonoWebApiConsts.PAGE_MENU_ID}>
+	<MpaLayout selectedMenu={oobPersonRoutes.OOBPersonPage.id}>
 		<>
 			<div class="field">
 				<label class="label">Search</label>
@@ -16,7 +15,7 @@ export const OOBPersonPage = (props: { vm: PersonPageModel }) => (
 						name="search"
 						placeholder="Search for firstname or lastname"
 						hx-trigger="input changed delay:500ms"
-						hx-get={OOBHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_TABLE}
+						hx-get={oobPersonRoutes.OOBPersonTable.url()}
 						hx-target="#result-table"
 					/>
 				</div>

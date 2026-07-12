@@ -1,6 +1,5 @@
 import {PersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
-import {EvtBackendEvents, EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
-import {detailsCardUrl, updateUrl} from "../p00shared/route-builder";
+import {evtEvents, evtPersonRoutes, evtPersonUrls} from "./evt-personpagerouting";
 
 export const EvtPersonEditor = ({ vm }: {vm: PersonEditModel}) => (
 	<tr id={`row-${vm.id}-edit`}>
@@ -10,15 +9,15 @@ export const EvtPersonEditor = ({ vm }: {vm: PersonEditModel}) => (
 			`}
 			hx-target="closest tr"
 			hx-swap="outerHTML"
-			hx-get={EvtHonoWebApiConsts.BASE + detailsCardUrl(vm.id)}
+			hx-get={evtPersonRoutes.EvtPersondetailsCard.url(vm.id)}
 		></template>
 		<template
 			hx-trigger={`
-			${EvtBackendEvents.PERSON_UPDATED}[event.detail.id === ${vm.id}] from:closest tr
+			${evtEvents.PERSON_UPDATED}[event.detail.id === ${vm.id}] from:closest tr
 			`}
 			hx-target="closest tr"
 			hx-swap="outerHTML"
-			hx-get={EvtHonoWebApiConsts.BASE + detailsCardUrl(vm.id)}
+			hx-get={evtPersonRoutes.EvtPersondetailsCard.url(vm.id)}
 		></template>
 		<td colSpan={4} style="padding: 0px">
 			<div class="card p-5 my-2">
@@ -61,7 +60,7 @@ export const EvtPersonEditor = ({ vm }: {vm: PersonEditModel}) => (
 							type="submit"
 							class="level-item button is-primary"
 							hx-trigger="click consume"
-							hx-put={EvtHonoWebApiConsts.BASE + updateUrl(vm.id)} /* Expects backend to respond with 'person-updated'(id) event */
+							hx-put={evtPersonUrls.UpdatePerson.url(vm.id)} /* Expects backend to respond with 'person-updated'(id) event */
 							hx-swap="none" /* Works with event handling of 'person-updated' */
 						>Save
 						</button>

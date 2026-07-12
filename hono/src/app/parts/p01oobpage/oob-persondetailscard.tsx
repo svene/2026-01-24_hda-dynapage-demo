@@ -1,6 +1,5 @@
 import {PersonDetailModel} from "./oob-person-page-model-vm";
-import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
-import {editUrl} from "../p00shared/route-builder";
+import {oobPersonRoutes} from "./oob-personpagerouting";
 
 export const OOBPersondetailsCard = (props: { vm: PersonDetailModel }) => (
 		<>
@@ -10,7 +9,7 @@ export const OOBPersondetailsCard = (props: { vm: PersonDetailModel }) => (
 				hx-trigger="click"
 				hx-target="this"
 				hx-swap="outerHTML"
-				hx-get={OOBHonoWebApiConsts.BASE + editUrl(props.vm.id)}
+				hx-get={oobPersonRoutes.OOBPersonEditor.url(props.vm.id)}
 			>
 				<td colSpan={5} style="padding-left: 30px">
 

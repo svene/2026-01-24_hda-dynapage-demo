@@ -1,6 +1,5 @@
 import {PersonEditModel} from "./oob-person-page-model-vm";
-import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
-import {detailsCardUrl, updateUrl} from "../p00shared/route-builder";
+import {oobPersonRoutes, oobPersonUrls} from "./oob-personpagerouting";
 
 export const OOBPersonEditor = (props: { vm: PersonEditModel }) => (
 	<tr id={`row-${props.vm.id}-edit`}>
@@ -41,7 +40,7 @@ export const OOBPersonEditor = (props: { vm: PersonEditModel }) => (
 							hx-trigger="click consume"
 							hx-target="closest tr"
 							hx-swap="outerHTML"
-							hx-get={OOBHonoWebApiConsts.BASE + detailsCardUrl(props.vm.id)}
+							hx-get={oobPersonRoutes.OOBPersondetailsCard.url(props.vm.id)}
 						>&lt; Back
 						</button>
 						{/* TODO: can this hx-* stuff be put on form above? */}
@@ -49,7 +48,7 @@ export const OOBPersonEditor = (props: { vm: PersonEditModel }) => (
 							type="submit"
 							class="level-item button is-primary"
 							hx-trigger="click consume"
-							hx-put={OOBHonoWebApiConsts.BASE + updateUrl(props.vm.id)}
+							hx-put={oobPersonUrls.UpdatePerson.url(props.vm.id)}
 							hx-target="closest tr"
 							hx-swap="outerHTML"
 						>Save

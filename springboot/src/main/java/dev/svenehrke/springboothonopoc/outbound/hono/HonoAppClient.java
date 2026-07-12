@@ -62,18 +62,6 @@ public class HonoAppClient {
 			;
 	}
 
-	public <T> ResponseEntity<String> post(String uri, T vm) {
-		logger.info(String.format("POST %s", uri));
-		return restClient
-			.post()
-			.uri(uri)
-			.contentType(MediaType.APPLICATION_JSON)
-			.body(vm)
-			.retrieve()
-			.toEntity(String.class)
-			;
-	}
-
 	private UriBuilder defaultUrlBuilder(UriBuilder uriBuilder) {
 		return uriBuilder
 			.scheme("http")

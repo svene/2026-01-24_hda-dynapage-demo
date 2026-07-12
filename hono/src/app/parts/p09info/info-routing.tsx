@@ -1,12 +1,15 @@
-import {Hono} from "hono";
+import {Context} from "hono";
 import {InfoPage} from "./infopage";
-import {InfoHonoWebApiConsts} from "./info-hono-web-api-shared-consts";
+import {RouteDefinition} from "../p00shared/app-types";
 
-function init(hono: Hono) {
-	hono.get(InfoHonoWebApiConsts.PAGE, async (c) => {
-		return c.render(<InfoPage></InfoPage>);
-	});
-}
-export const infoRouting = {
-	init,
-}
+export const infoRoutes = {
+	InfoPage: {
+		url: () => `/info`,
+		render: async (c: Context) => {
+			return c.render(<InfoPage></InfoPage>);
+		},
+		id: 'info',
+	},
+} satisfies Record<string, RouteDefinition>;
+
+export type InfoRouteKey = keyof typeof infoRoutes;

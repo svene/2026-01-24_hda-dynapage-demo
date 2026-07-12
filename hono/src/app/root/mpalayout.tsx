@@ -1,11 +1,9 @@
 import type {Child} from 'hono/jsx'
-import {EvtHonoWebApiConsts} from "../parts/p02evtpage/evt-hono-web-api-shared-consts";
-import {OOBHonoWebApiConsts} from "../parts/p01oobpage/oob-hono-web-api-shared-consts";
-import {InfoHonoWebApiConsts} from "../parts/p09info/info-hono-web-api-shared-consts";
-import {HonoWebApiConsts} from "../parts/p00shared/hono-web-api-shared-consts";
-import {AppSpringUrls} from "./app";
+import {oobPersonRoutes} from "../parts/p01oobpage/oob-personpagerouting";
+import {evtPersonRoutes} from "../parts/p02evtpage/evt-personpagerouting";
+import {infoRoutes} from "../parts/p09info/info-routing";
 
-export const MpaLayout = (props: {selectedMenu: string, children: Child }) => (
+export const MpaLayout = (props: {selectedMenu?: string, children: Child }) => (
 	<html lang="en" x-data="$store.darkMode" x-bind:data-theme="theme">
 	<head>
 		<meta charSet="UTF-8"/>
@@ -47,16 +45,16 @@ export const MpaLayout = (props: {selectedMenu: string, children: Child }) => (
 			<div class="navbar-menu">
 				<div class="navbar-start">
 					<a
-						class={`navbar-item ${props.selectedMenu === OOBHonoWebApiConsts.PAGE_MENU_ID ? 'is-selected' : ''}`}
-						href={AppSpringUrls.oobPersonPage}
+						class={`navbar-item ${props.selectedMenu === oobPersonRoutes.OOBPersonPage.id ? 'is-selected' : ''}`}
+						href={oobPersonRoutes.OOBPersonPage.url()}
 					>OOB Variant</a>
 					<a
-						class={`navbar-item ${props.selectedMenu === EvtHonoWebApiConsts.PAGE_MENU_ID ? 'is-selected' : ''}`}
-						href={AppSpringUrls.evtPersonPage}
+						class={`navbar-item ${props.selectedMenu === evtPersonRoutes.EvtPersonPage.id ? 'is-selected' : ''}`}
+						href={evtPersonRoutes.EvtPersonPage.url()}
 					>Events Variant</a>
 					<a
-						class={`navbar-item ${props.selectedMenu === InfoHonoWebApiConsts.PAGE_MENU_ID ? 'is-selected' : ''}`}
-						href={AppSpringUrls.infoPage}
+						class={`navbar-item ${props.selectedMenu === infoRoutes.InfoPage.id ? 'is-selected' : ''}`}
+						href={infoRoutes.InfoPage.url()}
 					>Info</a>
 				</div>
 			</div>

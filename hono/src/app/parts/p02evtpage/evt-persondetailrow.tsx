@@ -1,6 +1,5 @@
 import {PersonDetailModel} from "../p01oobpage/oob-person-page-model-vm";
-import {EvtBackendEvents, EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
-import {detailsRowUrl, rowUrl} from "../p00shared/route-builder";
+import {evtEvents, evtPersonRoutes} from "./evt-personpagerouting";
 
 export const EvtPersondetailsRow = ({vm}: { vm: PersonDetailModel }) => (
 		<>
@@ -13,13 +12,13 @@ export const EvtPersondetailsRow = ({vm}: { vm: PersonDetailModel }) => (
 					hx-trigger={`${EvtPersonDetailsRowX.CLOSE_REQUESTED}[event.detail.id == ${vm.id}] from:closest tr`}
 					hx-target="closest tr"
 					hx-swap="outerHTML"
-					hx-get={EvtHonoWebApiConsts.BASE + rowUrl(vm.id)}
+					hx-get={evtPersonRoutes.EvtPersonRow.url(vm.id)}
 				></template>
 				<template
-					hx-trigger={`${EvtBackendEvents.PERSON_UPDATED}[event.detail.id == ${vm.id}] from:body`}
+					hx-trigger={`${evtEvents.PERSON_UPDATED}[event.detail.id == ${vm.id}] from:body`}
 					hx-target="closest tr"
 					hx-swap="outerHTML"
-					hx-get={EvtHonoWebApiConsts.BASE + detailsRowUrl(vm.id)}
+					hx-get={evtPersonRoutes.EvtPersondetailsRow.url(vm.id)}
 				></template>
 				<td style="border-style: none"></td>
 				<td style="border-style: none">{vm.firstName}</td>
@@ -33,7 +32,7 @@ export const EvtPersondetailsRow = ({vm}: { vm: PersonDetailModel }) => (
 export const EvtPersonDetailsRowX = {
 	CLOSE_REQUESTED: 'close-details-requested',
 }
-export const XXX = {
+export const XXX = { // TODO: document purpose ?
 	A: () => (
 		<div>hallo</div>
 	)

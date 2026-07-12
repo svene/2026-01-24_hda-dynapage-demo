@@ -1,6 +1,5 @@
 import {PersonDetailModel} from "./oob-person-page-model-vm";
-import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
-import {detailsBackUrl} from "../p00shared/route-builder";
+import {oobPersonRoutes} from "./oob-personpagerouting";
 
 export const OOBPersondetailsRow = (props: { vm: PersonDetailModel }) => (
 		<>
@@ -10,7 +9,7 @@ export const OOBPersondetailsRow = (props: { vm: PersonDetailModel }) => (
 				hx-trigger="click"
 				hx-target="this"
 				hx-swap="outerHTML"
-				hx-get={OOBHonoWebApiConsts.BASE + detailsBackUrl(props.vm.id)}
+				hx-get={oobPersonRoutes.OOBPersonDetailsBack.url(props.vm.id)}
 			>
 				<td style="border-style: none"></td>
 				<td style="border-style: none">{props.vm.firstName}</td>

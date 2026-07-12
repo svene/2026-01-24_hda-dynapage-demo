@@ -1,6 +1,5 @@
 import {PersonTableRowModel} from "./oob-person-page-model-vm";
-import {OOBHonoWebApiConsts} from "./oob-hono-web-api-shared-consts";
-import {detailsUrl} from "../p00shared/route-builder";
+import {oobPersonRoutes} from "./oob-personpagerouting";
 
 export const OOBPersonRow = (props: {vm: PersonTableRowModel}) => (
 	<tr
@@ -9,7 +8,7 @@ export const OOBPersonRow = (props: {vm: PersonTableRowModel}) => (
 		hx-trigger="click"
 		hx-target="this"
 		hx-swap="outerHTML"
-		hx-get={OOBHonoWebApiConsts.BASE + detailsUrl(props.vm.id)}
+		hx-get={ oobPersonRoutes.OOBPersonDetails.url(props.vm.id)}
 	>
 		<td hx-trigger="click consume"> {/* consume: prevent bubbling, only checkbox needs to be clicked, not parents*/}
 			<input type="checkbox" name="selection" value={props.vm.id} form="bulkDeleteForm"></input>

@@ -1,12 +1,11 @@
-import {EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
 import {EvtPersonTable} from "./evt-persontable";
 import {MpaLayout} from "../../root/mpalayout";
 import {PersonPageModel} from "../p01oobpage/oob-person-page-model-vm";
-import {HonoWebApiConsts} from "../p00shared/hono-web-api-shared-consts";
+import {evtPersonRoutes} from "./evt-personpagerouting";
 
 export const EvtPersonPage = (props: { vm: PersonPageModel }) => {
 	return (
-		<MpaLayout selectedMenu={EvtHonoWebApiConsts.PAGE_MENU_ID}>
+		<MpaLayout selectedMenu={evtPersonRoutes.EvtPersonPage.id}>
 			<>
 				<div class="field">
 					<label class="label">Search</label>
@@ -17,7 +16,7 @@ export const EvtPersonPage = (props: { vm: PersonPageModel }) => {
 							name="search"
 							placeholder="Search for firstname or lastname"
 							hx-trigger="input changed delay:500ms"
-							hx-get={EvtHonoWebApiConsts.BASE + HonoWebApiConsts.PERSON_TABLE}
+							hx-get={evtPersonRoutes.EvtPersonTable.url()}
 							hx-target="#result-table"
 						/>
 					</div>

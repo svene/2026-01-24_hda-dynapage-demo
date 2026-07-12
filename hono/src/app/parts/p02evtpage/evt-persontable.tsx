@@ -1,7 +1,6 @@
 import {EvtPersonRow} from "./evt-personrow";
-import {EvtHonoWebApiConsts} from "./evt-hono-web-api-shared-consts";
 import {PersonTableModel} from "../p01oobpage/oob-person-page-model-vm";
-import {HonoWebApiConsts} from "../p00shared/hono-web-api-shared-consts";
+import {evtPersonUrls} from "./evt-personpagerouting";
 
 export const EvtPersonTable = (props: { vm: PersonTableModel }) => (
 	<div id="result-table">
@@ -9,7 +8,7 @@ export const EvtPersonTable = (props: { vm: PersonTableModel }) => (
 			<thead>
 			<tr>
 				<td colSpan={5}>
-					<form id="bulkDeleteForm" hx-delete={EvtHonoWebApiConsts.BASE + HonoWebApiConsts.DELETE}>
+					<form id="bulkDeleteForm" hx-delete={evtPersonUrls.Delete.url()}>
 						<button type="submit" class="button">
 							<span class="icon"><i class="material-icons">delete</i></span>
 							<span>Delete</span>
