@@ -15,8 +15,7 @@ export const oobPersonRoutes = {
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonPageModel;
 			return c.render(<OOBPersonPage vm={vm}></OOBPersonPage>);
-		},
-		id: 'oob',
+		}
 	},
 	OOBPersonDetails: {
 		url: (id: number) => `/demo/oob/person/${id}/details`,
@@ -72,3 +71,5 @@ export const oobPersonUrls = {
 		url: () => `/demo/oob/delete`,
 	},
 } satisfies Record<string, RouteUrlDefinition>;
+
+export const OOB_PAGE_ID = 'OOBPersonPage' satisfies OOBPersonRouteKey;

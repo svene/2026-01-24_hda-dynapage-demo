@@ -1,9 +1,10 @@
 import type {Child} from 'hono/jsx'
-import {oobPersonRoutes} from "../parts/p01oobpage/oob-personpagerouting";
-import {evtPersonRoutes} from "../parts/p02evtpage/evt-personpagerouting";
-import {infoRoutes} from "../parts/p09info/info-routing";
+import {OOB_PAGE_ID, oobPersonRoutes} from "../parts/p01oobpage/oob-personpagerouting";
+import {EVT_PAGE_ID, evtPersonRoutes} from "../parts/p02evtpage/evt-personpagerouting";
+import {INFO_PAGE_ID, infoRoutes} from "../parts/p09info/info-routing";
 
-export const MpaLayout = (props: {selectedMenu?: string, children: Child }) => (
+export type menuId = typeof INFO_PAGE_ID | typeof OOB_PAGE_ID | typeof EVT_PAGE_ID;
+export const MpaLayout = (props: {selectedMenu?: menuId, children: Child }) => (
 	<html lang="en" x-data="$store.darkMode" x-bind:data-theme="theme">
 	<head>
 		<meta charSet="UTF-8"/>
@@ -45,15 +46,15 @@ export const MpaLayout = (props: {selectedMenu?: string, children: Child }) => (
 			<div class="navbar-menu">
 				<div class="navbar-start">
 					<a
-						class={`navbar-item ${props.selectedMenu === oobPersonRoutes.OOBPersonPage.id ? 'is-selected' : ''}`}
+						class={`navbar-item ${props.selectedMenu === OOB_PAGE_ID ? 'is-selected' : ''}`}
 						href={oobPersonRoutes.OOBPersonPage.url()}
 					>OOB Variant</a>
 					<a
-						class={`navbar-item ${props.selectedMenu === evtPersonRoutes.EvtPersonPage.id ? 'is-selected' : ''}`}
+						class={`navbar-item ${props.selectedMenu === EVT_PAGE_ID ? 'is-selected' : ''}`}
 						href={evtPersonRoutes.EvtPersonPage.url()}
 					>Events Variant</a>
 					<a
-						class={`navbar-item ${props.selectedMenu === infoRoutes.InfoPage.id ? 'is-selected' : ''}`}
+						class={`navbar-item ${props.selectedMenu === INFO_PAGE_ID ? 'is-selected' : ''}`}
 						href={infoRoutes.InfoPage.url()}
 					>Info</a>
 				</div>

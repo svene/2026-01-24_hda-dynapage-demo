@@ -15,7 +15,6 @@ export const evtPersonRoutes = {
 			const vm = await c.req.json() as PersonPageModel;
 			return c.render(<EvtPersonPage vm={vm}></EvtPersonPage>);
 		},
-		id: 'event',
 	},
 	EvtPersonDetails: {
 		url: (id: number) => `/demo/event/person/${id}/details`,
@@ -84,3 +83,6 @@ export const evtPersonUrls = {
 export const evtEvents = {
 	PERSON_UPDATED: 'person-updated',
 }
+type EvtPageKey = keyof typeof evtPersonRoutes;
+export const EVT_PAGE_ID = 'EvtPersonPage' satisfies EvtPageKey;
+

@@ -8,8 +8,8 @@ export const infoRoutes = {
 		render: async (c: Context) => {
 			return c.render(<InfoPage></InfoPage>);
 		},
-		id: 'info',
 	},
 } satisfies Record<string, RouteDefinition>;
 
-export type InfoRouteKey = keyof typeof infoRoutes;
+type InfoRouteKey = keyof typeof infoRoutes;
+export const INFO_PAGE_ID = 'InfoPage' satisfies InfoRouteKey;
