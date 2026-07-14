@@ -84,7 +84,9 @@ public class PeopleController {
 		HttpServletResponse response
 	) {
 		peopleService.updatePerson(id, personEditModel);
-		response.setHeader(HX_REDIRECT, PeopleController.OOB_PEOPLE_URL);
+		response.setHeader(
+			HX_REDIRECT,
+			PeopleController.OOB_PEOPLE_URL + PeopleController.OOB_PEOPLE_PAGE_URL);
 	}
 
 }

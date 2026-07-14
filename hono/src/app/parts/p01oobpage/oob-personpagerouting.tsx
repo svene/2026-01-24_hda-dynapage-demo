@@ -66,7 +66,7 @@ export const OOB_PAGE_ID = 'OOBPersonPage' satisfies OOBPersonRouteKey;
 
 export const oobPersonUrls = {
 	UpdatePerson: {
-		url: (id: number) => `/demo/event/person/${id}`, // SPRING-HONO
+		url: (id: number) => `/demo/oob/person/${id}`, // SPRING-HONO
 	},
 	Delete: {
 		url: () => `/demo/oob/delete`, // SPRING-HONO
