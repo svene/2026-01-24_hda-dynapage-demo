@@ -22,7 +22,7 @@ import static dev.svenehrke.springboothonopoc.inbound.web.HTMXConsts.HX_REDIRECT
 public class PeopleController {
 
 	public static final String OOB_PEOPLE_URL = "/demo/oob";
-	public static final String OOB_PEOPLE_PAGE_URL = OOB_PEOPLE_URL + "/page";
+	public static final String OOB_PEOPLE_PAGE_URL = "/page";
 
 	private final PeopleService peopleService;
 	private final HonoAppClient honoAppClient;

@@ -20,7 +20,7 @@ import java.util.List;
 public class EvtPeopleController {
 
 	public static final String EVT_PEOPLE_URL = "/demo/event";
-	public static final String EVT_PEOPLE_PAGE_URL = EVT_PEOPLE_URL + "/page";
+	public static final String EVT_PEOPLE_PAGE_URL = "/page";
 
 	private final PeopleService peopleService;
 	private final HonoAppClient honoAppClient;
@@ -75,7 +75,10 @@ public class EvtPeopleController {
 	@DeleteMapping("/delete")
 	public void deleteRows(@RequestParam List<Integer> selection, HttpServletResponse response) {
 		peopleService.deleteByIds(selection);
-		response.setHeader(HTMXConsts.HX_REDIRECT, EvtPeopleController.EVT_PEOPLE_PAGE_URL);
+		response.setHeader(
+			HTMXConsts.HX_REDIRECT,
+			EvtPeopleController.EVT_PEOPLE_URL + EvtPeopleController.EVT_PEOPLE_PAGE_URL
+		);
 	}
 
 	@PutMapping("/person/{id}")

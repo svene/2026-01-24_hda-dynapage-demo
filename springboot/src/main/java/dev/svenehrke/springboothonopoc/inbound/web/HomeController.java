@@ -9,7 +9,9 @@ public class HomeController {
 
 	@GetMapping("/")
 	public RedirectView index() {
-		return new RedirectView(PeopleController.OOB_PEOPLE_PAGE_URL);
+		return new RedirectView(
+			PeopleController.OOB_PEOPLE_URL + PeopleController.OOB_PEOPLE_PAGE_URL
+		);
 	}
 
 }
