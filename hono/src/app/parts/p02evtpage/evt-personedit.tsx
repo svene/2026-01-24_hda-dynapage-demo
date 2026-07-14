@@ -1,5 +1,5 @@
-import {PersonEditModel} from "../p01oobpage/oob-person-page-model-vm";
 import {evtEvents, evtPersonRoutes, evtPersonUrls} from "./evt-personpagerouting";
+import {PersonEditModel} from "../../../generated/types/vm-types";
 
 export const EvtPersonEditor = ({ vm }: {vm: PersonEditModel}) => (
 	<tr id={`row-${vm.id}-edit`}>

@@ -1,5 +1,5 @@
-import {PersonEditModel} from "./oob-person-page-model-vm";
 import {oobPersonRoutes, oobPersonUrls} from "./oob-personpagerouting";
+import {PersonEditModel} from "../../../generated/types/vm-types";
 
 export const OOBPersonEditor = (props: { vm: PersonEditModel }) => (
 	<tr id={`row-${props.vm.id}-edit`}>

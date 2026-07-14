@@ -1,5 +1,5 @@
-import {PersonTableRowModel} from "./oob-person-page-model-vm";
 import {OOBPersonRow} from "./oob-personrow";
+import {PersonTableRowModel} from "../../../generated/types/vm-types";
 
 export const OOBPersonDetailsBack = (props: { vm: PersonTableRowModel }) => (
 		<>

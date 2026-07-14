@@ -3,21 +3,21 @@ import {EvtPersonPage} from "./evt-personpage";
 import {EvtPersonRow} from "./evt-personrow";
 import {EvtPersonTable} from "./evt-persontable";
 import {EvtPersonEditor} from "./evt-personedit";
-import {PersonDetailModel, PersonEditModel, PersonPageModel, PersonTableModel, PersonTableRowModel} from "../p01oobpage/oob-person-page-model-vm";
 import {EvtPersondetailsCard} from "./evt-persondetailscard";
 import {EvtPersondetailsRow} from "./evt-persondetailrow";
 import {RouteDefinition, RouteUrlDefinition} from "../p00shared/app-types";
+import {PersonDetailModel, PersonEditModel, PersonPageModel, PersonTableModel, PersonTableRowModel} from "../../../generated/types/vm-types";
 
 export const evtPersonRoutes = {
 	EvtPersonPage: {
-		url: () => `/demo/event/page`,
+		url: () => `/demo/event/page`, // SPRING-HONO
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonPageModel;
 			return c.render(<EvtPersonPage vm={vm}></EvtPersonPage>);
 		},
 	},
 	EvtPersonDetails: {
-		url: (id: number) => `/demo/event/person/${id}/details`,
+		url: (id: number) => `/demo/event/person/${id}/details`, // SPRING-HONO
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonDetailModel;
 			return c.render(
@@ -29,7 +29,7 @@ export const evtPersonRoutes = {
 		}
 	},
 	EvtPersondetailsRow: {
-		url: (id: number) => `/demo/event/person/${id}/detailsrow`,
+		url: (id: number) => `/demo/event/person/${id}/detailsrow`, // SPRING-HONO
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonDetailModel;
 			return c.render(
@@ -38,14 +38,14 @@ export const evtPersonRoutes = {
 		}
 	},
 	EvtPersondetailsCard: {
-		url: (id: number) => `/demo/event/person/${id}/detailscard`,
+		url: (id: number) => `/demo/event/person/${id}/detailscard`, // SPRING-HONO
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonDetailModel;
 			return c.render(<EvtPersondetailsCard vm={vm}></EvtPersondetailsCard>);
 		}
 	},
 	EvtPersonEditor: {
-		url: (id: number) => `/demo/event/person/${id}/edit`,
+		url: (id: number) => `/demo/event/person/${id}/edit`, // SPRING-HONO
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonEditModel;
 			return c.render(
@@ -53,36 +53,36 @@ export const evtPersonRoutes = {
 			);
 		}
 	},
-	EvtPersonRow: { // TODO: check why unused
-		url: (id: number) => `/demo/event/person/${id}/row`,
+	EvtPersonRow: {
+		url: (id: number) => `/demo/event/person/${id}/row`, // SPRING-HONO
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonTableRowModel;
 			return c.render(<EvtPersonRow vm={vm}></EvtPersonRow>);
 		}
 	},
 	EvtPersonTable: {
-		url: () => `/demo/event/persontable`,
+		url: () => `/demo/event/persontable`, // SPRING-HONO
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonTableModel;
 			return c.render(<EvtPersonTable vm={vm}></EvtPersonTable>);
 		}
 	},
 } satisfies Record<string, RouteDefinition>;
-
 export type EvtPersonRouteKey = keyof typeof evtPersonRoutes;
+
+export const EVT_PAGE_ID = 'EvtPersonPage' satisfies EvtPersonRouteKey;
 
 export const evtPersonUrls = {
 	UpdatePerson: {
-		url: (id: number) => `/demo/event/person/${id}`,
+		url: (id: number) => `/demo/event/person/${id}`, // SPRING-HONO
 	},
 	Delete: {
-		url: () => `/demo/event/delete`,
+		url: () => `/demo/event/delete`, // SPRING-HONO
 	},
 } satisfies Record<string, RouteUrlDefinition>;
 
+// SPRING-HONO: EvtPeopleController.EvtBackendEvents
 export const evtEvents = {
 	PERSON_UPDATED: 'person-updated',
 }
-type EvtPageKey = keyof typeof evtPersonRoutes;
-export const EVT_PAGE_ID = 'EvtPersonPage' satisfies EvtPageKey;
 

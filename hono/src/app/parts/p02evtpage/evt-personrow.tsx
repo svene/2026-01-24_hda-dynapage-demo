@@ -1,5 +1,5 @@
-import {PersonTableRowModel} from "../p01oobpage/oob-person-page-model-vm";
 import {evtPersonRoutes} from "./evt-personpagerouting";
+import {PersonTableRowModel} from "../../../generated/types/vm-types";
 
 export const EvtPersonRow = (props: {vm: PersonTableRowModel}) => (
 	<tr

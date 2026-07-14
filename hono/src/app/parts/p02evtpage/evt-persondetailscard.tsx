@@ -1,5 +1,5 @@
-import {PersonDetailModel} from "../p01oobpage/oob-person-page-model-vm";
 import {evtPersonRoutes} from "./evt-personpagerouting";
+import {PersonDetailModel} from "../../../generated/types/vm-types";
 
 export const EvtPersondetailsCard = (props: { vm: PersonDetailModel }) => (
 		<>

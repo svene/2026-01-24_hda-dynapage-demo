@@ -1,7 +1,5 @@
 package dev.svenehrke.springboothonopoc.inbound.web;
 
-import dev.svenehrke.springboothonopoc.core.HonoWebApiSharedConsts;
-import dev.svenehrke.springboothonopoc.core.OobHonoWebApiSharedConsts.OOBHonoWebApiConsts;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.view.RedirectView;
@@ -11,7 +9,7 @@ public class HomeController {
 
 	@GetMapping("/")
 	public RedirectView index() {
-		return new RedirectView(OOBHonoWebApiConsts.BASE + HonoWebApiSharedConsts.HonoWebApiConsts.PAGE);
+		return new RedirectView(PeopleController.OOB_PEOPLE_PAGE_URL);
 	}
 
 }

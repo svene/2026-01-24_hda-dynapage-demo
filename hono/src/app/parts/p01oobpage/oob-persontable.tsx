@@ -1,6 +1,6 @@
-import {PersonTableModel} from "./oob-person-page-model-vm";
 import {OOBPersonRow} from "./oob-personrow";
 import {oobPersonUrls} from "./oob-personpagerouting";
+import {PersonTableModel} from "../../../generated/types/vm-types";
 
 export const OOBPersonTable = (props: { vm: PersonTableModel }) => (
 	<div id="result-table">

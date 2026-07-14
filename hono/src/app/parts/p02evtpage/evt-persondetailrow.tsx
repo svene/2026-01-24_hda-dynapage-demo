@@ -1,5 +1,5 @@
-import {PersonDetailModel} from "../p01oobpage/oob-person-page-model-vm";
 import {evtEvents, evtPersonRoutes} from "./evt-personpagerouting";
+import {PersonDetailModel} from "../../../generated/types/vm-types";
 
 export const EvtPersondetailsRow = ({vm}: { vm: PersonDetailModel }) => (
 		<>

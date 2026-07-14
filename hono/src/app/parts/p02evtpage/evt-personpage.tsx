@@ -1,11 +1,11 @@
 import {EvtPersonTable} from "./evt-persontable";
 import {MpaLayout} from "../../root/mpalayout";
-import {PersonPageModel} from "../p01oobpage/oob-person-page-model-vm";
-import {evtPersonRoutes} from "./evt-personpagerouting";
+import {EVT_PAGE_ID, evtPersonRoutes} from "./evt-personpagerouting";
+import {PersonPageModel} from "../../../generated/types/vm-types";
 
 export const EvtPersonPage = (props: { vm: PersonPageModel }) => {
 	return (
-		<MpaLayout selectedMenu={evtPersonRoutes.EvtPersonPage.id}>
+		<MpaLayout selectedMenu={EVT_PAGE_ID}>
 			<>
 				<div class="field">
 					<label class="label">Search</label>

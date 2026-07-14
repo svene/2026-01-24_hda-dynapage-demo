@@ -10,6 +10,6 @@ export const infoRoutes = {
 		},
 	},
 } satisfies Record<string, RouteDefinition>;
-
 type InfoRouteKey = keyof typeof infoRoutes;
+
 export const INFO_PAGE_ID = 'InfoPage' satisfies InfoRouteKey;

@@ -1,6 +1,6 @@
 import {EvtPersonRow} from "./evt-personrow";
-import {PersonTableModel} from "../p01oobpage/oob-person-page-model-vm";
 import {evtPersonUrls} from "./evt-personpagerouting";
+import {PersonTableModel} from "../../../generated/types/vm-types";
 
 export const EvtPersonTable = (props: { vm: PersonTableModel }) => (
 	<div id="result-table">

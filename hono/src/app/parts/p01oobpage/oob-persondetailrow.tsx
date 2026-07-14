@@ -1,5 +1,5 @@
-import {PersonDetailModel} from "./oob-person-page-model-vm";
 import {oobPersonRoutes} from "./oob-personpagerouting";
+import {PersonDetailModel} from "../../../generated/types/vm-types";
 
 export const OOBPersondetailsRow = (props: { vm: PersonDetailModel }) => (
 		<>
