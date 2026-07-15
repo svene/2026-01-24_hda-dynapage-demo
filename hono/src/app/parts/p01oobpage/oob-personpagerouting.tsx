@@ -10,49 +10,49 @@ import {RouteDefinition, RouteUrlDefinition} from "../p00shared/app-types";
 import {PersonDetailModel, PersonEditModel, PersonPageModel, PersonTableModel, PersonTableRowModel} from "../../../generated/types/vm-types";
 
 export const oobPersonRoutes = {
-	OOBPersonPage: {
+	OOBPersonPage: { // SPRING-HONO
 		url: () => `/demo/oob/page`, // SPRING-HONO
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonPageModel;
 			return c.render(<OOBPersonPage vm={vm}></OOBPersonPage>);
 		}
 	},
-	OOBPersonDetails: {
+	OOBPersonDetails: { // SPRING-HONO
 		url: (id: number) => `/demo/oob/person/${id}/details`, // SPRING-HONO
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonDetailModel;
 			return c.render(<OOBPersonDetails vm={vm}></OOBPersonDetails>);
 		}
 	},
-	OOBPersonEditor: {
+	OOBPersonEditor: { // SPRING-HONO
 		url: (id: number) => `/demo/oob/person/${id}/edit`, // SPRING-HONO
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonEditModel;
 			return c.render(<OOBPersonEditor vm={vm}></OOBPersonEditor>);
 		}
 	},
-	OOBPersonRow: {
+	OOBPersonRow: { // SPRING-HONO
 		url: (id: number) => `/demo/oob/person/${id}/row`, // SPRING-HONO
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonTableRowModel;
 			return c.render(<OOBPersonRow vm={vm}></OOBPersonRow>);
 		}
 	},
-	OOBPersonDetailsBack: {
+	OOBPersonDetailsBack: { // SPRING-HONO
 		url: (id: number) => `/demo/oob/person/${id}/detailsback`, // SPRING-HONO
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonTableRowModel;
 			return c.render(<OOBPersonDetailsBack vm={vm}></OOBPersonDetailsBack>);
 		}
 	},
-	OOBPersonTable: {
+	OOBPersonTable: { // SPRING-HONO
 		url: () => `/demo/oob/persontable`, // SPRING-HONO
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonTableModel;
 			return c.render(<OOBPersonTable vm={vm}></OOBPersonTable>);
 		}
 	},
-	OOBPersondetailsCard: {
+	OOBPersondetailsCard: { // SPRING-HONO
 		url: (id: number) => `/demo/oob/person/${id}/detailscard`, // SPRING-HONO
 		render: async (c: Context) => {
 			const vm = await c.req.json() as PersonDetailModel;
@@ -65,10 +65,10 @@ export type OOBPersonRouteKey = keyof typeof oobPersonRoutes;
 export const OOB_PAGE_ID = 'OOBPersonPage' satisfies OOBPersonRouteKey;
 
 export const oobPersonUrls = {
-	UpdatePerson: {
+	UpdatePerson: { // SPRING-HONO
 		url: (id: number) => `/demo/oob/person/${id}`, // SPRING-HONO
 	},
-	Delete: {
+	Delete: { // SPRING-HONO
 		url: () => `/demo/oob/delete`, // SPRING-HONO
 	},
 } satisfies Record<string, RouteUrlDefinition>;

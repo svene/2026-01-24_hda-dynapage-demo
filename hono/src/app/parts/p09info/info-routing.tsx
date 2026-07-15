@@ -3,8 +3,8 @@ import {InfoPage} from "./infopage";
 import {RouteDefinition} from "../p00shared/app-types";
 
 export const infoRoutes = {
-	InfoPage: {
-		url: () => `/info`,
+	InfoPage: { // SPRING-HONO
+		url: () => `/info`, // SPRING-HONO
 		render: async (c: Context) => {
 			return c.render(<InfoPage></InfoPage>);
 		},
