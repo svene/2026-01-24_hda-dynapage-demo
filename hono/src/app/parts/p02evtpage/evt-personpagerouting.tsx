@@ -5,7 +5,7 @@ import {EvtPersonTable} from "./evt-persontable";
 import {EvtPersonEditor} from "./evt-personedit";
 import {EvtPersondetailsCard} from "./evt-persondetailscard";
 import {EvtPersondetailsRow} from "./evt-persondetailrow";
-import {RouteDefinition, RouteUrlDefinition} from "../p00shared/app-types";
+import {RouteDefinition, ActionUrlDefinition} from "../p00shared/app-types";
 import {PersonDetailModel, PersonEditModel, PersonPageModel, PersonTableModel, PersonTableRowModel} from "../../../generated/types/vm-types";
 
 export const evtPersonRoutes = {
@@ -72,14 +72,14 @@ export type EvtPersonRouteKey = keyof typeof evtPersonRoutes;
 
 export const EVT_PAGE_ID = 'EvtPersonPage' satisfies EvtPersonRouteKey;
 
-export const evtPersonUrls = {
+export const evtPersonActionUrls = {
 	UpdatePerson: { // SPRING-HONO
 		url: (id: number) => `/demo/event/person/${id}`, // SPRING-HONO
 	},
 	Delete: { // SPRING-HONO
 		url: () => `/demo/event/delete`, // SPRING-HONO
 	},
-} satisfies Record<string, RouteUrlDefinition>;
+} satisfies Record<string, ActionUrlDefinition>;
 
 // SPRING-HONO: EvtPeopleController.EvtBackendEvents
 export const evtEvents = {

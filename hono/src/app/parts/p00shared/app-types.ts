@@ -4,6 +4,6 @@ export type RouteDefinition = {
 	url: (...args: any[]) => string;
 	render: (c: Context) => Promise<Response>;
 };
-export type RouteUrlDefinition = {
+export type ActionUrlDefinition = {
 	url: (...args: any[]) => string;
 };

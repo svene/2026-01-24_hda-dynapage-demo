@@ -1,4 +1,4 @@
-import {oobPersonRoutes, oobPersonUrls} from "./oob-personpagerouting";
+import {oobPersonRoutes, oobPersonActionUrls} from "./oob-personpagerouting";
 import {PersonEditModel} from "../../../generated/types/vm-types";
 
 export const OOBPersonEditor = (props: { vm: PersonEditModel }) => (
@@ -48,7 +48,7 @@ export const OOBPersonEditor = (props: { vm: PersonEditModel }) => (
 							type="submit"
 							class="level-item button is-primary"
 							hx-trigger="click consume"
-							hx-put={oobPersonUrls.UpdatePerson.url(props.vm.id)}
+							hx-put={oobPersonActionUrls.UpdatePerson.url(props.vm.id)}
 							hx-target="closest tr"
 							hx-swap="outerHTML"
 						>Save

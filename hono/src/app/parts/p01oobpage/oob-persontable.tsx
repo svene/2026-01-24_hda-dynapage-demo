@@ -1,5 +1,5 @@
 import {OOBPersonRow} from "./oob-personrow";
-import {oobPersonUrls} from "./oob-personpagerouting";
+import {oobPersonActionUrls} from "./oob-personpagerouting";
 import {PersonTableModel} from "../../../generated/types/vm-types";
 
 export const OOBPersonTable = (props: { vm: PersonTableModel }) => (
@@ -10,7 +10,7 @@ export const OOBPersonTable = (props: { vm: PersonTableModel }) => (
 				<td colSpan={5}>
 					<form
 						id="bulkDeleteForm"
-						hx-delete={oobPersonUrls.Delete.url()}
+						hx-delete={oobPersonActionUrls.Delete.url()}
 						hx-target="#result-table"
 					>
 						<button type="submit" class="button">

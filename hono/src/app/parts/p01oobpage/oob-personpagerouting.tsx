@@ -6,7 +6,7 @@ import {OOBPersonTable} from "./oob-persontable";
 import {OOBPersonPage} from "./oob-personpage";
 import {OOBPersonRow} from "./oob-personrow";
 import {OOBPersondetailsCard} from "./oob-persondetailscard";
-import {RouteDefinition, RouteUrlDefinition} from "../p00shared/app-types";
+import {RouteDefinition, ActionUrlDefinition} from "../p00shared/app-types";
 import {PersonDetailModel, PersonEditModel, PersonPageModel, PersonTableModel, PersonTableRowModel} from "../../../generated/types/vm-types";
 
 export const oobPersonRoutes = {
@@ -64,12 +64,12 @@ export type OOBPersonRouteKey = keyof typeof oobPersonRoutes;
 
 export const OOB_PAGE_ID = 'OOBPersonPage' satisfies OOBPersonRouteKey;
 
-export const oobPersonUrls = {
+export const oobPersonActionUrls = {
 	UpdatePerson: { // SPRING-HONO
 		url: (id: number) => `/demo/oob/person/${id}`, // SPRING-HONO
 	},
 	Delete: { // SPRING-HONO
 		url: () => `/demo/oob/delete`, // SPRING-HONO
 	},
-} satisfies Record<string, RouteUrlDefinition>;
+} satisfies Record<string, ActionUrlDefinition>;
 

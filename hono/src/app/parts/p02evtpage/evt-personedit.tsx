@@ -1,4 +1,4 @@
-import {evtEvents, evtPersonRoutes, evtPersonUrls} from "./evt-personpagerouting";
+import {evtEvents, evtPersonRoutes, evtPersonActionUrls} from "./evt-personpagerouting";
 import {PersonEditModel} from "../../../generated/types/vm-types";
 
 export const EvtPersonEditor = ({ vm }: {vm: PersonEditModel}) => (
@@ -60,7 +60,7 @@ export const EvtPersonEditor = ({ vm }: {vm: PersonEditModel}) => (
 							type="submit"
 							class="level-item button is-primary"
 							hx-trigger="click consume"
-							hx-put={evtPersonUrls.UpdatePerson.url(vm.id)} /* Expects backend to respond with 'person-updated'(id) event */
+							hx-put={evtPersonActionUrls.UpdatePerson.url(vm.id)} /* Expects backend to respond with 'person-updated'(id) event */
 							hx-swap="none" /* Works with event handling of 'person-updated' */
 						>Save
 						</button>

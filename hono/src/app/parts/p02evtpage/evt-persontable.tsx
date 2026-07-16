@@ -1,5 +1,5 @@
 import {EvtPersonRow} from "./evt-personrow";
-import {evtPersonUrls} from "./evt-personpagerouting";
+import {evtPersonActionUrls} from "./evt-personpagerouting";
 import {PersonTableModel} from "../../../generated/types/vm-types";
 
 export const EvtPersonTable = (props: { vm: PersonTableModel }) => (
@@ -8,7 +8,7 @@ export const EvtPersonTable = (props: { vm: PersonTableModel }) => (
 			<thead>
 			<tr>
 				<td colSpan={5}>
-					<form id="bulkDeleteForm" hx-delete={evtPersonUrls.Delete.url()}>
+					<form id="bulkDeleteForm" hx-delete={evtPersonActionUrls.Delete.url()}>
 						<button type="submit" class="button">
 							<span class="icon"><i class="material-icons">delete</i></span>
 							<span>Delete</span>
