@@ -36,22 +36,22 @@ public class PeopleController {
 		this.honoAppClient = honoAppClient;
 	}
 
-	@GetMapping(PeopleController.OOB_PEOPLE_PAGE_URL)
+	@GetMapping(PeopleController.OOB_PEOPLE_PAGE_URL) // SPRING-HONO
 	public ResponseEntity<String> peoplePage() {
 		var vm = new PersonPageModel(peopleService.personTableModel());
 		return honoAppClient.route("OOBPersonPage", vm);
 	}
 
-	@GetMapping("/persontable")
+	@GetMapping("/persontable") // SPRING-HONO
 	public ResponseEntity<String> peopleUrl(@RequestParam() String search) {
 		return honoAppClient.route("OOBPersonTable", peopleService.peopleForSearch(search));
 	}
 
-	@GetMapping("/person/{id}/details")
+	@GetMapping("/person/{id}/details") // SPRING-HONO
 	public ResponseEntity<String> details(@PathVariable int id) {
 		return honoAppClient.route("OOBPersonDetails", peopleService.personDetailModel(id));
 	}
-	@GetMapping("/person/{id}/detailsback")
+	@GetMapping("/person/{id}/detailsback") // SPRING-HONO
 	public ResponseEntity<String> detailsBack(@PathVariable int id) {
 		return honoAppClient.route("OOBPersonDetailsBack", peopleService.personTableRowModel(id));
 	}
@@ -61,12 +61,12 @@ public class PeopleController {
 		return honoAppClient.route("OOBPersonEditor", peopleService.personEditModel(id));
 	}
 
-	@GetMapping("/person/{id}/detailscard")
+	@GetMapping("/person/{id}/detailscard") // SPRING-HONO
 	public ResponseEntity<String> detailsCard(@PathVariable int id) {
 		return honoAppClient.route("OOBPersondetailsCard", peopleService.personDetailModel(id));
 	}
 
-	@GetMapping("/person/{id}/row")
+	@GetMapping("/person/{id}/row") // SPRING-HONO
 	public ResponseEntity<String> row(@PathVariable int id) {
 		return honoAppClient.route("OOBPersonRow", peopleService.personTableRowModel(id));
 	}
@@ -77,7 +77,7 @@ public class PeopleController {
 		return honoAppClient.route("OOBPersonTable", peopleService.peopleForSearch(""));
 	}
 
-	@PutMapping("/person/{id}")
+	@PutMapping("/person/{id}") // SPRING-HONO
 	public void updatePerson(
 		@PathVariable int id,
 		PersonEditModel personEditModel,
