@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -18,8 +19,8 @@ import static dev.svenehrke.springboothonopoc.inbound.web.HTMXConsts.HX_REDIRECT
  * - Step 2: Forward HTTP request to HONO
  */
 @Controller
-@RequestMapping(PeopleController.OOB_PEOPLE_URL)
-public class PeopleController {
+@RequestMapping(OobPeopleController.OOB_PEOPLE_URL)
+public class OobPeopleController {
 
 	public static final String OOB_PEOPLE_URL = "/demo/oob";
 	public static final String OOB_PEOPLE_PAGE_URL = "/page";
@@ -27,7 +28,7 @@ public class PeopleController {
 	private final PeopleService peopleService;
 	private final HonoAppClient honoAppClient;
 
-	public PeopleController(
+	public OobPeopleController(
 		@Oob PeopleService peopleService,
 		HonoAppClient honoAppClient
 
@@ -36,7 +37,7 @@ public class PeopleController {
 		this.honoAppClient = honoAppClient;
 	}
 
-	@GetMapping(PeopleController.OOB_PEOPLE_PAGE_URL) // SPRING-HONO
+	@GetMapping(OobPeopleController.OOB_PEOPLE_PAGE_URL) // SPRING-HONO
 	public ResponseEntity<String> peoplePage() {
 		var vm = new PersonPageModel(peopleService.personTableModel());
 		return honoAppClient.route("OOBPersonPage", vm);
@@ -63,6 +64,7 @@ public class PeopleController {
 
 	@GetMapping("/person/{id}/detailscard") // SPRING-HONO
 	public ResponseEntity<String> detailsCard(@PathVariable int id) {
+		String url = UriComponentsBuilder.fromPath(editURL).buildAndExpand(id).toUriString();
 		return honoAppClient.route("OOBPersondetailsCard", peopleService.personDetailModel(id));
 	}
 
@@ -86,7 +88,7 @@ public class PeopleController {
 		peopleService.updatePerson(id, personEditModel);
 		response.setHeader(
 			HX_REDIRECT,
-			PeopleController.OOB_PEOPLE_URL + PeopleController.OOB_PEOPLE_PAGE_URL);
+			OobPeopleController.OOB_PEOPLE_URL + OobPeopleController.OOB_PEOPLE_PAGE_URL);
 	}
 
 }
