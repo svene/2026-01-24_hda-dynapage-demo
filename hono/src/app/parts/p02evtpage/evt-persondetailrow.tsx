@@ -1,24 +1,25 @@
-import {evtEvents, evtPersonRoutes} from "./evt-personpagerouting";
+import {evtPersonRoutes} from "./evt-personpagerouting";
 import {PersonDetailModel} from "../../../generated/types/vm-types";
+import {eventName} from "./jtsevtperson";
 
-export const EvtPersondetailsRow = ({vm}: { vm: PersonDetailModel }) => (
+export const EvtPersonDetailsRow = ({vm}: { vm: PersonDetailModel }) => (
 		<>
 			<tr
 				id={`row-${vm.id}`}
 				style="cursor: pointer"
-				_={`on click halt the event then send '${EvtPersonDetailsRowX.CLOSE_REQUESTED}'(id:${vm.id})`}
+				_={`on click halt the event then send ${eventName('PersonDetailsRow_CloseCmd')}(id:${vm.id})`}
 			>
 				<template
-					hx-trigger={`${EvtPersonDetailsRowX.CLOSE_REQUESTED}[event.detail.id == ${vm.id}] from:closest tr`}
+					hx-trigger={`${eventName('PersonDetailsRow_CloseCmd')}[event.detail.id == ${vm.id}] from:closest tr`}
 					hx-target="closest tr"
 					hx-swap="outerHTML"
 					hx-get={evtPersonRoutes.EvtPersonRow.url(vm.id)}
 				></template>
 				<template
-					hx-trigger={`${evtEvents.PERSON_UPDATED}[event.detail.id == ${vm.id}] from:body`}
+					hx-trigger={`${eventName('PERSON_UPDATED')}[event.detail.id == ${vm.id}] from:body`}
 					hx-target="closest tr"
 					hx-swap="outerHTML"
-					hx-get={evtPersonRoutes.EvtPersondetailsRow.url(vm.id)}
+					hx-get={evtPersonRoutes.EvtPersonDetailsRow.url(vm.id)}
 				></template>
 				<td style="border-style: none"></td>
 				<td style="border-style: none">{vm.firstName}</td>
@@ -28,10 +29,6 @@ export const EvtPersondetailsRow = ({vm}: { vm: PersonDetailModel }) => (
 			</tr>
 		</>
 );
-
-export const EvtPersonDetailsRowX = {
-	CLOSE_REQUESTED: 'close-details-requested',
-}
 export const XXX = { // TODO: document purpose ?
 	A: () => (
 		<div>hallo</div>

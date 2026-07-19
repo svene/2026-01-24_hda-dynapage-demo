@@ -78,7 +78,7 @@ send the event directly on the client.
 Example with htmx on the sending side and alpineJS on the receiving side:
 ````html
 // evt-persondetailrow.tsx:
-export const EvtPersondetailsRow = (props: { vm: EvtPersonDetailModel }) => (
+export const EvtPersonDetailsRow = (props: { vm: EvtPersonDetailModel }) => (
 <>
 <tr
   id={`row-${props.vm.id}`}

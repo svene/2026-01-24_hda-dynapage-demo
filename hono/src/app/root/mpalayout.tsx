@@ -22,10 +22,7 @@ export const MpaLayout = (props: {selectedMenu?: menuId, children: Child }) => (
 		</script>
 	</head>
 
-	<body
-		hx-ext="path-params"
-		hx-on:close-details-requested="console.log('close-details-requested evt received in body. id: ', event?.detail?.id)"
-	>
+	<body hx-ext="path-params">
 	<section class="hero is-link">
 		<div class="hero-body">
 			<nav class="level">

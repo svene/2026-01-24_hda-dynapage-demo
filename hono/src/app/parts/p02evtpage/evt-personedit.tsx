@@ -1,5 +1,6 @@
-import {evtEvents, evtPersonRoutes, evtPersonActionUrls} from "./evt-personpagerouting";
+import {evtPersonRoutes, evtPersonActionUrls} from "./evt-personpagerouting";
 import {PersonEditModel} from "../../../generated/types/vm-types";
+import {eventName} from "./jtsevtperson";
 
 export const EvtPersonEditor = ({ vm }: {vm: PersonEditModel}) => (
 	<tr id={`row-${vm.id}-edit`}>
@@ -9,15 +10,15 @@ export const EvtPersonEditor = ({ vm }: {vm: PersonEditModel}) => (
 			`}
 			hx-target="closest tr"
 			hx-swap="outerHTML"
-			hx-get={evtPersonRoutes.EvtPersondetailsCard.url(vm.id)}
+			hx-get={evtPersonRoutes.EvtPersonDetailsCard.url(vm.id)}
 		></template>
 		<template
 			hx-trigger={`
-			${evtEvents.PERSON_UPDATED}[event.detail.id === ${vm.id}] from:closest tr
+			${eventName('PERSON_UPDATED')}[event.detail.id === ${vm.id}] from:closest tr
 			`}
 			hx-target="closest tr"
 			hx-swap="outerHTML"
-			hx-get={evtPersonRoutes.EvtPersondetailsCard.url(vm.id)}
+			hx-get={evtPersonRoutes.EvtPersonDetailsCard.url(vm.id)}
 		></template>
 		<td colSpan={4} style="padding: 0px">
 			<div class="card p-5 my-2">

@@ -3,67 +3,63 @@ import {EvtPersonPage} from "./evt-personpage";
 import {EvtPersonRow} from "./evt-personrow";
 import {EvtPersonTable} from "./evt-persontable";
 import {EvtPersonEditor} from "./evt-personedit";
-import {EvtPersondetailsCard} from "./evt-persondetailscard";
-import {EvtPersondetailsRow} from "./evt-persondetailrow";
+import {EvtPersonDetailsCard} from "./evt-person-details-card";
+import {EvtPersonDetailsRow} from "./evt-persondetailrow";
 import {RouteDefinition, ActionUrlDefinition} from "../p00shared/app-types";
-import {PersonDetailModel, PersonEditModel, PersonPageModel, PersonTableModel, PersonTableRowModel} from "../../../generated/types/vm-types";
+import {JTSEvtPersonRouteName} from "../../../generated/types/vm-types";
+
+const nameIdUrl = (name: JTSEvtPersonRouteName, id: number) => `/demo/event/component/${name}?id=${id}`; // SPRING-HONO
+const nameUrl = (name: JTSEvtPersonRouteName) => `/demo/event/component/${name}`; // SPRING-HONO
 
 export const evtPersonRoutes = {
 	EvtPersonPage: { // SPRING-HONO
-		url: () => `/demo/event/page`, // SPRING-HONO
-		render: async (c: Context) => {
-			const vm = await c.req.json() as PersonPageModel;
+		url: () => nameUrl('EvtPersonPage'), // SPRING-HONO
+		render: async (c: Context, vm: any) => {
 			return c.render(<EvtPersonPage vm={vm}></EvtPersonPage>);
 		},
 	},
 	EvtPersonDetails: { // SPRING-HONO
-		url: (id: number) => `/demo/event/person/${id}/details`, // SPRING-HONO
-		render: async (c: Context) => {
-			const vm = await c.req.json() as PersonDetailModel;
+		url: (id: number) => nameIdUrl('EvtPersonDetails', id), // SPRING-HONO
+		render: async (c: Context, vm: any) => {
 			return c.render(
 				<>
-					<EvtPersondetailsRow vm={vm}></EvtPersondetailsRow>
-					<EvtPersondetailsCard vm={vm}></EvtPersondetailsCard>
+					<EvtPersonDetailsRow vm={vm}></EvtPersonDetailsRow>
+					<EvtPersonDetailsCard vm={vm}></EvtPersonDetailsCard>
 				</>
 			);
 		}
 	},
-	EvtPersondetailsRow: { // SPRING-HONO
-		url: (id: number) => `/demo/event/person/${id}/detailsrow`, // SPRING-HONO
-		render: async (c: Context) => {
-			const vm = await c.req.json() as PersonDetailModel;
+	EvtPersonDetailsRow: { // SPRING-HONO
+		url: (id: number) => nameIdUrl('EvtPersonDetailsRow', id), // SPRING-HONO
+		render: async (c: Context, vm: any) => {
 			return c.render(
-				<EvtPersondetailsRow vm={vm}></EvtPersondetailsRow>
+				<EvtPersonDetailsRow vm={vm}></EvtPersonDetailsRow>
 			);
 		}
 	},
-	EvtPersondetailsCard: { // SPRING-HONO
-		url: (id: number) => `/demo/event/person/${id}/detailscard`, // SPRING-HONO
-		render: async (c: Context) => {
-			const vm = await c.req.json() as PersonDetailModel;
-			return c.render(<EvtPersondetailsCard vm={vm}></EvtPersondetailsCard>);
+	EvtPersonDetailsCard: { // SPRING-HONO
+		url: (id: number) => nameIdUrl('EvtPersonDetailsCard', id), // SPRING-HONO
+		render: async (c: Context, vm: any) => {
+			return c.render(<EvtPersonDetailsCard vm={vm}></EvtPersonDetailsCard>);
 		}
 	},
 	EvtPersonEditor: { // SPRING-HONO
-		url: (id: number) => `/demo/event/person/${id}/edit`, // SPRING-HONO
-		render: async (c: Context) => {
-			const vm = await c.req.json() as PersonEditModel;
+		url: (id: number) => nameIdUrl('EvtPersonEditor', id), // SPRING-HONO
+		render: async (c: Context, vm: any) => {
 			return c.render(
 				<EvtPersonEditor vm={vm}></EvtPersonEditor>
 			);
 		}
 	},
 	EvtPersonRow: { // SPRING-HONO
-		url: (id: number) => `/demo/event/person/${id}/row`, // SPRING-HONO
-		render: async (c: Context) => {
-			const vm = await c.req.json() as PersonTableRowModel;
+		url: (id: number) => nameIdUrl('EvtPersonRow', id), // SPRING-HONO
+		render: async (c: Context, vm: any) => {
 			return c.render(<EvtPersonRow vm={vm}></EvtPersonRow>);
 		}
 	},
 	EvtPersonTable: { // SPRING-HONO
-		url: () => `/demo/event/persontable`, // SPRING-HONO
-		render: async (c: Context) => {
-			const vm = await c.req.json() as PersonTableModel;
+		url: () => nameUrl('EvtPersonTable'), // SPRING-HONO
+		render: async (c: Context, vm: any) => {
 			return c.render(<EvtPersonTable vm={vm}></EvtPersonTable>);
 		}
 	},
@@ -80,9 +76,3 @@ export const evtPersonActionUrls = {
 		url: () => `/demo/event/delete`, // SPRING-HONO
 	},
 } satisfies Record<string, ActionUrlDefinition>;
-
-// SPRING-HONO: EvtPeopleController.EvtBackendEvents
-export const evtEvents = {
-	PERSON_UPDATED: 'person-updated',
-}
-

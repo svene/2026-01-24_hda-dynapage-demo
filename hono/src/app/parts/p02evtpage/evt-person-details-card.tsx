@@ -1,7 +1,8 @@
 import {evtPersonRoutes} from "./evt-personpagerouting";
 import {PersonDetailModel} from "../../../generated/types/vm-types";
+import {eventName} from "./jtsevtperson";
 
-export const EvtPersondetailsCard = (props: { vm: PersonDetailModel }) => (
+export const EvtPersonDetailsCard = (props: { vm: PersonDetailModel }) => (
 		<>
 			<tr
 				id={`row-${props.vm.id}-details`}
@@ -10,7 +11,7 @@ export const EvtPersondetailsCard = (props: { vm: PersonDetailModel }) => (
 				hx-target="this"
 				hx-swap="outerHTML"
 				hx-get={evtPersonRoutes.EvtPersonEditor.url(props.vm.id)}
-				_={`on 'close-details-requested'(id) from <body/> if id == ${props.vm.id} remove me end`}
+				_={`on ${eventName('PersonDetailsRow_CloseCmd')}(id) from <body/> if id == ${props.vm.id} remove me end`}
 			>
 				<td colSpan={5} style="padding-left: 30px">
 

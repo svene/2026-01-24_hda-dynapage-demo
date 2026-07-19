@@ -5,7 +5,7 @@ import {OOBPersonDetailsBack} from "./oob-persondetailsback";
 import {OOBPersonTable} from "./oob-persontable";
 import {OOBPersonPage} from "./oob-personpage";
 import {OOBPersonRow} from "./oob-personrow";
-import {OOBPersonDetailsCard} from "./o-o-b-person-details-card";
+import {OOBPersonDetailsCard} from "./oob-person-details-card";
 import {RouteDefinition, ActionUrlDefinition} from "../p00shared/app-types";
 import {JTSOobPersonRouteName} from "../../../generated/types/vm-types";
 

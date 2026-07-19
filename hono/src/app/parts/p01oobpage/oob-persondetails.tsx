@@ -1,4 +1,4 @@
-import {OOBPersonDetailsCard} from "./o-o-b-person-details-card";
+import {OOBPersonDetailsCard} from "./oob-person-details-card";
 import {OOBPersonDetailsRow} from "./oob-persondetailrow";
 import {PersonDetailModel} from "../../../generated/types/vm-types";
 
