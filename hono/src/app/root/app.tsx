@@ -4,6 +4,7 @@ import {infoRoutes} from "../parts/p09info/info-routing";
 import {evtPersonRoutes} from "../parts/p02evtpage/evt-personpagerouting";
 import {oobPersonRoutes} from "../parts/p01oobpage/oob-personpagerouting";
 import {RouteDefinition} from "../parts/p00shared/app-types";
+import {evtHtmlPersonRoutes} from "../parts/p03evthtmlpage/evthtml-personpagerouting";
 
 const ROUTER_URL = '/router';
 
@@ -19,6 +20,7 @@ const routeDefinitions: Record<string, RouteDefinition> = {
 	...infoRoutes,
 	...oobPersonRoutes,
 	...evtPersonRoutes,
+	...evtHtmlPersonRoutes,
 };
 
 function init(hono: Hono) {

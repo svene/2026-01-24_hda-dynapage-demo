@@ -2,8 +2,9 @@ import type {Child} from 'hono/jsx'
 import {OOB_PAGE_ID, oobPersonRoutes} from "../parts/p01oobpage/oob-personpagerouting";
 import {EVT_PAGE_ID, evtPersonRoutes} from "../parts/p02evtpage/evt-personpagerouting";
 import {INFO_PAGE_ID, infoRoutes} from "../parts/p09info/info-routing";
+import {EVT_HTML_PAGE_ID, evtHtmlPersonRoutes} from "../parts/p03evthtmlpage/evthtml-personpagerouting";
 
-export type menuId = typeof INFO_PAGE_ID | typeof OOB_PAGE_ID | typeof EVT_PAGE_ID;
+export type menuId = typeof INFO_PAGE_ID | typeof OOB_PAGE_ID | typeof EVT_PAGE_ID | typeof EVT_HTML_PAGE_ID;
 export const MpaLayout = (props: {selectedMenu?: menuId, children: Child }) => (
 	<html lang="en" x-data="$store.darkMode" x-bind:data-theme="theme">
 	<head>
@@ -50,6 +51,10 @@ export const MpaLayout = (props: {selectedMenu?: menuId, children: Child }) => (
 						class={`navbar-item ${props.selectedMenu === EVT_PAGE_ID ? 'is-selected' : ''}`}
 						href={evtPersonRoutes.EvtPersonPage.url()}
 					>Events Variant</a>
+					<a
+						class={`navbar-item ${props.selectedMenu === EVT_HTML_PAGE_ID ? 'is-selected' : ''}`}
+						href={evtHtmlPersonRoutes.EvtHtmlPersonPage.url()}
+					>Events HTML Variant</a>
 					<a
 						class={`navbar-item ${props.selectedMenu === INFO_PAGE_ID ? 'is-selected' : ''}`}
 						href={infoRoutes.InfoPage.url()}
