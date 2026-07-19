@@ -1,7 +1,7 @@
 import {oobPersonRoutes} from "./oob-personpagerouting";
 import {PersonDetailModel} from "../../../generated/types/vm-types";
 
-export const OOBPersondetailsRow = (props: { vm: PersonDetailModel }) => (
+export const OOBPersonDetailsRow = (props: { vm: PersonDetailModel }) => (
 		<>
 			<tr
 				id={`row-${props.vm.id}`}

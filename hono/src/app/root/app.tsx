@@ -27,7 +27,8 @@ function init(hono: Hono) {
 		const name = c.req.query('name') || 'name-missing';
 
 		const routeDefinition = routeDefinitions[name] ?? unsupported(name);
-		return routeDefinition.render(c);
+		const vm = await c.req.json();
+		return routeDefinition.render(c, vm);
 	});
 }
 

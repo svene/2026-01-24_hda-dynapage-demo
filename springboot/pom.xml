@@ -58,10 +58,14 @@
                     <classPatterns>
                         <pattern>dev.svenehrke.springboothonopoc.**.*Model</pattern>
                     </classPatterns>
+                    <classes>
+                        <class>dev.svenehrke.springboothonopoc.inbound.web.JTSOobPersonRouteName</class>
+                    </classes>
                     <outputFile>${project.parent.basedir}/hono/src/generated/types/vm-types.d.ts</outputFile>
                     <outputFileType>declarationFile</outputFileType>
                     <outputKind>module</outputKind>
                     <mapClasses>asInterfaces</mapClasses>
+                    <mapEnum>asUnion</mapEnum>
                 </configuration>
             </plugin>
 

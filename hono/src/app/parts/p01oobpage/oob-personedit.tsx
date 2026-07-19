@@ -40,7 +40,7 @@ export const OOBPersonEditor = (props: { vm: PersonEditModel }) => (
 							hx-trigger="click consume"
 							hx-target="closest tr"
 							hx-swap="outerHTML"
-							hx-get={oobPersonRoutes.OOBPersondetailsCard.url(props.vm.id)}
+							hx-get={oobPersonRoutes.OOBPersonDetailsCard.url(props.vm.id)}
 						>&lt; Back
 						</button>
 						{/* TODO: can this hx-* stuff be put on form above? */}
