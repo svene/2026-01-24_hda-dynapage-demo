@@ -104,11 +104,11 @@ Some notes when working with events
 ````html
 <tr id={`row-${props.vm.id}-edit`}>
   <template
-    _={`on 'close-edit-requested'(id) from <body/> if id == ${props.vm.id} console.log(id) end`}
+    _={`on 'eventName('PersonDetailsRow_CloseCmd')'(id) from <body/> if id == ${props.vm.id} console.log(id) end`}
 	></template>
 <button
 		class="level-item button"
-		_={`on click halt the event then send 'close-edit-requested'(id:${props.vm.id}) to <body/>`}
+		_={`on click halt the event then send 'eventName('PersonDetailsRow_CloseCmd')'(id:${props.vm.id}) to <body/>`}
 >&lt; Back
 </button>
 

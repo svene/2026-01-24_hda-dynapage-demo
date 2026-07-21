@@ -6,7 +6,7 @@ export const EvtPersonEditor = ({ vm }: {vm: PersonEditModel}) => (
 	<tr id={`row-${vm.id}-edit`}>
 		<template
 			hx-trigger={`
-			${EditEvents.CLOSE_REQUESTED}[event.detail.id == ${vm.id}] from:closest tr
+			${eventName('PersonDetailsRow_CloseCmd')}[event.detail.id == ${vm.id}] from:closest tr
 			`}
 			hx-target="closest tr"
 			hx-swap="outerHTML"
@@ -54,7 +54,7 @@ export const EvtPersonEditor = ({ vm }: {vm: PersonEditModel}) => (
 					<nav class="level">
 						<button
 							class="level-item button"
-							_={`on click halt the event then send '${EditEvents.CLOSE_REQUESTED}'(id:${vm.id})`}
+							_={`on click halt the event then send '${eventName('PersonDetailsRow_CloseCmd')}'(id:${vm.id})`}
 						>&lt; Back
 						</button>
 						<button
@@ -71,7 +71,3 @@ export const EvtPersonEditor = ({ vm }: {vm: PersonEditModel}) => (
 		</td>
 	</tr>
 );
-
-const EditEvents = {
-	CLOSE_REQUESTED: 'close-edit-requested',
-};
