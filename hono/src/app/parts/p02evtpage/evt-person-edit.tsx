@@ -1,6 +1,6 @@
-import {evtPersonRoutes, evtPersonActionUrls} from "./evt-personpagerouting";
+import {evtPersonRoutes, evtPersonActionUrls} from "./evt-person-page-routing";
 import {PersonEditModel} from "../../../generated/types/vm-types";
-import {eventName} from "./jtsevtperson";
+import {eventName} from "./jts-evt-person";
 
 export const EvtPersonEditor = ({ vm }: {vm: PersonEditModel}) => (
 	<tr id={`row-${vm.id}-edit`}>

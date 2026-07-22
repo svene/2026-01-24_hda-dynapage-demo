@@ -1,6 +1,6 @@
-import {EvtPersonTable} from "./evt-persontable";
+import {EvtPersonTable} from "./evt-person-table";
 import {MpaLayout} from "../../root/mpalayout";
-import {EVT_PAGE_ID, evtPersonRoutes} from "./evt-personpagerouting";
+import {EVT_PAGE_ID, evtPersonRoutes} from "./evt-person-page-routing";
 import {PersonPageModel} from "../../../generated/types/vm-types";
 
 export const EvtPersonPage = (props: { vm: PersonPageModel }) => {

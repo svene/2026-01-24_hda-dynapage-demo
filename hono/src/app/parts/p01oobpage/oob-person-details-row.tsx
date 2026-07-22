@@ -1,4 +1,4 @@
-import {oobPersonRoutes} from "./oob-personpagerouting";
+import {oobPersonRoutes} from "./oob-person-page-routing";
 import {PersonDetailModel} from "../../../generated/types/vm-types";
 
 export const OOBPersonDetailsRow = (props: { vm: PersonDetailModel }) => (

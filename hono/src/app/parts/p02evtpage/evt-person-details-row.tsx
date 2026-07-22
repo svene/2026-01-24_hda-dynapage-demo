@@ -1,6 +1,6 @@
-import {evtPersonRoutes} from "./evt-personpagerouting";
+import {evtPersonRoutes} from "./evt-person-page-routing";
 import {PersonDetailModel} from "../../../generated/types/vm-types";
-import {eventName} from "./jtsevtperson";
+import {eventName} from "./jts-evt-person";
 
 export const EvtPersonDetailsRow = ({vm}: { vm: PersonDetailModel }) => (
 		<>

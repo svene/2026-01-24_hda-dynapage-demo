@@ -1,10 +1,10 @@
 import {Context} from "hono";
-import {OOBPersonEditor} from "./oob-personedit";
-import {OOBPersonDetails} from "./oob-persondetails";
-import {OOBPersonDetailsBack} from "./oob-persondetailsback";
-import {OOBPersonTable} from "./oob-persontable";
-import {OOBPersonPage} from "./oob-personpage";
-import {OOBPersonRow} from "./oob-personrow";
+import {OOBPersonEditor} from "./oob-person-edit";
+import {OOBPersonDetails} from "./oob-person-details";
+import {OobPersonDetailsBack} from "./oob-person-details-back";
+import {OOBPersonTable} from "./oob-person-table";
+import {OobPersonPage} from "./oob-person-page";
+import {OOBPersonRow} from "./oob-person-row";
 import {OOBPersonDetailsCard} from "./oob-person-details-card";
 import {RouteDefinition, ActionUrlDefinition} from "../p00shared/app-types";
 import {JTSOobPersonRouteName} from "../../../generated/types/vm-types";
@@ -17,7 +17,7 @@ export const oobPersonRoutes = {
 	OOBPersonPage: { // SPRING-HONO
 		url: () => nameUrl('OOBPersonPage'), // SPRING-HONO
 		render: async (c: Context, vm: any) => {
-			return c.render(<OOBPersonPage vm={vm}></OOBPersonPage>);
+			return c.render(<OobPersonPage vm={vm}></OobPersonPage>);
 		}
 	},
 	OOBPersonDetails: { // SPRING-HONO
@@ -41,7 +41,7 @@ export const oobPersonRoutes = {
 	OOBPersonDetailsBack: { // SPRING-HONO
 		url: (id: number) => nameIdUrl('OOBPersonDetailsBack', id), // SPRING-HONO
 		render: async (c: Context, vm: any) => {
-			return c.render(<OOBPersonDetailsBack vm={vm}></OOBPersonDetailsBack>);
+			return c.render(<OobPersonDetailsBack vm={vm}></OobPersonDetailsBack>);
 		}
 	},
 	OOBPersonTable: { // SPRING-HONO

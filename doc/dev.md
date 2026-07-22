@@ -77,7 +77,7 @@ instead of sending an 'action request to the server' to only produce an event wi
 send the event directly on the client.  
 Example with htmx on the sending side and alpineJS on the receiving side:
 ````html
-// evt-persondetailrow.tsx:
+// evt-person-details-row.tsx:
 export const EvtPersonDetailsRow = (props: { vm: EvtPersonDetailModel }) => (
 <>
 <tr
@@ -85,7 +85,7 @@ export const EvtPersonDetailsRow = (props: { vm: EvtPersonDetailModel }) => (
   hx-on:click={`htmx.trigger(window, 'cdr', {id: '${props.vm.id}'})`}
 ...
 
-// evt-personpage.tsx:
+// evt-person-page.tsx:
 // JSX-workaround for special chars:
 <div
 {...{

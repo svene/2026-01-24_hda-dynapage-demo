@@ -1,4 +1,4 @@
-import {evtPersonRoutes} from "./evt-personpagerouting";
+import {evtPersonRoutes} from "./evt-person-page-routing";
 import {PersonTableRowModel} from "../../../generated/types/vm-types";
 
 export const EvtPersonRow = (props: {vm: PersonTableRowModel}) => (

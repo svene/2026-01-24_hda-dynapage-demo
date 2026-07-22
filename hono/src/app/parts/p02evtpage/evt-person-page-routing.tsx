@@ -1,10 +1,10 @@
 import {Context} from "hono";
-import {EvtPersonPage} from "./evt-personpage";
-import {EvtPersonRow} from "./evt-personrow";
-import {EvtPersonTable} from "./evt-persontable";
-import {EvtPersonEditor} from "./evt-personedit";
+import {EvtPersonPage} from "./evt-person-page";
+import {EvtPersonRow} from "./evt-person-row";
+import {EvtPersonTable} from "./evt-person-table";
+import {EvtPersonEditor} from "./evt-person-edit";
 import {EvtPersonDetailsCard} from "./evt-person-details-card";
-import {EvtPersonDetailsRow} from "./evt-persondetailrow";
+import {EvtPersonDetailsRow} from "./evt-person-details-row";
 import {RouteDefinition, ActionUrlDefinition} from "../p00shared/app-types";
 import {JTSEvtPersonRouteName} from "../../../generated/types/vm-types";
 

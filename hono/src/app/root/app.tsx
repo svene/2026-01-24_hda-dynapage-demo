@@ -1,10 +1,10 @@
 import {Context, Hono} from "hono";
 import { serveStatic } from 'hono/bun';
 import {infoRoutes} from "../parts/p09info/info-routing";
-import {evtPersonRoutes} from "../parts/p02evtpage/evt-personpagerouting";
-import {oobPersonRoutes} from "../parts/p01oobpage/oob-personpagerouting";
+import {evtPersonRoutes} from "../parts/p02evtpage/evt-person-page-routing";
+import {oobPersonRoutes} from "../parts/p01oobpage/oob-person-page-routing";
 import {RouteDefinition} from "../parts/p00shared/app-types";
-import {evtHtmlPersonRoutes} from "../parts/p03evthtmlpage/evthtml-personpagerouting";
+import {evtHtmlPersonRoutes} from "../parts/p03evthtmlpage/evthtml-person-page-routing";
 
 const ROUTER_URL = '/router';
 

@@ -1,8 +1,8 @@
 import type {Child} from 'hono/jsx'
-import {OOB_PAGE_ID, oobPersonRoutes} from "../parts/p01oobpage/oob-personpagerouting";
-import {EVT_PAGE_ID, evtPersonRoutes} from "../parts/p02evtpage/evt-personpagerouting";
+import {OOB_PAGE_ID, oobPersonRoutes} from "../parts/p01oobpage/oob-person-page-routing";
+import {EVT_PAGE_ID, evtPersonRoutes} from "../parts/p02evtpage/evt-person-page-routing";
 import {INFO_PAGE_ID, infoRoutes} from "../parts/p09info/info-routing";
-import {EVT_HTML_PAGE_ID, evtHtmlPersonRoutes} from "../parts/p03evthtmlpage/evthtml-personpagerouting";
+import {EVT_HTML_PAGE_ID, evtHtmlPersonRoutes} from "../parts/p03evthtmlpage/evthtml-person-page-routing";
 
 export type menuId = typeof INFO_PAGE_ID | typeof OOB_PAGE_ID | typeof EVT_PAGE_ID | typeof EVT_HTML_PAGE_ID;
 export const MpaLayout = (props: {selectedMenu?: menuId, children: Child }) => (

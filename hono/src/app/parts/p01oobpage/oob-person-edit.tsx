@@ -1,4 +1,4 @@
-import {oobPersonRoutes, oobPersonActionUrls} from "./oob-personpagerouting";
+import {oobPersonRoutes, oobPersonActionUrls} from "./oob-person-page-routing";
 import {PersonEditModel} from "../../../generated/types/vm-types";
 
 export const OOBPersonEditor = (props: { vm: PersonEditModel }) => (

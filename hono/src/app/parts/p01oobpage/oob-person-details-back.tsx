@@ -1,7 +1,7 @@
-import {OOBPersonRow} from "./oob-personrow";
+import {OOBPersonRow} from "./oob-person-row";
 import {PersonTableRowModel} from "../../../generated/types/vm-types";
 
-export const OOBPersonDetailsBack = (props: { vm: PersonTableRowModel }) => (
+export const OobPersonDetailsBack = (props: { vm: PersonTableRowModel }) => (
 		<>
 {/*
 			<hx-partial hx-target="closest tr" hx-swap="outerHTML">
