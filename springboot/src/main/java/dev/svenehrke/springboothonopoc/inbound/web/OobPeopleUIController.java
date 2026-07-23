@@ -32,6 +32,7 @@ public class OobPeopleUIController {
 		this.honoAppClient = honoAppClient;
 	}
 
+	// TODO: rename component -> route:
 	@GetMapping("/component/{name}") // SPRING-HONO
 	public ResponseEntity<String> component(@PathVariable String name, @RequestParam(name = "id", required = false) Integer id, HttpServletRequest request) {
 		JTSOobPersonRouteName routeName;

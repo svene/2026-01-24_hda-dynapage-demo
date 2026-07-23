@@ -64,9 +64,6 @@ export const evtPersonRoutes = {
 		}
 	},
 } satisfies Record<string, RouteDefinition>;
-export type EvtPersonRouteKey = keyof typeof evtPersonRoutes;
-
-export const EVT_PAGE_ID = 'EvtPersonPage' satisfies EvtPersonRouteKey;
 
 export const evtPersonActionUrls = {
 	UpdatePerson: { // SPRING-HONO

@@ -1,10 +1,10 @@
 import {OOBPersonTable} from "./oob-person-table";
 import {MpaLayout} from "../../root/mpalayout";
-import {OOB_PAGE_ID, oobPersonRoutes} from "./oob-person-page-routing";
+import {oobPersonRoutes} from "./oob-person-page-routing";
 import {PersonPageModel} from "../../../generated/types/vm-types";
 
 export const OobPersonPage = (props: { vm: PersonPageModel }) => (
-	<MpaLayout selectedMenu={OOB_PAGE_ID}>
+	<MpaLayout selectedMenu={'OOB_PAGE_ID'}>
 		<>
 			<div class="field">
 				<label class="label">Search</label>

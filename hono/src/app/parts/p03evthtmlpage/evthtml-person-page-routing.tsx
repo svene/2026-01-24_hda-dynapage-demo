@@ -3,12 +3,12 @@ import {ActionUrlDefinition, RouteDefinition} from "../p00shared/app-types";
 import {JTSEvtHtmlPersonRouteName} from "../../../generated/types/vm-types";
 import {EvtHtmlPersonPage} from "./evthtml-person-page";
 import {html} from "hono/html";
-import { MpaLayout } from "../../root/mpalayout";
 import {EvtHtmlPersonEditor} from "./evthtml-person-edit";
 import {EvtHtmlPersonDetailsRow} from "./evthtml-person-details-row";
 import {EvtHtmlPersonDetailsCard} from "./evthtml-person-details-card";
 import {EvtHtmlPersonRow} from "./evthtml-person-row";
 import {EvtHtmlPersonTable} from "./evthtml-person-table";
+import {EvtHtmlLayout} from "./evthtml-layout";
 
 const nameIdUrl = (name: JTSEvtHtmlPersonRouteName, id: number) => `/demo/eventhtml/component/${name}?id=${id}`; // SPRING-HONO
 const nameUrl = (name: JTSEvtHtmlPersonRouteName) => `/demo/eventhtml/component/${name}`; // SPRING-HONO
@@ -17,12 +17,9 @@ export const evtHtmlPersonRoutes = {
 	EvtHtmlPersonPage: { // SPRING-HONO
 		url: () => nameUrl('EvtHtmlPersonPage'), // SPRING-HONO
 		render: async (c: Context, vm: any) => {
-			// TODO: migrate <MpaLayout> to html variant:
-			return c.render(
-				<MpaLayout selectedMenu={EVT_HTML_PAGE_ID}>
-					{html`${EvtHtmlPersonPage(vm)}`}
-				</MpaLayout>
-			)
+			return c.html(html`
+				${EvtHtmlLayout('EVT_HTML_PAGE_ID', EvtHtmlPersonPage(vm))}
+			`);
 		},
 	},
 	EvtHtmlPersonDetails: { // SPRING-HONO

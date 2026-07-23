@@ -11,3 +11,6 @@ export type ActionUrlDefinition = {
 	url: (...args: any[]) => string;
 };
 
+// TODO: value redundancy with route-keys -> think about how this can be improved
+export type PageId = "INFO_PAGE_ID" | "OOB_PAGE_ID" | "EVT_PAGE_ID" | "EVT_HTML_PAGE_ID";
+

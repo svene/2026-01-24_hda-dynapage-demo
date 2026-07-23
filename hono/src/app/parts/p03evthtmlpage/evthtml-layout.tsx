@@ -1,11 +1,12 @@
-import type {Child} from 'hono/jsx'
-import {oobPersonRoutes} from "../parts/p01oobpage/oob-person-page-routing";
-import {evtPersonRoutes} from "../parts/p02evtpage/evt-person-page-routing";
-import {infoRoutes} from "../parts/p09info/info-routing";
-import {evtHtmlPersonRoutes} from "../parts/p03evthtmlpage/evthtml-person-page-routing";
-import {PageId} from "../parts/p00shared/app-types";
+import {oobPersonRoutes} from "../p01oobpage/oob-person-page-routing";
+import {evtPersonRoutes} from "../p02evtpage/evt-person-page-routing";
+import {infoRoutes} from "../p09info/info-routing";
+import {evtHtmlPersonRoutes} from "./evthtml-person-page-routing";
+import {HtmlResult, PageId} from "../p00shared/app-types";
+import {html} from "hono/html";
 
-export const MpaLayout = (props: {selectedMenu?: PageId, children: Child }) => (
+export const EvtHtmlLayout = (selectedMenu: PageId, content: HtmlResult): HtmlResult => (
+	html`
 	<html lang="en" x-data="$store.darkMode" x-bind:data-theme="theme">
 	<head>
 		<meta charSet="UTF-8"/>
@@ -44,27 +45,27 @@ export const MpaLayout = (props: {selectedMenu?: PageId, children: Child }) => (
 			<div class="navbar-menu">
 				<div class="navbar-start">
 					<a
-						class={`navbar-item ${props.selectedMenu === 'OOB_PAGE_ID' ? 'is-selected' : ''}`}
-						href={oobPersonRoutes.OOBPersonPage.url()}
+						class="navbar-item ${selectedMenu === 'OOB_PAGE_ID' ? 'is-selected' : ''}"
+						href="${oobPersonRoutes.OOBPersonPage.url()}"
 					>OOB Variant</a>
 					<a
-						class={`navbar-item ${props.selectedMenu === 'EVT_PAGE_ID' ? 'is-selected' : ''}`}
-						href={evtPersonRoutes.EvtPersonPage.url()}
+						class="navbar-item ${selectedMenu === 'EVT_PAGE_ID' ? 'is-selected' : ''}"
+						href="${evtPersonRoutes.EvtPersonPage.url()}"
 					>Events Variant</a>
 					<a
-						class={`navbar-item ${props.selectedMenu === 'EVT_HTML_PAGE_ID' ? 'is-selected' : ''}`}
-						href={evtHtmlPersonRoutes.EvtHtmlPersonPage.url()}
+						class="navbar-item ${selectedMenu === 'EVT_HTML_PAGE_ID' ? 'is-selected' : ''}"
+						href="${evtHtmlPersonRoutes.EvtHtmlPersonPage.url()}"
 					>Events HTML Variant</a>
 					<a
-						class={`navbar-item ${props.selectedMenu === 'INFO_PAGE_ID' ? 'is-selected' : ''}`}
-						href={infoRoutes.InfoPage.url()}
+						class="navbar-item ${selectedMenu === 'INFO_PAGE_ID' ? 'is-selected' : ''}"
+						href="${infoRoutes.InfoPage.url()}"
 					>Info</a>
 				</div>
 			</div>
 		</nav>
 
 		<div class="p-1 mt-1" style="min-height: 500px">
-			{props.children}
+			${content}
 		</div>
 
 		<hr/>
@@ -74,5 +75,4 @@ export const MpaLayout = (props: {selectedMenu?: PageId, children: Child }) => (
 
 	</body>
 	</html>
-);
-
+`);

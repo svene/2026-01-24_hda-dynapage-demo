@@ -58,9 +58,6 @@ export const oobPersonRoutes = {
 	},
 } satisfies OOBPersonRoutesMap;
 
-export type OOBPersonRouteKey = keyof typeof oobPersonRoutes;
-export const OOB_PAGE_ID = 'OOBPersonPage' satisfies OOBPersonRouteKey;
-
 export const oobPersonActionUrls = {
 	UpdatePerson: { // SPRING-HONO
 		url: (id: number) => `/demo/oob/person/${id}`, // SPRING-HONO
