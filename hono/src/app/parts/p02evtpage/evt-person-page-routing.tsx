@@ -8,8 +8,8 @@ import {EvtPersonDetailsRow} from "./evt-person-details-row";
 import {RouteDefinition, ActionUrlDefinition} from "../p00shared/app-types";
 import {JTSEvtPersonRouteName} from "../../../generated/types/vm-types";
 
-const nameIdUrl = (name: JTSEvtPersonRouteName, id: number) => `/demo/event/component/${name}?id=${id}`; // SPRING-HONO
-const nameUrl = (name: JTSEvtPersonRouteName) => `/demo/event/component/${name}`; // SPRING-HONO
+const nameIdUrl = (name: JTSEvtPersonRouteName, id: number) => `/demo/event/route/${name}?id=${id}`; // SPRING-HONO
+const nameUrl = (name: JTSEvtPersonRouteName) => `/demo/event/route/${name}`; // SPRING-HONO
 
 export const evtPersonRoutes = {
 	EvtPersonPage: { // SPRING-HONO

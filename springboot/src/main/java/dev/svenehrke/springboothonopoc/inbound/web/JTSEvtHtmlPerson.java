@@ -4,7 +4,7 @@ package dev.svenehrke.springboothonopoc.inbound.web;
 public interface JTSEvtHtmlPerson {
 	interface URLs {
 		String EvtHtml_BASE_URL = "/demo/eventhtml";
-		String EvtHtml_PAGE_URL = "/demo/eventhtml/component/EvtHtmlPersonPage";
+		String EvtHtml_PAGE_URL = "/demo/eventhtml/route/EvtHtmlPersonPage";
 	}
 }
 

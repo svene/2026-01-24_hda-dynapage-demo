@@ -9,8 +9,8 @@ import {OOBPersonDetailsCard} from "./oob-person-details-card";
 import {RouteDefinition, ActionUrlDefinition} from "../p00shared/app-types";
 import {JTSOobPersonRouteName} from "../../../generated/types/vm-types";
 
-const nameIdUrl = (name: JTSOobPersonRouteName, id: number) => `/demo/oob/component/${name}?id=${id}`; // SPRING-HONO
-const nameUrl = (name: JTSOobPersonRouteName) => `/demo/oob/component/${name}`; // SPRING-HONO
+const nameIdUrl = (name: JTSOobPersonRouteName, id: number) => `/demo/oob/route/${name}?id=${id}`; // SPRING-HONO
+const nameUrl = (name: JTSOobPersonRouteName) => `/demo/oob/route/${name}`; // SPRING-HONO
 
 type OOBPersonRoutesMap = Record<JTSOobPersonRouteName, RouteDefinition>;
 export const oobPersonRoutes = {

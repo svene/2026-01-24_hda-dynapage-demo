@@ -30,8 +30,8 @@ public class EvtPeopleUIController {
 		this.honoAppClient = honoAppClient;
 	}
 
-	@GetMapping("/component/{name}") // SPRING-HONO
-	public ResponseEntity<String> component(@PathVariable String name, @RequestParam(name = "id", required = false) Integer id, HttpServletRequest request) {
+	@GetMapping("/route/{name}") // SPRING-HONO
+	public ResponseEntity<String> route(@PathVariable String name, @RequestParam(name = "id", required = false) Integer id, HttpServletRequest request) {
 		JTSEvtPersonRouteName routeName;
 		try {
 			routeName = JTSEvtPersonRouteName.valueOf(name);

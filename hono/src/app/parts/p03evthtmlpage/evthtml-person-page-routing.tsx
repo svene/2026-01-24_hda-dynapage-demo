@@ -10,8 +10,8 @@ import {EvtHtmlPersonRow} from "./evthtml-person-row";
 import {EvtHtmlPersonTable} from "./evthtml-person-table";
 import {EvtHtmlLayout} from "./evthtml-layout";
 
-const nameIdUrl = (name: JTSEvtHtmlPersonRouteName, id: number) => `/demo/eventhtml/component/${name}?id=${id}`; // SPRING-HONO
-const nameUrl = (name: JTSEvtHtmlPersonRouteName) => `/demo/eventhtml/component/${name}`; // SPRING-HONO
+const nameIdUrl = (name: JTSEvtHtmlPersonRouteName, id: number) => `/demo/eventhtml/route/${name}?id=${id}`; // SPRING-HONO
+const nameUrl = (name: JTSEvtHtmlPersonRouteName) => `/demo/eventhtml/route/${name}`; // SPRING-HONO
 
 export const evtHtmlPersonRoutes = {
 	EvtHtmlPersonPage: { // SPRING-HONO
