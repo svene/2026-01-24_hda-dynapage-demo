@@ -29,8 +29,3 @@ export const EvtPersonDetailsRow = ({vm}: { vm: PersonDetailModel }) => (
 			</tr>
 		</>
 );
-export const XXX = { // TODO: document purpose ?
-	A: () => (
-		<div>hallo</div>
-	)
-}
