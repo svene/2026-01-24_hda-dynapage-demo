@@ -35,7 +35,7 @@ public class HonoAppClient {
 			;
 	}
 
-	public <T> ResponseEntity<String> route(String name, T vm) {
+	public <T> ResponseEntity<String> uiroute(String name, T vm) {
 		return restClient
 			.post()
 			.uri(uriBuilder -> uriBuilder

@@ -36,7 +36,7 @@ public class OobPeopleActionController {
 	@DeleteMapping("/delete")
 	public ResponseEntity<String> deleteRows(@RequestParam List<Integer> selection) {
 		peopleService.deleteByIds(selection);
-		return honoAppClient.route(JTSOobPersonRouteName.OOBPersonTable.name(), peopleService.peopleForSearch(""));
+		return honoAppClient.uiroute(JTSOobPersonRouteName.OOBPersonTable.name(), peopleService.peopleForSearch(""));
 	}
 
 	@PutMapping("/person/{id}") // SPRING-HONO

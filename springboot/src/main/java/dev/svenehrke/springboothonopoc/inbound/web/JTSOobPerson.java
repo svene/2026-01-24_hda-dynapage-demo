@@ -4,6 +4,6 @@ package dev.svenehrke.springboothonopoc.inbound.web;
 public interface JTSOobPerson {
 	interface URLs {
 		String OOB_BASE_URL = "/demo/oob";
-		String OOB_PAGE_URL = "/demo/oob/route/OOBPersonPage";
+		String OOB_PAGE_URL = "/demo/oob/uiroute/OOBPersonPage";
 	}
 }

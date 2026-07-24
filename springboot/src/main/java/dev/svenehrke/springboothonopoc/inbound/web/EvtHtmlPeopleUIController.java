@@ -34,13 +34,13 @@ public class EvtHtmlPeopleUIController {
 		this.honoAppClient = honoAppClient;
 	}
 
-	@GetMapping("/route/{name}") // SPRING-HONO
-	public ResponseEntity<String> route(@PathVariable String name, @RequestParam(name = "id", required = false) Integer id, HttpServletRequest request) {
+	@GetMapping("/uiroute/{name}") // SPRING-HONO
+	public ResponseEntity<String> uiroute(@PathVariable String name, @RequestParam(name = "id", required = false) Integer id, HttpServletRequest request) {
 		JTSEvtHtmlPersonRouteName routeName;
 		try {
 			routeName = JTSEvtHtmlPersonRouteName.valueOf(name);
 		} catch (IllegalArgumentException e) {
-			return honoAppClient.route(OOBPersonRow.name(), null); // TODO: return 404-response
+			return honoAppClient.uiroute(OOBPersonRow.name(), null); // TODO: return 404-response
 		}
 		Object vm = switch (routeName) {
 			case EvtHtmlPersonPage -> new PersonPageModel(peopleService.personTableModel());
@@ -50,7 +50,7 @@ public class EvtHtmlPeopleUIController {
 			case EvtHtmlPersonEditor -> peopleService.personEditModel(id);
 
 		};
-		return honoAppClient.route(name, vm);
+		return honoAppClient.uiroute(name, vm);
 	}
 
 }
