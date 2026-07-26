@@ -1,0 +1,34 @@
+services:
+  hono:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: hono-runtime
+    container_name: hono-app
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  springboot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: springboot-runtime
+    container_name: springboot-app
+    ports:
+      - "8080:8080"
+    environment:
+      # Overrides the default localhost:3000 used for local IDE development.
+      # Inside Compose's network, "hono" resolves to the hono-app container.
+      - HONO_BASE_URL=http://hono:3000
+    depends_on:
+      - hono
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,6 @@
+.git
+**/target
+**/node_modules
+**/*.log
+.env
+hono/src/generated
