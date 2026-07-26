@@ -6,7 +6,7 @@ import {oobPersonRoutes} from "../parts/p01oobpage/oob-person-page-routing";
 import {RouteDefinition} from "../parts/p00shared/app-types";
 import {evtHtmlPersonRoutes} from "../parts/p03evthtmlpage/evthtml-person-page-routing";
 
-const ROUTER_URL = '/router';
+const ROUTER_URL = '/uiroute';
 
 const unsupported = (name: string) => {
 	return {
