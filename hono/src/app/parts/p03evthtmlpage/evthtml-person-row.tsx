@@ -13,7 +13,7 @@ export const EvtHtmlPersonRow = (vm: PersonTableRowModel): HtmlResult =>
 				hx-swap="outerHTML"
 				hx-get="${evtHtmlPersonRoutes.EvtHtmlPersonDetails.url(vm.id)}"
 		>
-			<td hx-trigger="click consume"> <!--consume: prevent bubbling, only checkbox needs to be clicked, not parents-->
+			<td hx-on:click="event.stopPropagation()">
 				<input type="checkbox" name="selection" value=${vm.id} form="bulkDeleteForm"></input>
 			</td>
 			<td>${vm.firstName}</td>

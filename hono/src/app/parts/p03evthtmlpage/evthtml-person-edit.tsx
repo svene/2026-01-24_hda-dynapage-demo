@@ -8,13 +8,13 @@ export const EvtHtmlPersonEditor = (vm: PersonDetailModel): HtmlResult =>
 	html`
 		<tr id="row-${vm.id}-edit">
 			<template
-					hx-trigger="${eventName('PersonDetailsRow_CloseCmd')}[event.detail.id== ${vm.id}] from:closest tr"
+					hx-trigger="${eventName('PersonDetailsRow_CloseCmd')}[detail.id === ${vm.id}] from:'closest tr'"
 					hx-target="closest tr"
 					hx-swap="outerHTML"
 					hx-get="${evtHtmlPersonRoutes.EvtHtmlPersonDetailsCard.url(vm.id)}"
 			></template>
 			<template
-					hx-trigger="${eventName('PERSON_UPDATED')}[event.detail.id=== ${vm.id}] from:closest tr"
+					hx-trigger="${eventName('PERSON_UPDATED')}[detail.id === ${vm.id}] from:'closest tr'"
 					hx-target="closest tr"
 					hx-swap="outerHTML"
 					hx-get="${evtHtmlPersonRoutes.EvtHtmlPersonDetailsCard.url(vm.id)}"
