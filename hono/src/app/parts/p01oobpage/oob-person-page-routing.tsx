@@ -6,6 +6,7 @@ import {OOBPersonTable} from "./oob-person-table";
 import {OobPersonPage} from "./oob-person-page";
 import {OOBPersonRow} from "./oob-person-row";
 import {OOBPersonDetailsCard} from "./oob-person-details-card";
+import {OOBPersonSaved} from "./oob-person-saved";
 import {RouteDefinition, ActionUrlDefinition} from "../p00shared/app-types";
 import {JTSOobPersonRouteName} from "../../../generated/types/vm-types";
 
@@ -54,6 +55,12 @@ export const oobPersonRoutes = {
 		url: (id: number) => nameIdUrl('OOBPersonDetailsCard', id), // SPRING-HONO
 		render: async (c: Context, vm: any) => {
 			return c.render(<OOBPersonDetailsCard vm={vm}></OOBPersonDetailsCard>);
+		}
+	},
+	OOBPersonSaved: { // SPRING-HONO
+		url: (id: number) => nameIdUrl('OOBPersonSaved', id), // SPRING-HONO
+		render: async (c: Context, vm: any) => {
+			return c.render(<OOBPersonSaved vm={vm}></OOBPersonSaved>);
 		}
 	},
 } satisfies OOBPersonRoutesMap;

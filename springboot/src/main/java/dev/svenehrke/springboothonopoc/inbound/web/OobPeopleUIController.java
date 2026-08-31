@@ -42,7 +42,7 @@ public class OobPeopleUIController {
 		}
 		Object vm = switch (routeName) {
 			case OOBPersonPage -> new PersonPageModel(peopleService.personTableModel());
-			case OOBPersonDetails, OOBPersonDetailsCard -> peopleService.personDetailModel(id);
+			case OOBPersonDetails, OOBPersonDetailsCard, OOBPersonSaved -> peopleService.personDetailModel(id);
 			case OOBPersonTable -> peopleService.peopleForSearch(request.getParameter("search"));
 			case OOBPersonRow, OOBPersonDetailsBack -> peopleService.personTableRowModel(id);
 			case OOBPersonEditor -> peopleService.personEditModel(id);

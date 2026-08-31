@@ -10,4 +10,5 @@ public enum JTSOobPersonRouteName {
 	OOBPersonRow,
 	OOBPersonEditor,
 	OOBPersonDetailsBack,
+	OOBPersonSaved,
 }

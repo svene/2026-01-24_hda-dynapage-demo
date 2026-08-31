@@ -3,14 +3,11 @@ package dev.svenehrke.springboothonopoc.inbound.web;
 import dev.svenehrke.springboothonopoc.app.Oob;
 import dev.svenehrke.springboothonopoc.core.*;
 import dev.svenehrke.springboothonopoc.outbound.hono.HonoAppClient;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import static dev.svenehrke.springboothonopoc.inbound.web.HTMXConsts.HX_REDIRECT;
 
 /**
  * General Forwarding Pattern (Spring -> Hono):
@@ -40,13 +37,15 @@ public class OobPeopleActionController {
 	}
 
 	@PutMapping("/person/{id}") // SPRING-HONO
-	public void updatePerson(
+	public ResponseEntity<String> updatePerson(
 		@PathVariable int id,
-		PersonEditModel personEditModel,
-		HttpServletResponse response
+		PersonEditModel personEditModel
 	) {
 		peopleService.updatePerson(id, personEditModel);
-		response.setHeader(HX_REDIRECT, JTSOobPerson.URLs.OOB_PAGE_URL);
+		return honoAppClient.uiroute(
+			JTSOobPersonRouteName.OOBPersonSaved.name(),
+			peopleService.personDetailModel(id)
+		);
 	}
 
 }

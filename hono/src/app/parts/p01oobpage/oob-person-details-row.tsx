@@ -1,10 +1,12 @@
 import {oobPersonRoutes} from "./oob-person-page-routing";
 import {PersonDetailModel} from "../../../generated/types/vm-types";
 
-export const OOBPersonDetailsRow = (props: { vm: PersonDetailModel }) => (
+export const OOBPersonDetailsRow = (props: { vm: PersonDetailModel, oob?: boolean }) => (
 		<>
+			{/* Implementation note: setting hx-swap-oob to undefined will make hono/jsx omit the attribute entirely */}
 			<tr
 				id={`row-${props.vm.id}`}
+				hx-swap-oob={props.oob ? "outerHTML" : undefined}
 				style="cursor: pointer"
 				hx-trigger="click"
 				hx-target="this"
