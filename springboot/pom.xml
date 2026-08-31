@@ -40,6 +40,7 @@
                     </classPatterns>
                     <classes>
                         <class>dev.svenehrke.springboothonopoc.inbound.web.JTSOobPersonRouteName</class>
+                        <class>dev.svenehrke.springboothonopoc.inbound.web.JTSPartialPersonRouteName</class>
                         <class>dev.svenehrke.springboothonopoc.inbound.web.JTSEvtPersonRouteName</class>
                         <class>dev.svenehrke.springboothonopoc.inbound.web.JTSEvtPersonEventName</class>
                         <class>dev.svenehrke.springboothonopoc.inbound.web.JTSEvtHtmlPersonRouteName</class>

@@ -1,5 +1,6 @@
 import type {Child} from 'hono/jsx'
 import {oobPersonRoutes} from "../parts/p01oobpage/oob-person-page-routing";
+import {partialPersonRoutes} from "../parts/p04partialpage/partial-person-page-routing";
 import {evtPersonRoutes} from "../parts/p02evtpage/evt-person-page-routing";
 import {infoRoutes} from "../parts/p09info/info-routing";
 import {evtHtmlPersonRoutes} from "../parts/p03evthtmlpage/evthtml-person-page-routing";
@@ -46,6 +47,10 @@ export const MpaLayout = (props: {selectedMenu?: PageId, children: Child }) => (
 						class={`navbar-item ${props.selectedMenu === 'OOB_PAGE_ID' ? 'is-selected' : ''}`}
 						href={oobPersonRoutes.OOBPersonPage.url()}
 					>OOB Variant</a>
+					<a
+						class={`navbar-item ${props.selectedMenu === 'PARTIAL_PAGE_ID' ? 'is-selected' : ''}`}
+						href={partialPersonRoutes.PartialPersonPage.url()}
+					>Partial Variant</a>
 					<a
 						class={`navbar-item ${props.selectedMenu === 'EVT_PAGE_ID' ? 'is-selected' : ''}`}
 						href={evtPersonRoutes.EvtPersonPage.url()}
