@@ -16,7 +16,7 @@ export const EvtHtmlLayout = (selectedMenu: PageId, content: HtmlResult): HtmlRe
 		<script src="/static/js/hyperscript.org/0.9.93/_hyperscript.js"></script>
 		<script defer src="/static/js/mpa.js"></script>
 		<script defer src="/static/js/alpinejs/3.16.3/cdn.min.js"></script>
-		<link rel="stylesheet" href="/static/css/bulma.min.css"/>
+		<link rel="stylesheet" href="/static/css/bulma/1.0.4/bulma.min.css"/>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 		<script>
 			//htmx.logAll();
